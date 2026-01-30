@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    
+</body>
+<script>
+    // default parameter
+    function greet(name="User"){console.log('Hello '+name);}
+    greet();
+    greet("Sanjeevi");
+
+    // nullish coalescing operator
+    console.log("Hello"??"Hello2");
+    console.log(undefined??"Hello");
+    console.log(null??"Hello");
+
+    // controlling falsy values with OR
+    console.log(0||34);
+    console.log(NaN||0);
+
+    function greaterThan10(limit){
+        console.log(limit||10);
+    }
+    greaterThan10();
+    greaterThan10(0);
+
+
+    // object literal - using {}
+    const obj1 = {
+        name: "Sanjeevi",
+        age: 17
+    }
+
+    // constructor function
+    function Student(name, age){
+        this.name = name||"User";
+        this.age = age??0;
+        this.greet = function(){
+            console.log("My name is "+this.name+".  I am "+this.age+" years old.")
+        }
+        
+    }
+    const obj2 = new Student("Sanjeevi", 17);
+
+    console.log(
+        obj1, obj2, 
+        typeof obj1, typeof obj2, 
+        obj1 instanceof Student, obj2 instanceof Student
+    );
+
+    obj2.greet();
+
+
+
+    // class
+
+    class Animal{
+        constructor(species="O", legs=0){
+            this.species = species||"O";
+            this.legs = legs ?? 0;
+        }
+        static isAlive = true;
+    }
+    let a1 = new Animal();
+    console.log(a1.isAlive, Animal.isAlive)
+    
+</script>
+</html>

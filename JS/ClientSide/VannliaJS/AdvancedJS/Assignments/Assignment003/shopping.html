@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Online Shopping</title>
+    <style>
+      body {
+        margin: 20px;
+        background: #0f1113;
+        color: #e6eef6;
+        font-family: system-ui;
+      }
+      button {
+        background: #16181a;
+        border: 1px solid #2a2d30;
+        color: #e6eef6;
+        padding: 8px 14px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+      .box {
+        background: #0b0c0d;
+        border: 1px solid #222;
+        padding: 12px;
+        border-radius: 6px;
+        margin-top: 12px;
+        min-height: 40px;
+        font-family: monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Online Shopping</h2>
+
+    <button id="runChain">Run (.then) Chain</button>
+    <button id="runAsync">Run (async/await)</button>
+
+    <div class="box" id="log">Ready.</div>
+
+    <script>
+      function log(msg) {
+        const box = document.getElementById("log");
+        box.innerHTML += "<br>" + msg;
+        box.scrollTop = box.scrollHeight;
+      }
+      function clearLog() {
+        document.getElementById("log").textContent = "Running...";
+      }
+
+      function addToCart() {
+        return new Promise((res) =>
+          setTimeout(() => res("Item added to cart"), 1000)
+        );
+      }
+      function makePayment() {
+        return new Promise((res) =>
+          setTimeout(() => res("Payment successful"), 2000)
+        );
+      }
+      function generateInvoice() {
+        return new Promise((res) =>
+          setTimeout(() => res("Invoice generated"), 1000)
+        );
+      }
+      function shipProduct() {
+        return Promise.resolve("Product shipped");
+      }
+
+      const runChain = document.getElementById("runChain");
+      const runAsync = document.getElementById("runAsync");
+
+      function disableButtons(state) {
+        runChain.disabled = state;
+        runAsync.disabled = state;
+      }
+
+      runChain.onclick = () => {
+        clearLog();
+        disableButtons(true);
+
+        addToCart()
+          .then((msg) => {
+            log(msg);
+            return makePayment();
+          })
+          .then((msg) => {
+            log(msg);
+            return generateInvoice();
+          })
+          .then((msg) => {
+            log(msg);
+            return shipProduct();
+          })
+          .then((msg) => log(msg))
+          .then(() => log("Order Complete"))
+          .finally(() => disableButtons(false));
+      };
+
+      runAsync.onclick = async () => {
+        clearLog();
+        disableButtons(true);
+
+        try {
+          log(await addToCart());
+          log(await makePayment());
+          log(await generateInvoice());
+          log(await shipProduct());
+          log("Order Complete");
+        } finally {
+          disableButtons(false);
+        }
+      };
+    </script>
+  </body>
+</html>

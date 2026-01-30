@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<title><%=title%></title></head><body>
+    Hello
+    <ul><%users.forEach((e)=>{%>
+    <li><%=e%></li>
+    <%})%></ul>
+
+    <%
+        fetch("https://www.example.com", {
+            method: "GET"
+        })
+    %>
+</body></html>

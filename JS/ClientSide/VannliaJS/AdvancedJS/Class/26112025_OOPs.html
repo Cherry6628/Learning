@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            --font: white;
+            --bg: black;
+
+            color: var(--font);
+            background-color: var(--bg);
+        }
+        pre{
+            border: 1px solid var(--font);
+            margin: 2px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    function log(res){let b = document.createElement("pre");b.innerText=res; document.body.append(b);}
+    console.temp = console.log;
+    console.log = function(...v){log(...v);console.temp(...v)};
+    
+
+    class Person{
+        name;
+        #city=34;
+        static id=0;
+        constructor(name, age){
+            this.name=name;
+            this.age=age;
+            Person.id++;
+
+        }
+        static getName(){
+            return this.name;
+        }
+        // get  #city() {
+        //     return `${city}`;
+        // }
+        
+    }
+    let Vehicle = class s{
+
+    }
+
+    let p = new Person();
+    console.log(p);
+    console.log(Person);
+    console.log(Vehicle);
+    
+
+    console.log("\n\n\n\n");
+
+    class Plant{
+        constructor(name){
+            if(arguments.length!=1)throw Error("Expected 1 Argument, Got "+arguments.length+" Arguments");
+            this.name=name;
+        }
+        grow(){
+            console.log("The "+this.name+" is growing.");
+        }
+    }
+    class Flower extends Plant{
+        constructor(name, color){
+            if(arguments.length!=2)throw Error("Expected 2 Arguments, Got "+arguments.length+" Arguments");
+            super(name);
+            this.color=color;
+        }
+        bloom(){
+            console.log("The "+this.color+" Colored "+this.name+" is Blooming.");
+        }
+    }
+    class Tree extends Plant{
+        constructor(name, height){
+            if(arguments.length!=2)throw Error("Expected 2 Arguments, Got "+arguments.length+" Arguments");
+            super(name);
+            this.height=height;
+        }
+        provideShape(){
+            console.log("This "+this.name+" with height "+this.height+"m was in a Shape.");
+        }
+    }
+
+    f1 = new Flower("Sunflower", "Yellow");
+    t1 = new Tree("Neem", 150);
+
+    f1.grow();
+    f1.bloom();
+
+    t1.grow();
+    t1.provideShape();
+
+</script>
+</html>

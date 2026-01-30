@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grid Auto Flow: Row Dense</title>
+  <style>
+    body{background-color: black;}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      grid-auto-flow: row dense;
+    }
+    .item {
+      background: #7ac;
+      color: white;
+      font-size: 1.2em;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    .item:nth-child(3n) {grid-column: span 3;}
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+  </div>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grid Auto Flow: Row Dense</title>
+  <style>
+    body{background-color: black;}
+    .grid {
+      height: 100vh;
+      display: grid;
+      
+      gap: 10px;
+      grid-template-rows: 100px 100px;
+      grid-template-columns: 100px 100px;  /*Only 2 Row with 2 Columns are defined*/
+      
+      grid-auto-rows: 200px ;  /*Contents exceeding the grid will have 200px height*/
+
+    }
+    .item {
+      background: #7ac;
+      color: white;
+      font-size: 1.2em;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+    <div class="item">7</div>
+  </div>
+</body>
+</html> -->

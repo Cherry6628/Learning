@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+
+<script>
+    let url = "https://www.httpbin.org/get";
+    let options = {
+        method: "GET"
+    }
+    let req = new Request(url,options);
+
+    fetch(req).then(
+        x=>console.log(x, req.headers)
+    ).catch(
+        x=>console.log(x, req.headers)
+    )
+
+    fetch("https://picsum.photos/200/300").then(x=>x.blob()).then(
+        blob => {
+            console.log(blob);
+            let obj = URL.createObjectURL(blob);
+            let a = document.createElement('a');
+            a.href=obj;
+            a.download="file.jpg";
+            a.click();
+            URL.revokeObjectURL(obj);
+        }
+
+    )
+
+    URLSearchParams
+
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script async>
+    function func(a, b){
+        return(a+b);
+    }
+
+    function changeNum(a){
+        a = 0;
+        console.log("Inside Function:", a);
+    }
+    function changeObject(a){
+        a = {};
+        console.log("Inside Function:", a);
+    }
+    function modifyObject(a){
+        a.name = "nothing";
+        console.log("Inside Function:", a);
+    }
+    let n = 10, arr = {name: "asdf"};
+
+    changeNum(n);
+    console.log("Outside the function:", n);  // pass by value
+    changeObject(arr);
+    console.log("Outside the function:", arr);  // pass by value
+    modifyObject(arr);
+    console.log("Outside the function:", arr);  // pass by reference
+
+    c = true? "Hi": "Hello";
+    function isAdult(){
+        console.log(Number(prompt("What is your age ? "))>=18?"You are an adult!!": "You are a kid")
+    }
+    isAdult()
+</script>
+</html>

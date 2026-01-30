@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <title>Library Membership Form</title>
+    <script src="https://kit.fontawesome.com/6436234580.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="000_00.css" type="text/css"/>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Library Membership Registration</h1><br>
+            <h4>Register for a free membership, and read on!</h4>
+        </header>
+
+        <form>
+
+            <section id="name" class="section-c">
+                <h5>Name <span class="asterisk">*</span></h5>
+                <section class="box" class="full">
+                    <div class="inp-name half-mid">
+                        <div class="input-box full">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" name="firstname" id="firstname" required/>
+                        </div>
+                        <label for="firstname">First Name</label>
+                    </div>
+                    <div class="inp-name half-mid">
+                        <div class="input-box full">
+                            <input type="text" name="lastname" id="lastname" class="full" required/>
+                        </div>
+                        <label for="lastname">Last Name</label>                            
+                    </div>
+                </section>
+            </section>
+
+
+            <section id="dob" class="section-c">
+                <h5>DOB <span class="asterisk">*</span></h5>
+                <section class="box" class="full">
+                    <div class="inp-name half">
+                        <div class="input-box full">
+                            <i class="fa-regular fa-calendar"></i>
+                            <input type="date" name="dob" id="dob" required/>
+                        </div>
+                        <label for="dob">dd-MMM-yyyy</label>
+                    </div>
+                </section>
+            </section>
+
+
+            <section id="addr" class="section-c">
+                <h5>Address</h5>
+                <section class="box" class="full">
+                    <div class="inp-name full">
+                        <div class="input-box full">
+                            <input type="text" name="streetaddress" id="streetaddress" class="full"/>
+                        </div>
+                        <label for="streetaddress">Street Address</label>
+                    </div>
+                </section>
+                <section class="box" class="full">
+                    <div class="inp-name full">
+                        <div class="input-box full">
+                            <input type="text" name="streetaddress2" id="streetaddress2" class="full"/>
+                        </div>
+                        <label for="streetaddress2">Address Line 2</label>
+                    </div>
+                </section>
+                <section class="box" class="full">
+                    <div class="inp-name half">
+                        <div class="input-box full">
+                            <input type="text" name="city" id="city" class="full"/>
+                        </div>
+                        <label for="city">City</label>
+                    </div>
+                    <div class="inp-name half">
+                        <div class="input-box full">
+                            <input type="text" name="state-province-region" id="state-province-region" class="full"/>
+                        </div>
+                        <label for="state-province-region">State/Region/Province</label>
+                    </div>
+                </section>
+                <section class="box" class="full">
+                    <div class="inp-name half">
+                        <div class="input-box full">
+                            <input type="text" name="postal-code" id="postal-code" class="full"/>
+                        </div>
+                        <label for="postal-code">Postal/Zip Code</label>
+                    </div>
+                    <div class="inp-name half">
+                        <div class="input-box full">
+                            <select name="country" id="country" class="full">
+                                <option value="India">India</option>
+                                <option value="United States">United States</option>
+                                <option value="Canada">Canada</option>
+                                <option value="Australia">Australia</option>
+                                <option value="United Kingdom">United Kingdom</option>
+                                <option value="Germany">Germany</option>
+                                <option value="France">France</option>
+                                <option value="Japan">Japan</option>
+                                <option value="South Korea">South Korea</option>
+                                <option value="Brazil">Brazil</option>
+                                <option value="Russia">Russia</option>
+                                <option value="China">China</option>
+                                <option value="Italy">Italy</option>
+                                <option value="Mexico">Mexico</option>
+                                <option value="South Africa">South Africa</option>
+                                <option value="New Zealand">New Zealand</option>
+                                <option value="Singapore">Singapore</option>
+                                <option value="Netherlands">Netherlands</option>
+                                <option value="Spain">Spain</option>
+                                <option value="Sweden">Sweden</option>
+                            </select>
+                        </div>
+                        <label for="country">Country</label>
+                    </div>
+                </section>    
+            </section>
+
+
+            <section id="emailaddr" class="section-c">
+                <h5>Email <span class="asterisk">*</span></h5>
+                <section class="box" class="full">
+                    <div class="inp-name half">
+                        <div class="input-box full">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input type="email" name="email" id="email" required/>
+                        </div>
+                        <!-- <label for="email">Email</label> -->
+                    </div>
+                </section>
+            </section>
+
+
+            <section id="phone" class="section-c">
+                <h5>Phone <span class="asterisk">*</span></h5>
+                <section class="box" class="full">
+                    <div class="inp-name half">
+                        <div class="input-box full">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                            <input type="tel" name="tel" id="tel" required pattern="\+[0-9]{2} [0-9]{10}"/>
+                        </div>
+                        <!-- <label for="tel">Telephone Number</label> -->
+                    </div>
+                </section>
+            </section>
+
+            <section id="usage" class="section-c">
+                <h5>What would you use the library for? <span class="asterisk">*</span></h5>
+                <section class="box full">
+                    <div class="inp-name full">
+                        <div class="input-box special-checkbox">
+                            <input type="checkbox" name="reference" id="reference" class="inl"/>
+                            <label for="reference">Reference</label>
+                        </div>
+                        <div class="input-box special-checkbox">
+                            <input type="checkbox" name="in-house-reading" id="in-house-reading" class="inl"/>
+                            <label for="in-house-reading">In-House Reading</label>
+                        </div>
+                        <div class="input-box special-checkbox">
+                            <input type="checkbox" name="borrowing" id="borrowing" class="inl"/>
+                            <label for="borrowing">Borrowing</label>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+
+            <section id="sect" class="section-c">
+                <h5>Which sections of the library would you like access to?  <span class="asterisk">*</span></h5>
+                <section class="box full">
+                    <div class="inp-name full">
+                        <div class="input-box special-checkbox">
+                            <input type="checkbox" name="all" id="all" class="inl"/>
+                            <label for="all">All</label>
+                        </div>
+                        <div class="input-box special-checkbox">
+                            <input type="checkbox" name="magazines" id="magazines" class="inl"/>
+                            <label for="magazines">Magazines</label>
+                        </div>
+                        <div class="input-box special-checkbox">
+                            <input type="checkbox" name="fiction" id="fiction" class="inl"/>
+                            <label for="fiction">Fiction</label>
+                        </div>
+                        <div class="input-box special-checkbox">
+                            <input type="checkbox" name="non-fiction" id="non-fiction" class="inl"/>
+                            <label for="non-fiction">Non-Fiction</label>
+                        </div>
+                        <div class="input-box special-checkbox">
+                            <input type="checkbox" name="electronics" id="electronics" class="inl"/>
+                            <label for="electronics">Electronic</label>
+                        </div>
+                        <div class="input-box special-checkbox">
+                            <input type="checkbox" name="res-ref" id="res-ref" class="inl"/>
+                            <label for="res-ref">Research & Reference</label>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <input type="submit" value="Register" id="submit"/>
+
+        </form>
+    </main>
+    
+</body>
+</html>

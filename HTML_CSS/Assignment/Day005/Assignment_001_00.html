@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Time Table</title>
+        <style>
+            *{
+                text-align: center;
+                padding: 0px;
+                margin: 0px;
+                border: 0px;
+                box-sizing: border-box;
+                color: black;
+            }
+            caption, th, td, thead, tbody, tr{
+                border-collapse: separate;
+                border: 2px solid black;
+                border-collapse: separate;
+                padding: 10px;
+            }
+            html, body{height: 100%; width:100%;}
+            table{
+                margin: auto;
+                margin-top: 15%;
+            }
+            .day{
+                background-color: #FFEF9C;
+            }
+            .time{
+                background-color: #FFCC91;
+            }
+            .pe{
+                background-color: #B2FFB2;
+            }
+            .recess{
+                background-color: #C1E0FF;
+            }
+            .homeroom{
+                background-color: #F4D4FF;
+            }
+            .lunch{
+                background-color: #F4D4FF;
+                font-weight: 900;
+            }
+            img{
+                width: 50px;
+            }
+            .img-td{
+                padding: 1px;
+            }
+            caption{
+                caption-side: bottom;
+                border: none;
+                font-weight: 900;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <td class="img-td"><img alt="teddy" src="others/teddy.png"/></td>
+                    <th class="day">Mon</th>
+                    <th class="day">Tue</th>
+                    <th class="day">Wed</th>
+                    <th class="day">Thu</th>
+                    <th class="day">Fri</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th class="homeroom">Homeroom<br>8:15 - 8:25</th>
+                    <td>Morning Work</td>
+                    <td>Morning Work</td>
+                    <td>Morning Work</td>
+                    <td>Morning Work</td>
+                    <td>Morning Work</td>
+                </tr>
+                <tr>
+                    <th class="time">8:25 - 8:55</th>
+                    <td>Snacks Break</td>
+                    <td>Math</td>
+                    <td>Math</td>
+                    <td class="pe">PE</td>
+                    <td>Math</td>
+                </tr>
+                <tr>
+                    <th rowspan="2" class="time">8:55 - 10:00</th>
+                    <td>Music</td>
+                    <td>Snacks Break</td>
+                    <td class="recess">Recess</td>
+                    <td>PE<br>9:00 - 9:45</td>
+                    <td>Math</td>
+                </tr>
+                <tr>
+                    <td>9:30 - 10:00<br>Library</td>
+                    <td>Language<br>9:30 - 10:00</td>
+                    <td>Crafts & Arts</td>
+                    <td>Math</td>
+                    <td>Technology</td>
+                </tr>
+                <tr>
+                    <th rowspan="2" class="time">10:10 - 11:15</th>
+                    <td>Math</td>
+                    <td class="pe">PE<br>10:30 - 11:15</td>
+                    <td>Technology</td>
+                    <td>Music</td>
+                    <td rowspan="2">Language</td>
+                </tr>
+                <tr>
+                    <td>Crafts & Arts</td>
+                    <td>Snacks Break</td>
+                    <td>Drawing</td>
+                    <td class="recess">Recess</td>
+                </tr>
+                <tr>
+                    <th rowspan="2" class="time">11:15 - 12:10</th>
+                    <td>Language</td>
+                    <td>Math</td>
+                    <td>Language</td>
+                    <td>Language</td>
+                    <td class="pe">PE</td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="lunch">Lunch</td>
+                </tr>
+                <tr>
+                    <th class="time">12:15 - 12:10</th>
+                    <td>Quiet Time</td>
+                    <td>Drawing</td>
+                    <td>Speaking</td>
+                    <td>Buddy Readers</td>
+                    <td>Buddy Readers</td>
+                </tr>
+                <tr>
+                    <th class="time">1:10 - 2:00</th>
+                    <td>Social Studies</td>
+                    <td class="recess">Recess</td>
+                    <td>Science</td>
+                    <td>Language</td>
+                    <td>Drawing</td>
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <caption>Time Table</caption>
+            </tfoot>
+        </table>
+
+    </body>
+</html>

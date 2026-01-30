@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Promise Demo</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .box { border: 1px solid #ddd; padding: 15px; margin-bottom: 25px; }
+        .log { margin-top: 10px; white-space: pre-line; padding: 10px; background: #f9f9f9; }
+        button { padding: 6px 12px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h3>1. Upload all files (Promise.all)</h3>
+    <button onclick="startUpload()">Start Upload</button>
+    <div id="uploadLog" class="log"></div>
+</div>
+
+<div class="box">
+    <h3>2. Cab Request (Promise.any)</h3>
+    <button onclick="requestCab()">Request Cab</button>
+    <div id="cabLog" class="log"></div>
+</div>
+
+<div class="box">
+    <h3>3. Backup Summary (Promise.allSettled)</h3>
+    <button onclick="startBackup()">Start Backup</button>
+    <div id="backupLog" class="log"></div>
+</div>
+
+
+<script>
+function log(id, msg) {
+    document.getElementById(id).textContent += msg + "\n";
+}
+
+function upload(name, success = Math.random() > 0.3) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (success) resolve(name + " uploaded");
+            else reject(name + " FAILED");
+        }, 500);
+    });
+}
+
+function startUpload() {
+    document.getElementById("uploadLog").textContent = "";
+
+    Promise.all([
+        upload("Report"),
+        upload("Presentation"),
+        upload("Video Demo")
+    ])
+    .then(res => {
+        res.forEach(r => log("uploadLog", r));
+        log("uploadLog", "\n✔ Submission successful!");
+    })
+    .catch(err => log("uploadLog", " Error: " + err));
+}
+
+
+function cabResponse(name, accepts = Math.random() > 0.5) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (accepts) resolve(name + " accepted");
+            else reject(name + " rejected");
+        }, 500);
+    });
+}
+
+function requestCab() {
+    document.getElementById("cabLog").textContent = "";
+
+    Promise.any([
+        cabResponse("Driver A"),
+        cabResponse("Driver B"),
+        cabResponse("Driver C")
+    ])
+    .then(res => log("cabLog", "✔ Assigned: " + res))
+    .catch(() => log("cabLog", " All drivers rejected"));
+}
+
+
+function backup(name, success = Math.random() > 0.3) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if (success) resolve(name + " backup complete");
+            else reject(name + " backup FAILED");
+        }, 500);
+    });
+}
+
+function startBackup() {
+    document.getElementById("backupLog").textContent = "";
+
+    Promise.allSettled([
+        backup("Photos"),
+        backup("Contacts"),
+        backup("Messages"),
+        backup("Notes")
+    ])
+    .then(results => {
+        results.forEach(r => {
+            if (r.status === "fulfilled")
+                log("backupLog", "✔ " + r.value);
+            else
+                log("backupLog", " " + r.reason);
+        });
+    });
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+
+<%- include("partials/header") %>
+
+<main>
+    <div class="container">
+        <h1>About This App</h1>
+
+        <p>
+            This is a lightweight dictionary application built using public APIs.
+            It focuses on clarity, structure, and readability rather than visual noise.
+        </p>
+
+        <p>
+            Definitions are grouped by part of speech, examples are shown only when
+            available, and excessive legacy dictionary text is avoided.
+        </p>
+
+    </div>
+</main>
+
+<%- include("partials/footer") %>
+
+</body>
+</html>

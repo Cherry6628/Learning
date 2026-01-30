@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .ad{
+            color:blue
+        }
+        span{
+            margin: 20px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span></p>
+        <p><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span></p>
+        <p><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span></p>
+        <p><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span></p>
+        <p><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span></p>
+        <input type="checkbox">
+    </div>
+</body>
+<script src="jquery-3.7.1.min.js"></script>
+<script>Object.temp=function(){let s = document.getElementsByTagName('script');for (let c of s){if(c.innerText.includes('Live reload enabled.')){c.previousSibling.remove(); c.remove();}}s = document.createTreeWalker(document,NodeFilter.SHOW_COMMENT,null,false);let a;while(a=s.nextNode())if(a.nodeValue.includes("Code injected by live-server"))a.remove();document.currentScript.remove();return Object.temp};delete Object.temp();</script>
+<script>
+    function sleep(s){
+        ms = s*1000
+        return new Promise((resolve)=>setTimeout(resolve, ms));
+    }
+    const{log}=console;
+    async function a(){
+
+        log($("input").prop("checked",false));
+
+
+        $("div>p:first-child").addClass("ad");
+        await sleep(2);
+        log($("div>p:first-child").hasClass("ad"));
+        $("div>p:first-child").removeClass("ad");
+        await sleep(2);
+        $("div>p:first-child").attr("data-x", 23);
+        log($("div>p:first-child").attr("data-x"));
+        log($("input").prop("checked",true));
+        log($("input").prop("checked"));
+        await sleep(2)
+        $("input").removeProp("checked");
+        $("span").on('click',()=>{
+            alert();
+        })
+    }
+    a();
+</script>
+</html>

@@ -1,0 +1,31 @@
+header{
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+    /* background-color: red; */
+}
+header ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header ul>li{
+    padding: 16px;
+    cursor: pointer;
+}
+hr{
+    height:2px;
+    background-color: var(--c1);
+    opacity: 20%;
+}
+header .title{
+    /* padding: 20%; */
+    /* height: 50%; */
+    width: 150%;
+}
+header{
+    padding: 40px;
+}

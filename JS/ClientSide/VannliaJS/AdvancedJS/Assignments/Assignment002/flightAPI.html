@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Document</title>
+    <style>
+      body {
+        background: #121212;
+        color: #e0e0e0;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+
+      h2,
+      h3 {
+        color: #ffffff;
+        margin-bottom: 10px;
+      }
+
+      label {
+        display: block;
+        margin-top: 12px;
+        font-size: 14px;
+        color: #bbbbbb;
+      }
+
+      input,
+      select {
+        padding: 8px;
+        width: 300px;
+        background: #1f1f1f;
+        border: 1px solid #333;
+        color: #eee;
+        border-radius: 4px;
+      }
+
+      input:focus,
+      select:focus {
+        outline: none;
+        border-color: #555;
+        background: #252525;
+      }
+
+      button {
+        padding: 10px 20px;
+        margin-top: 15px;
+        background: #333;
+        border: 1px solid #444;
+        color: #eee;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #3d3d3d;
+      }
+
+      .result,
+      .sample {
+        border: 1px solid #333;
+        background: #1a1a1a;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 4px;
+      }
+
+      .sample {
+        font-size: 14px;
+        opacity: 0.9;
+      }
+
+      strong {
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Flight Search</h2>
+
+    <label>Flight Number (IATA):</label>
+    <input id="flight_iata" placeholder="e.g. AA100" />
+
+    <label>Airline Name:</label>
+    <input id="airline_name" placeholder="e.g. American Airlines" />
+
+    <label>Departure Airport (IATA code):</label>
+    <input id="dep_iata" placeholder="e.g. JFK" />
+
+    <label>Arrival Airport (IATA code):</label>
+    <input id="arr_iata" placeholder="e.g. LAX" />
+
+    <label>Status:</label>
+    <select id="status">
+      <option value="">Any</option>
+      <option value="scheduled">Scheduled</option>
+      <option value="active">Active</option>
+      <option value="landed">Landed</option>
+      <option value="cancelled">Cancelled</option>
+    </select>
+
+    <button id="searchBtn">Search</button>
+
+    <div id="results"></div>
+    <h3>Sample Flights</h3>
+    <div id="examples"></div>
+
+    <script>
+      const API_KEY = "826c9c3c84b9f928fec31c768a7c8797";
+      const CACHE_KEY = "cachedFlights";
+      const CACHE_TIME_KEY = "cachedAt";
+      const CACHE_DURATION = 3600*24*7;
+
+      function normalizeCode(str) {
+        if (!str) return "";
+        return str.trim().toUpperCase().replace(/\s+/g, "");
+      }
+
+      function normalizeName(str) {
+        if (!str) return "";
+        str = str.trim().replace(/\s+/g, " ");
+        return str.replace(
+          /\w\S*/g,
+          (w) => w[0].toUpperCase() + w.slice(1).toLowerCase()
+        );
+      }
+
+      function normalizeValue(str, type) {
+        if (!str) return "";
+
+        if (type === "code") return normalizeCode(str);
+        if (type === "name") return normalizeName(str);
+
+        return str.trim().replace(/\s+/g, " ");
+      }
+      async function loadCachedSampleFlights() {
+        const now = Date.now();
+        const last = localStorage.getItem(CACHE_TIME_KEY);
+        const cached = localStorage.getItem(CACHE_KEY);
+
+        if (cached && last && now - parseInt(last) < CACHE_DURATION) {
+          return JSON.parse(cached);
+        }
+
+        try {
+          const url = `http://api.aviationstack.com/v1/flights?access_key=${API_KEY}&limit=20`;
+          const res = await fetch(url);
+          const data = await res.json();
+          console.log(data);
+          localStorage.setItem(CACHE_KEY, JSON.stringify(data.data));
+          localStorage.setItem(CACHE_TIME_KEY, Date.now().toString());
+          return data.data;
+        } catch (err) {
+          console.error("Could not fetch sample flights:", err);
+          return [];
+        }
+      }
+
+      function displaySampleFlights(list) {
+        const box = document.getElementById("examples");
+        if (!list || list.length === 0) {
+          box.innerHTML = "No sample flights available.";
+          return;
+        }
+
+        const html = list
+          .slice(0, 10)
+          .map(
+            (f) => `
+      <div class="sample">
+        <strong>${f.flight.iata || "N/A"}</strong> — ${f.airline.name}<br>
+        ${f.departure.iata} → ${f.arrival.iata}
+      </div>
+  `
+          )
+          .join("");
+
+        box.innerHTML = html;
+      }
+      document.getElementById("searchBtn").onclick = async () => {
+        const params = {
+          flight_iata: normalizeValue(
+            document.getElementById("flight_iata").value,
+            "code"
+          ),
+          airline_name: normalizeValue(
+            document.getElementById("airline_name").value,
+            "name"
+          ),
+          dep_iata: normalizeValue(
+            document.getElementById("dep_iata").value,
+            "code"
+          ),
+          arr_iata: normalizeValue(
+            document.getElementById("arr_iata").value,
+            "code"
+          ),
+          flight_status: document.getElementById("status").value || "",
+        };
+
+        const query = Object.entries(params)
+          .filter(([_, val]) => val !== "")
+          .map(([k, val]) => `${k}=${encodeURIComponent(val)}`)
+          .join("&");
+
+        const resultsDiv = document.getElementById("results");
+
+        if (!query) {
+          resultsDiv.innerHTML = "Enter at least one filter.";
+          return;
+        }
+
+        resultsDiv.innerHTML = "Searching...";
+
+        try {
+          const url = `http://api.aviationstack.com/v1/flights?access_key=${API_KEY}&${query}`;
+          const res = await fetch(url);
+          const data = await res.json();
+
+          if (!data.data || data.data.length === 0) {
+            resultsDiv.innerHTML = `No flights matched these filters.<br><br>
+      <strong>Tip:</strong> See sample flights below to understand formatting.`;
+            return;
+          }
+
+          resultsDiv.innerHTML = data.data
+            .map(
+              (f) => `
+      <div class="result">
+        <strong>${f.flight.iata || "Unknown Flight"} - ${
+                f.airline.name || "Unknown Airline"
+              }</strong><br>
+        Status: ${f.flight_status}<br>
+        From&nbsp;${f.departure.iata}&nbsp;To&nbsp;${f.arrival.iata}<br>
+        Scheduled: ${f.departure.scheduled}
+      </div>
+    `
+            )
+            .join("");
+        } catch (e) {
+          console.error(e);
+          resultsDiv.innerHTML = "Error fetching flights.";
+        }
+      };
+
+      window.onload = async () => {
+        const sample = await loadCachedSampleFlights();
+        displaySampleFlights(sample);
+      };
+    </script>
+  </body>
+</html>
+
+

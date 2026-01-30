@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" onclick="navigator.clipboard.writeText('Copied ! '); alert('Copied')">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #big{
+            padding: 10px;
+            border: 2px solid black;
+            height: 300px;
+            width: 300px;
+        }
+        #small{
+            padding: 20px;
+            border: 1px solid black;
+            height: 150px;
+            width: 150px;
+            overflow: scroll;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>HELLO</h1>
+        <ul class="ulclass" id="ulid">
+            <li class="item" id="item1">helloWorld</li>
+            <li class="item" id="item2">helloWorld</li>
+            <li class="item" id="item3">helloWorld</li>
+            <li class="item" id="item4">helloWorld</li>
+            <li class="item" id="item5">helloWorld</li>
+        </ul>
+    </main>
+
+</body>
+<script>
+    let l = console.log
+    l(document.getElementById("item2").parentElement)
+
+    let item2 = document.getElementById("item2");
+    // item2.querySelector("").style.color= "blue";
+
+    let ul = document.getElementById("ulid");
+    l(item2.parentElement, item2.parentNode)
+    l(item2.nextSibling, item2.nextElementSibling)
+    l(item2.previousSibling, item2.previousElementSibling)
+
+    // appending element
+    let newItemElement = document.createElement("li");
+    newItemElement.innerText = "INSERTED ELEMENT";
+    newItemElement.id = "itemInserted";
+    newItemElement.classList.add("itemInserted", "item")
+    ul.appendChild(newItemElement);  // appends only one
+
+    let e1 = document.createElement("li");
+    e1.innerText="e1";
+    let e2 = document.createElement("li");
+    e2.innerText = "e2"
+    ul.append(e1, e2);
+    ul.appendChild(e1);
+    
+    ul.append(e1);
+    // ul
+    e1.classList += "asdf";
+    e1.classList+="Asdfasd";
+
+    let sub_ul = document.createElement("ul");
+    sub_ul.append(e1);
+    ul.prepend(sub_ul)
+    let p = document.createElement("p");
+    p.innerText = "appended with Element.after()"
+    ul.after(p);
+
+
+
+    //////
+    sub_ul.style.backgroundColor = "black";
+    sub_ul.style.color="white";
+    sub_ul.insertAdjacentText("beforebegin", "beforebegin of ul")
+    sub_ul.insertAdjacentText("beforeend", "beforeend of ul")
+    sub_ul.insertAdjacentText("afterbegin", "afterbegin of ul")
+    sub_ul.insertAdjacentText("afterend", "afterend of ul")
+
+
+    // very much deprecated
+    sub_ul.insertAdjacentHTML("beforebegin", "<code>BEFORE BEGIN</code>")
+    sub_ul.insertAdjacentHTML("beforeend", "<code>BEFORE END</code>")
+    sub_ul.insertAdjacentHTML("afterbegin", "<code>AFTER BEGIN</code>")
+    sub_ul.insertAdjacentHTML("afterend", "<code>AFTER END</code>")
+
+    let e3 = e2.cloneNode(true);
+    sub_ul.replaceChild(e3, e1)
+
+    ul.removeChild(e2);
+    ul.removeChild(document.getElementById("item1"));
+    ul.insertBefore(e3.cloneNode(true), newItemElement);
+    // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
+    // ul.remove()
+
+
+
+</script>
+
+</html>

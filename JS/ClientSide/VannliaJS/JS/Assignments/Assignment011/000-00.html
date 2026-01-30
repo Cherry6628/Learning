@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Assignment 011</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: black; color: white; }
+        .task { border: 1px solid #555; padding: 15px; margin-bottom: 15px; border-radius: 8px; background: #222; overflow-x: scroll;}
+        button { margin-top: 5px; }
+        .output { margin-top: 8px; font-weight: bold; color: lightgreen; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Assignment 011</h1>
+
+    <!-- Task 1 -->
+    <div class="task">
+        <h3>1. Binary Array to Number</h3>
+        <input id="binInput" placeholder="e.g. 0,0,0,1">
+        <button onclick="binaryBtn()">Convert</button>
+        <div id="out1" class="output"></div>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="task">
+        <h3>2. Smash Words</h3>
+        <input id="smashInput" placeholder="hello,world,this,is,great">
+        <button onclick="smashBtn()">Smash</button>
+        <div id="out2" class="output"></div>
+    </div>
+
+    <!-- Task 3 -->
+    <div class="task">
+        <h3>3. Count Sheeps</h3>
+        <input id="sheepInput" placeholder="true,false,true,true">
+        <button onclick="sheepBtn()">Count</button>
+        <div id="out3" class="output"></div>
+    </div>
+
+    <!-- Task 4 -->
+    <div class="task">
+        <h3>4. Count Characters</h3>
+        <input id="countInput" placeholder="aba">
+        <button onclick="countBtn()">Count</button>
+        <div id="out4" class="output"></div>
+    </div>
+
+    <!-- Task 5 -->
+    <div class="task">
+        <h3>5. Find Multiples</h3>
+        <input id="multN" placeholder="n">
+        <input id="multLimit" placeholder="limit">
+        <button onclick="multBtn()">Find</button>
+        <div id="out5" class="output"></div>
+    </div>
+
+    <!-- Task 6 -->
+    <div class="task">
+        <h3>6. Capital Letters Indices</h3>
+        <input id="capInput" placeholder="CodEWaRs">
+        <button onclick="capBtn()">Find</button>
+        <div id="out6" class="output"></div>
+    </div>
+
+    <!-- Task 7 -->
+    <div class="task">
+        <h3>7. Goose Filter</h3>
+        <input id="gooseInput" placeholder="Mallard,Hook Bill,African,Crested">
+        <button onclick="gooseBtn()">Filter</button>
+        <div id="out7" class="output"></div>
+    </div>
+
+    <!-- Task 8 -->
+    <div class="task">
+        <h3>8. Flatten and Sort</h3>
+        <input id="flatInput" placeholder="[[3,2,1],[4,6,5],[],[9,7,8]]" value="[[3,2,1],[4,6,5],[],[9,7,8]]">
+        <button onclick="flatBtn()">Process</button>
+        <div id="out8" class="output"></div>
+    </div>
+
+    <!-- Task 9 -->
+    <div class="task">
+        <h3>9. Students Above 90 Avg</h3>
+        <button onclick="studentsBtn()">Run Example</button>
+        <div id="out9" class="output"></div>
+    </div>
+
+    <!-- Task 10 -->
+    <div class="task">
+        <h3>10. Flatten & Filter Strings</h3>
+        <input id="mixInput" placeholder="[1,'hello',[2, world'],'code']" value="[1,'hello',[2,'world'],'code']">
+        <button onclick="mixBtn()">Process</button>
+        <div id="out10" class="output"></div>
+    </div>
+
+    <script>
+    // 1. Binary Array to Number
+    function binaryArrayToNumber(arr){
+        for (let n of arr){
+            if (n!="0" && n!="1"){
+                return "Invalid Input";
+            }
+        }
+        arr = arr.join("");
+        return arr+"<sub>2</sub> = "+(parseInt(arr, 2))+"<sub>10</sub>";
+    }
+    function binaryBtn(){
+        let arr = document.getElementById("binInput").value.split(",").map(Number);
+        document.getElementById("out1").innerHTML = binaryArrayToNumber(arr);
+    }
+
+    // 2. Smash Words
+    function smash(words){ return words.join(" "); }
+    function smashBtn(){
+        let arr = document.getElementById("smashInput").value.trim().split(",");
+
+        document.getElementById("out2").innerText = smash(arr);
+    }
+
+    // 3. Count Sheeps
+    function countSheeps(sheep){ return sheep.filter(x => x===true).length; }
+    function sheepBtn(){
+        let arr = document.getElementById("sheepInput").value.split(",").map(x => x.trim().toLowerCase()==="true");
+        document.getElementById("out3").innerText = countSheeps(arr);
+    }
+
+    // 4. Count Characters
+    function count(string){
+        let obj = {};
+        for(let c of string){ obj[c] = (obj[c]||0)+1; }
+        return obj;
+    }
+    function countBtn(){
+        let str = document.getElementById("countInput").value;
+        document.getElementById("out4").innerText = JSON.stringify(count(str));
+    }
+
+    // 5. Find Multiples
+    function findMultiples(n,limit){
+        let res=[];
+        for(let i=n;i<=limit;i+=n) res.push(i);
+        return res;
+    }
+    function multBtn(){
+        let n = Number(document.getElementById("multN").value);
+        let limit = Number(document.getElementById("multLimit").value);
+        document.getElementById("out5").innerText = JSON.stringify(findMultiples(n,limit));
+    }
+
+    // 6. Capitals
+    function capitals(word){
+        let res=[]; 
+        for(let i=0;i<word.length;i++){ 
+            if(word[i]===word[i].toUpperCase() && "abcdefghijklmnopqrstuvwxyz".includes(word[i].toLowerCase())) 
+            es.push(i); 
+        } 
+        return res;
+    }
+    function capBtn(){
+        let str = document.getElementById("capInput").value;
+        document.getElementById("out6").innerText = JSON.stringify(capitals(str));
+    }
+
+    // 7. Goose Filter
+    function gooseFilter(birds){
+        const geese = ["african", "romantufted", "toulouse", "pilgrim", "steinbacher"];
+        return birds.filter(b => !geese.includes(b.trim().toLowerCase().replaceAll(" ", "")));
+    }
+    function gooseBtn(){
+        let arr = document.getElementById("gooseInput").value.split(",").map(x=>x.trim());
+        document.getElementById("out7").innerText = JSON.stringify(gooseFilter(arr));
+    }
+
+    // 8. Flatten & Sort
+    function flattenAndSort(arr){ return arr.flat(Infinity).sort((a,b)=>a-b); }
+    function flatBtn(){
+        try{
+            let input = eval(document.getElementById("flatInput").value);
+            document.getElementById("out8").innerText = JSON.stringify(flattenAndSort(input));
+        }
+        catch{
+            document.getElementById("out8").innerText = "Invalid Input / Unable to Parse the given Input";
+        }
+        
+    }
+
+    // 9. Students Avg > 90
+    function studentsBtn(){
+        const students = [
+        { name: "Alice", scores: [90, 85, 92] },
+        { name: "Bob", scores: [75, 80, 85] },
+        { name: "Charlie", scores: [90, 95, 85] },
+        { name: "Jack", scores: [100, 100, 100] }
+        ];
+        let result = students.map(s=>{
+            let avg = s.scores.reduce((a,b)=>a+b,0)/s.scores.length;
+            return { name: s.name, average: avg };
+        }).filter(s=>s.average>90);
+        document.getElementById("out9").innerText = JSON.stringify(result);
+    }
+
+    // 10. Flatten & Filter Strings
+    function flattenAndFilterStrings(arr){
+        return arr.flat(Infinity).filter(x=>typeof x==="string").map(x=>x.toUpperCase());
+    }
+    function mixBtn(){
+        try{
+            let input = eval(document.getElementById("mixInput").value);
+            document.getElementById("out10").innerText = JSON.stringify(flattenAndFilterStrings(input));
+        }
+        catch{
+            document.getElementById("out10").innerText = "Invalid Input /  Unable to Parse the Given Input";
+        }
+    }
+</script>
+</body>
+</html>

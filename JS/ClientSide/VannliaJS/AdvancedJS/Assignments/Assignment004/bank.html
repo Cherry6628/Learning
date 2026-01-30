@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bank</title>
+    <style>
+      body {
+        margin: 20px;
+        font-family: system-ui;
+        background: #0f1113;
+        color: #e6eef6;
+      }
+      input,
+      button {
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #333;
+        background: #16181a;
+        color: #e6eef6;
+        margin: 4px 0;
+        width: 200px;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .box {
+        background: #0b0c0d;
+        border: 1px solid #222;
+        padding: 12px;
+        border-radius: 6px;
+        margin-top: 10px;
+        min-height: 60px;
+        font-family: monospace;
+      }
+      label {
+        display: block;
+        margin-top: 6px;
+        color: #b8c3d6;
+      }
+      h2 {
+        margin-bottom: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Create Account</h2>
+    <label>Name:</label>
+    <input id="holderName" placeholder="Enter name" />
+    <label>PIN:</label>
+    <input id="pin" type="password" placeholder="Enter PIN" />
+    <button id="create">Create Account</button>
+    <label>Logs: </label>
+    <div class="box" id="info">No account yet.</div>
+
+    <h2>Account Operations</h2>
+    <label>Account Number:</label>
+    <input id="accNum" placeholder="Enter account number" />
+    <label>PIN:</label>
+    <input id="accPin" type="password" placeholder="Enter PIN" />
+    <button id="login">Login</button>
+
+    <div id="actions" style="display: none">
+      <label>Amount:</label>
+      <input id="amount" type="number" placeholder="0" />
+      <button id="deposit">Deposit</button>
+      <button id="withdraw">Withdraw</button>
+      <button id="showBalance">Show Balance</button>
+    </div>
+
+    <div class="box" id="transactions">Transactions will appear here.</div>
+
+    <script>
+      class BankAccount {
+        constructor(holderName, pin) {
+          this.accountNumber = Date.now();
+          this.holderName = holderName;
+          this.pin = pin;
+          this.balance = 0;
+          this.transactions = [];
+        }
+        deposit(amount) {
+          if (amount <= 0) return "Enter valid amount";
+          this.balance += amount;
+          this.transactions.push({
+            type: "Deposit",
+            amount,
+            date: new Date().toLocaleString(),
+          });
+          this.save();
+          return `Deposited ${amount}. Balance: ${this.balance}`;
+        }
+        withdraw(amount) {
+          if (amount <= 0) return "Enter valid amount";
+          if (amount > this.balance) return "Insufficient balance";
+          this.balance -= amount;
+          this.transactions.push({
+            type: "Withdraw",
+            amount,
+            date: new Date().toLocaleString(),
+          });
+          this.save();
+          return `Withdrawn ${amount}. Balance: ${this.balance}`;
+        }
+        showBalance() {
+          return `Balance: ${this.balance}`;
+        }
+        save() {
+          let accounts = JSON.parse(
+            localStorage.getItem("bank_accounts") || "[]"
+          );
+          const idx = accounts.findIndex(
+            (a) => a.accountNumber === this.accountNumber
+          );
+          if (idx >= 0) accounts[idx] = this;
+          else accounts.push(this);
+          localStorage.setItem("bank_accounts", JSON.stringify(accounts));
+        }
+        static load(accountNumber, pin) {
+          let accounts = JSON.parse(
+            localStorage.getItem("bank_accounts") || "[]"
+          );
+          const acc = accounts.find(
+            (a) => a.accountNumber == accountNumber && a.pin == pin
+          );
+          if (acc) {
+            const obj = new BankAccount(acc.holderName, acc.pin);
+            obj.accountNumber = acc.accountNumber;
+            obj.balance = acc.balance;
+            obj.transactions = acc.transactions || [];
+            return obj;
+          }
+          return null;
+        }
+      }
+
+      let currentAccount = null;
+      const info = document.getElementById("info");
+      const transBox = document.getElementById("transactions");
+      const actions = document.getElementById("actions");
+
+      document.getElementById("create").onclick = () => {
+        const name = document.getElementById("holderName").value.trim();
+        const pin = document.getElementById("pin").value.trim();
+        if (!name || !pin) {
+          info.textContent = "Enter name and PIN";
+          return;
+        }
+        currentAccount = new BankAccount(name, pin);
+        currentAccount.save();
+        info.textContent = `Account Created! Number: ${currentAccount.accountNumber}, Name: ${currentAccount.holderName}`;
+        transBox.innerHTML = "";
+      };
+
+      document.getElementById("login").onclick = () => {
+        const num = document.getElementById("accNum").value.trim();
+        const pin = document.getElementById("accPin").value.trim();
+        if (!num || !pin) {
+          info.textContent = "Enter account number and PIN";
+          return;
+        }
+        const acc = BankAccount.load(num, pin);
+        if (!acc) {
+          info.textContent = "Invalid credentials";
+          return;
+        }
+        currentAccount = acc;
+        info.textContent = `Logged in! Name: ${currentAccount.holderName}, Balance: ${currentAccount.balance}`;
+        actions.style.display = "block";
+        showTransactions();
+      };
+
+      document.getElementById("deposit").onclick = () => {
+        const amt = Number(document.getElementById("amount").value);
+        const msg = currentAccount.deposit(amt);
+        info.textContent = msg;
+        showTransactions();
+      };
+
+      document.getElementById("withdraw").onclick = () => {
+        const amt = Number(document.getElementById("amount").value);
+        const msg = currentAccount.withdraw(amt);
+        info.textContent = msg;
+        showTransactions();
+      };
+
+      document.getElementById("showBalance").onclick = () => {
+        info.textContent = currentAccount.showBalance();
+        showTransactions();
+      };
+
+      function showTransactions() {
+        if (!currentAccount) return;
+        const last5 = currentAccount.transactions.slice(-5).reverse();
+        transBox.innerHTML =
+          last5.map((t) => `${t.date}: ${t.type} ${t.amount}`).join("<br>") ||
+          "No transactions";
+      }
+    </script>
+  </body>
+</html>

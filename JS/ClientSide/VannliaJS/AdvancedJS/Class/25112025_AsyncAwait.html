@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            --font: white;
+            --bg: black;
+
+            color: var(--font);
+            background-color: var(--bg);
+        }
+        div{
+            border: 1px solid var(--font);
+            margin: 2px;
+        }
+    </style>
+</head>
+<body></body>
+<script>
+    function log(res){let b = document.createElement("div");b.innerText=res; document.body.append(b);}
+    console.temp = console.log;
+    console.log = function(...v){log(...v);console.temp(...v)};
+
+    async function promiseHello(){
+        return "Hello";
+    }
+    console.log(promiseHello());
+
+
+    async function promise(){
+        return new Promise((res, rej)=>{
+            setTimeout(()=>(Math.random()>=0.5?res:rej)("Hello"), 2000);
+        })
+    }
+
+    promise().then(r=>console.log(r)).catch(r=>console.log(r));
+
+    async function waitingFunction(){
+        try{
+            console.log(1);
+            let c = await promise();
+            console.log(2);
+            console.log("Awaited Promise: "+c);
+            console.log(3);
+        }catch(e){
+
+        }
+    }
+    console.log(0);
+    waitingFunction();
+
+    console.log(4);
+    for (let i=0;i<1000000000;i++);
+    console.log(5);
+</script>
+
+<script>
+
+    function wash(){
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>resolve("Vegetables Washed"), 1000);
+        })
+    }
+    function chop(){
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>resolve("Vegetables Choped"), 1000);
+        })
+    }
+    function cook(){
+        return new Promise((resolve, reject)=>{
+            setTimeout(()=>resolve("Vegetables Cooked"), 2000);
+        })
+    }
+
+    function serve(){
+        return new Promise((resolve, reject)=>{
+            resolve("Vegetables Served");
+        })
+    }
+    function makeDish(){
+        // wash().then(
+        //     r=>{
+        //         console.log(r);
+        //         chop().then(
+        //             n=>{
+        //                 console.log(n);
+        //                 cook().then(
+        //                     c=>{
+        //                         console.log(c);
+        //                         serve().then(
+        //                             s=>{
+        //                                 console.log(s);
+        //                             }
+        //                         )
+        //                     }
+        //                 )
+        //             }
+        //         )
+        //     }
+        // )
+        wash()
+        .then(r=>{console.log("%cDish 1 : "+r, "color:red; background-color:black; font-size:20px;font-weight:900;");return chop();})
+        .then(r=>{console.log("%cDish 1 : "+r, "color:red; background-color:black; font-size:20px;font-weight:900;");return cook();})
+        .then(r=>{console.log("%cDish 1 : "+r, "color:red; background-color:black; font-size:20px;font-weight:900;");return serve();})
+        .then(r=>{console.log("%cDish 1 : "+r, "color:red; background-color:black; font-size:20px;font-weight:900;");})
+    
+    }
+    makeDish();
+    async function makeDish2(){
+        console.log("%cDish 2 : "+await wash() , "color:blue; background-color:black; font-size:20px;font-weight:900;");
+        console.log("%cDish 2 : "+await chop() , "color:blue; background-color:black; font-size:20px;font-weight:900;");
+        console.log("%cDish 2 : "+await cook() , "color:blue; background-color:black; font-size:20px;font-weight:900;");
+        console.log("%cDish 2 : "+await serve(), "color:blue; background-color:black; font-size:20px;font-weight:900;");
+    }
+    makeDish2()
+</script>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            color: black;
+            font-size: 36px;
+
+        }
+        ::selection{
+            background-color: purple;
+            color: orange;
+        }
+        ol{
+            counter-reset: item;
+        }
+        li{
+            counter-increment: item;
+        }
+        li::marker{
+            content: counters(item, ".") " - ";
+            color: green;
+        
+        }
+
+        li::marker::selection{
+            background-color: red;
+            color: pink
+        }
+        input[type="email"][placeholder^="Enter"]::placeholder{
+            color: blue
+        }
+        p[class="name"]{
+            color: red;
+        }
+        p[class*="name"]{  /* Substring selector */
+            background-color: yellow;
+        }
+        p[class^="name"]{
+
+        }
+    </style>
+</head>
+<body>
+    <p>Hello-World@domain.tld</p>
+
+    <ol>
+        <li>Hot Drinks
+        <ol>
+            <li>Coffee
+            <ol>
+                <li>Cappuccino
+                <ol>
+                    <li>Traditional Cappuccino</li>
+                    <li>Wet Cappuccino</li>
+                    <li>Dry Cappuccino</li>
+                    <li>Iced Cappuccino</li>
+                    <li>Flavoured Cappuccino</li>
+                </ol></li>
+                <li>Espresso</li>
+            </ol></li>
+            <li>Tea
+            <ol>
+                <li>Green Tea</li>
+                <li>Black Tea</li>
+            </ol></li>
+        </ol></li>
+
+        <li>Cold Drinks</li>
+        <ol>
+            <li>Carbonated Drinks
+            <ol>
+                <li>CC</li>
+                <ol>
+                    <li>Coco cola Bottle</li>
+                    <li>Coco cola Canned</li>
+                </ol>
+                <li>Pepsi</li>
+                <li>Fanta</li>
+            </ol></li>
+            <li>Healthy Drinks
+            <ol>
+                <li>Water</li>
+                <li>Fruit Juices
+                <ol>
+                    <li>Orange Juice
+                    <ol>
+                        <li>Fresh Orange Juice</li>
+                        <li>Old Orange Juice
+                        <ol>
+                            <li>Canned Orange Juice</li>
+                            <li>Bottled Orange Juice</li>
+                        </ol></li>
+                    </ol></li>
+                    <li>Apple Juice
+                    <ol>
+                        <li>Fresh Apple Juice</li>
+                        <li>Old Apple Juice
+                        <ol>
+                            <li>Canned Apple Juice</li>
+                            <li>Bottled Apple Juice</li>
+                        </ol></li>
+                    </ol></li>
+                    <li>Mango Juice
+                    <ol>
+                        <li>Fresh Mango Juice</li>
+                        <li>Old Mango Juice
+                        <ol>
+                            <li>Canned Mango Juice</li>
+                            <li>Bottled Mango Juice</li>
+                        </ol></li>
+                    </ol></li>
+                </ol></li>
+            </ol></li>
+        </ol></li>
+        
+    </ol>
+
+    <input type="email" placeholder="Enter your Email !"/>
+    <input type="email" placeholder="Dont enter your email"/>
+    <input type="text" placeholder="Enter anything..."/>
+
+    <p class="name name">name</p>
+    <p class="nam">name</p>
+    <p class="-name-name">name-name</p>
+</body>
+</html>

@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+*{padding: 0px; margin: 0px;border:0px; box-sizing: border-box;}
+html, body{
+    width: 100%;
+    height: 100%;
+    font-size: 1vh;
+    font-family: "Noto Sans JP", sans-serif; font-optical-sizing: auto; font-style: normal;
+}
+body{
+    background-image: conic-gradient(
+        from 70deg,
+        #409bfc 0deg,
+        #2ab781 79.99deg,
+
+        #2CAF7B 80deg,
+        #28B05C 99.99deg,
+
+        #0EA84E 100deg,
+        #0CAC46 219.99deg,
+
+        #1da04d 220deg,
+        #2E91FE 360deg
+    );
+    padding: 8vh 8vw;
+    letter-spacing: -0.5px;
+}
+main{
+    width: 100%; height: fit-content;
+    background-color: white;
+    padding: 5vh 8vw 3vh;
+    margin:auto;
+    margin-bottom: 8vh
+}
+h1{
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+form{
+    padding: 0px;
+}
+section{
+    display:inline-block;
+    width: fit-content
+}
+section{
+    width: 99.223%;
+    margin-bottom: 30px;
+}
+.half-w{
+    width: 47.611924%;
+}
+label{
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 5px;
+}
+input{
+    height: 60px;
+    width: 100%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    font-size: 1.5rem;
+}
+input:focus{outline: none}
+.special-w{margin-right: 4%}
+textarea{
+    padding: 20px;
+    width: 100%;
+    background-color: #f2f2f2;
+    font-size: 1.5rem;
+    line-height: 2;
+    height: 300px
+}
+textarea:focus{outline: none}
+.sub{
+    background-image: linear-gradient(to top right, #318ff6, #04C224);
+    color: white; font-weight: 700;
+    width: 10vw; margin: auto; display: block;
+}
+div{width: 100%; margin: auto}
+footer{color:white; font-size: 1.8}
+footer label{text-align: center;}

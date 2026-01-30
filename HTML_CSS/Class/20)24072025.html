@@ -1,0 +1,150 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main{
+            height: 30vh;
+            width: 30vw;
+
+            border: 2px solid black;
+        }
+        .flex-r{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 2vh;
+        }
+        .child{
+            height: 10vw;
+            width: 10vw;
+            background-color: red;
+            border: 2px solid black
+        }
+        .c2{
+            /* transform: translate(50%, 50%) */
+            /* transform: scale(-10) */
+            /* transform: scaleX(1.2) */
+            /* transform: scaleY(1.3) */
+            /* transform: skew(30deg) */
+            /* transform: skewX(20deg) */
+            /* transform: skewY(20deg); */
+            /* transform: skew(20deg, 30deg) */
+            /* transform: rotateX(20deg) rotateY(30deg) */
+
+            /* transition-property: transform; */
+            transition-property: transform;
+            transition-duration: 2s;
+            transition-timing-function: ease;
+            transition-delay: 1s; */
+
+            transition: transform 2s ease 0s;
+
+            perspective: 500px;
+            transform-style: preserve-3d;
+
+            transform-origin: top left;
+        
+        }
+        .c2:hover{
+            /* background-color: blue; */
+            transform: scale(1.2) rotate3d(1, 1, 0, 45deg)
+        }
+        .face{
+            opacity: 0.5;
+            height: 200px; width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <main class="flex-r">
+        <div class="child c1">Child 1</div>
+        <div class="child c2">Child 2</div>
+    </main>
+
+    <section class="cube">
+        <div class="face face1"></div>
+        <div class="face face2"></div>
+        <div class="face face3"></div>
+        <div class="face face4"></div>
+        <div class="face face5"></div>
+        <div class="face face6"></div>
+    </section>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; width: 100vw;
+        }
+        main{
+            height: 200px; width: 200px;
+            transition: transform 6s ease 0s;
+            transform-origin: center;
+            transform-style: preserve-3d;
+            perspective: none;
+            position: relative;
+            transform: rotate3d(-1, -1, 0, 45deg)
+        }
+        main:hover{transform: rotate3d(-1, -1, 0, 405deg);}
+        .face{
+            transform-origin: center;
+            width: 200px;
+            height: 200px; position: absolute;
+            display: flex; flex-direction: row; 
+            align-items: center; 
+            justify-content: center; 
+            background-color: red;
+            border: 2px solid black
+        }
+
+        .face1{
+            transform: translateZ(100px);
+
+        }
+        .face2{
+            transform: translateZ(-100px) rotateY(180deg)
+        }
+        .face3{
+            transform: translateX(100px) rotateY(90deg)
+        }
+        .face4{
+            transform: translateX(-100px) rotateY(-90deg)
+        }
+        .face5{
+            transform: translateY(100px) rotateX(90deg)
+        }
+        .face6{
+            transform: translateY(-100px) rotateX(-90deg)
+        }
+        img{
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="face face1"><img src="https://images.fineartamerica.com/images/artworkimages/medium/3/natural-dam-waterfall-1x1-james-barber.jpg"></div>
+        <div class="face face2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-gQLlFE9GM05fN1byLtQ6iqi3UQVWTmvlJA&s"></div>
+        <div class="face face3"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRarnv7b7hFZElFT6IqslUPYzGQblxYQrxxjw&s"></div>
+        <div class="face face4"><img src="https://www.shutterstock.com/image-photo/jabrayil-khudafarin-bridge-karabakh-azerbaijan-600nw-2373495127.jpg"></div>
+        <div class="face face5"><img src="https://5.imimg.com/data5/TR/FV/OL/ANDROID-95461305/product-jpeg.jpg"></div>
+        <div class="face face6"><img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/little-hawksbill-crag-over-the-white-river-arkansas-landscape-1x1-gregory-ballos.jpg"></div>
+    </main>
+</body>
+</html>

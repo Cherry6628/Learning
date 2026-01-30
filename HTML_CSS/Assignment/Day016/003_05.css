@@ -1,0 +1,37 @@
+:root {
+    --t5-square-size: 30px;
+    --t5-gap: 8px;
+    --t5-color: orange;
+    --t5-speed: 1s;
+    --t5-delay-step: 0.2s;
+    --t5-timing-function: ease-in-out;
+}
+#tunnel-squares {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--t5-gap);
+    height: calc(var(--t5-square-size) * 2);
+    /* background-color: yellow; */
+  }
+  
+  #tunnel-squares div {
+    width: var(--t5-square-size);
+    height: var(--t5-square-size);
+    background-color: var(--t5-color);
+    animation: slide var(--t5-speed) var(--t5-timing-function) infinite;
+  }
+  
+  #tunnel-squares div:nth-child(1) { animation-delay: calc(var(--t5-delay-step) * 0); }
+  #tunnel-squares div:nth-child(2) { animation-delay: calc(var(--t5-delay-step) * 1); }
+  #tunnel-squares div:nth-child(3) { animation-delay: calc(var(--t5-delay-step) * 2); }
+  #tunnel-squares div:nth-child(4) { animation-delay: calc(var(--t5-delay-step) * 3); }
+  #tunnel-squares div:nth-child(5) { animation-delay: calc(var(--t5-delay-step) * 4); }
+  #tunnel-squares div:nth-child(6) { animation-delay: calc(var(--t5-delay-step) * 5); }
+  
+  @keyframes slide {
+    0%   { transform: translateX(0) scale(1); opacity: 1; }
+    50%  { transform: translateX(20px) scale(1.2); opacity: 0.5; }
+    100% { transform: translateX(0) scale(1); opacity: 1; }
+  }
+  

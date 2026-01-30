@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+     <link rel="stylesheet" href="style.css" type="text/css">
+    
+</head>
+<body>
+    <div id="winner-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%);
+        background-color:white; color:black; padding:30px; border-radius:15px; font-size:24px; text-align:center;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5); z-index:1000;">
+    </div>
+    <main>
+        <div class="player-side">
+            <div class="opt"><img id="p1opt"></div>
+        </div>
+        <section>
+            <section id="score-board">
+                <div class="mode-select">
+                    <form>
+                        <label for="pvp">Player vs. Player
+                        <input type="radio" name="mode" required id="pvp"></label>
+                        <div>
+                            <label for="pvc">Player vs. Computer
+                            <input type="radio" name="mode" required id="pvc" checked></label>
+                            
+                            <label for="selection-option" class="mode-selection-text">Computer Mode</label>
+                            <select id="selection-option">
+                                
+                                <option value="0">Very Easy</option>
+                                <option value="0.25">Easy</option>
+                                <option value="0.5" selected>Normal</option>
+                                <option value="0.75">Hard</option>
+                                <option value="1">Very Hard</option>
+                            </select>
+                        </div>
+                        <br>
+                        
+                        <input type="submit" value="Start/Restart" onclick="doProcess()">
+                    </form>
+                </div>
+            </section>
+            <section id="options">
+                <div class="option" id="rock">
+                    <img src="images/icon-rock.svg">
+                    <div class="cover"></div>
+                </div>
+                <div class="option" id="paper">
+                    <img src="images/icon-paper.svg">
+                    <div class="cover"></div>
+                </div>
+                <div class="option" id="scissor">
+                    <img src="images/icon-scissors.svg">
+                    <div class="cover"></div>
+                </div>
+                <div class="option" id="lizard">
+                    <img src="images/icon-lizard.svg">
+                    <div class="cover"></div>
+                </div>
+                <div class="option" id="spock">
+                    <img src="images/icon-spock.svg">
+                    <div class="cover"></div>
+                </div>
+            </section>
+        </section>
+        <div class="player-side">
+            <div class="opt"><img id="p2opt"></div>
+        </div>
+
+        <button id="instructions-btn">View Rules</button>
+        <div id="instructions-popup">
+            <div class="popup-content">
+                <h2 class="popup-title">Game Instructions</h2>
+                <img src="images/image-rules-bonus.svg" alt="Game Instructions">
+            </div>
+        </div>
+
+    </main>
+</body>
+<script src="logic.js"></script>
+<script src="style.js"></script>
+</html>

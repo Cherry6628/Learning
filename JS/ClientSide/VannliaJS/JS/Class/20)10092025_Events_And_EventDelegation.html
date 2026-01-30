@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        *{
+            background-color: black;
+            color: white;
+            vertical-align: top;
+        }
+        button{
+            height: 100px;
+            width: 100px;
+        }
+        #parent{
+            height: 300px;
+            border: 1px solid white
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <button class="game" id="minecraft">MINECRAFT</button>
+        <button class="game" id="valorant">VALORANT</button>
+        <button class="game" id="redDeadRedemption">RED DEAD REDEMPTION</button>
+        <button class="game" id="assassinCreeds">ASSASSIN CREEDS</button>
+        <button class="game" id="gtaVI">GTA VI</button>
+    </div>
+    <a href="https://8.8.8.8" target="_blank">GO TO dns.google.com</a>
+    <form>
+        <input>
+        <select>
+            <optgroup>
+                <option>Hello</option>
+                <option>World</option>
+            </optgroup>
+            <optgroup>
+                <option>Hello</option>
+                <option>World</option>
+            </optgroup>
+        </select>
+    </form>
+</body>
+<script>
+    let parentDiv = document.getElementById("parent");
+    let parentDivF = function(){
+        console.log(parentDiv)
+    }
+
+
+    document.addEventListener('load', ()=> {console.log('Loading...')})
+
+
+    // dom content loaded
+    document.addEventListener('DOMContentLoaded', parentDivF)
+
+
+    document.addEventListener('resize', ()=> console.log('Resizing .... '))
+
+    // event deligation
+    parentDiv.addEventListener('click', (event)=>{
+        event.target.style.backgroundColor=event.target.style.backgroundColor=="red"?"black":"red"; 
+        // event.currentTarget.style.color=event.currentTarget.style.color=="red"?"black":"red"
+        console.log(event.currentTarget)
+    })
+
+    document.querySelector('a').addEventListener('click', (e=event)=>{
+        e.preventDefault();  // doesn't redirects
+        e.stopPropagation();  // stops propagation.. its parent cannot listen to it
+    })
+    document.body.addEventListener('click', ()=>console.log("doc CLicked"))
+
+    document.querySelector('button').addEventListener('dblclick', (e=event)=>{
+        e.stopPropagation()
+        console.log("Double clicked");
+    })
+
+    let i =0;
+    document.addEventListener('mousedown', (e=event)=>{  // after pressing
+        // if (i%100==0)
+        console.log(i)
+        i++;
+    })
+    parentDiv.addEventListener('mouseenter', (e)=>{
+        console.log(e.clientX, e.clientY);
+        console.log(e.screenX, e.screenY);
+        console.log(e.offsetX, e.offsetY);
+    })
+
+    document.addEventListener('keypress', (e=event)=>{
+        console.log('keypressing')
+    })
+    document.addEventListener('keyrelease', (e=event)=>{
+        console.log('keypressing')
+    })
+
+    let inp = document.querySelector('input');
+    inp.addEventListener('focus', (e=event)=>{
+        console.log('focus');
+        
+    })
+
+    inp.addEventListener('blur', (e=event)=>{  ///
+        console.log('unfocus');
+        
+    })
+    document.addEventListener('change', (e=event)=>{
+        console.log('changeee');
+        
+    })
+
+    document.addEventListener('cut', (e=event)=>{
+        console.log("Cut")
+        navigator.clipboard.writeText("Cutting is not allowed")
+    })
+    document.addEventListener('copy', (e=event)=>{
+        console.log("Copied")
+    })
+    document.addEventListener('paste', (e=event)=>{
+        console.log("Pasted")
+    })
+    let f = function(){console.log("afdasdfasdfasdf")}
+    document.addEventListener('cut', f)
+    document.removeEventListener('cut', f)  // try commenting this line alone and try cutting something
+    
+    function copyFallback(text) {
+        const tempInput = document.createElement("textarea");
+        tempInput.value = text;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+    }
+
+    // copyFallback("HELLOOOO");
+    document.addEventListener('load', ()=>{copyFallback("asdfasdf")})
+
+
+
+
+
+
+</script>
+</html>

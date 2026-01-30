@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let student = {
+        rollno: 12,
+        name: "holloo",
+        greet: function(){console.log("Hi, I am a Student.")}
+
+    }
+
+
+    function greet0(){console.log("Hi");}
+    let greet2 = function(){
+        console.log("Hello");
+    }
+    greet0(); greet2();
+    student.greet()
+
+
+
+
+    let arr = [];
+    arr.push(2);
+    arr.push(232);
+    arr.push("Asdf");
+    arr.push('232');
+    console.log(arr);
+
+
+    let str = "asdf";
+    str[2] = "g";
+    console.log(str);
+
+    let car = {
+        name: "Lambo", 
+        color: [
+            {
+                name: "Red",
+                color: {
+                    R: 255, 
+                    G: 0, 
+                    B: 0
+                }
+            }, {
+                name: "Blue",
+                color: {
+                    R: 0, 
+                    G: 0, 
+                    B: 255
+                }
+            }, {
+                name: "Green",
+                color: {
+                    R: 0, 
+                    G: 255, 
+                    B: 0
+                }
+            }
+        ], 
+        seats: 4,
+        speed: function(){
+            let speed = 100
+            console.info(`Moving in a speed of ${speed}km/hr`);
+            return speed;
+        },
+        isMoving: function(){
+            console.info("The Car is Moving");
+            return true;
+        }
+
+    };
+    car.speed();
+    car.isMoving();
+    console.info(car["color"][0]["color"]["R"]);
+    console.info(car.color[0].color.R)
+
+
+
+    whoAmI = function () {
+        let name = "Human";
+        console.info("I am", name);
+    }
+    whoAmI();
+</script>
+</html>

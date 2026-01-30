@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Assignment 012</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Inter,system-ui,Arial;margin:18px;background:#111;color:#ddd}
+    .task{background:#1a1a1a;border:1px solid #444;padding:14px;border-radius:8px;margin-bottom:14px}
+    h1{margin-bottom:18px;color:#eee}
+    label:not([for]){display:block;font-weight:600;margin-bottom:6px;color:#ccc}
+    label[for]{display: inline-block; font-size: 80%;}
+    input,textarea,button{box-sizing:border-box}
+    input[type=text],input[type=number],textarea{
+      width:100%;padding:8px;border:1px solid #333;border-radius:6px;
+      background:#222;color:#eee
+    }
+    textarea{min-height:64px}
+    input[readonly],textarea[readonly]{
+      background:#181818;color:#888;border-color:#333;cursor:not-allowed
+    }
+    .controls{margin-top:8px}
+    button{padding:8px 12px;border-radius:6px;border:none;background:#0b66c2;color:#eee;cursor:pointer}
+    button:hover{background:#09519a}
+    pre{background:#000;padding:10px;border-radius:6px;white-space:pre-wrap;color:#9f9}
+  </style>
+</head>
+<body>
+  <h1>Assignment 012</h1>
+
+  <!-- 1 -->
+  <div class="task">
+    <label>1. Rank List</label>
+    <textarea id="studentsInput" readonly>[{"name":"aaa","marks":45},{"name":"bbb","marks":78},{"name":"ccc","marks":32},{"name":"aaa","marks":90},{"name":"aaa","marks":56}]</textarea>
+    <div class="controls"><button onclick="runRank()">Run</button></div>
+    <pre id="out1"></pre>
+  </div>
+
+  <!-- 2 -->
+  <div class="task">
+    <label>2. Sorted Books</label>
+    <input id="booksInput" type="text" value="[301,102,205,410]">
+    <div class="controls"><button onclick="runBooks()">Run</button></div>
+    <pre id="out2"></pre>
+  </div>
+
+  <!-- 3 -->
+  <div class="task">
+    <label>3. Latin Square</label>
+    <input id="latinInput" type="number" value="4" min="1">
+    <div class="controls"><button onclick="runLatin()">Run</button></div>
+    <pre id="out3"></pre>
+  </div>
+
+  <!-- 4 -->
+  <div class="task">
+    <label>4. Check Exam</label>
+    <label for="correctInput">Correct Options:</label>
+    <input id="correctInput" type="text" value='["a","a","b","b"]' readonly>
+    <label for="correctInput">Your Answers here:</label>
+    <input id="studentInput" type="text" value='["a","c","b","d"]'>
+    <div class="controls"><button onclick="runExam()">Run</button></div>
+    <pre id="out4"></pre>
+  </div>
+
+  <!-- 5 -->
+  <div class="task">
+    <label>5. Average Marks</label>
+    <input id="avgInput" type="text" value="[2,2,2,2]">
+    <div class="controls"><button onclick="runAverage()">Run</button></div>
+    <pre id="out5"></pre>
+  </div>
+
+  <!-- 6 -->
+  <div class="task">
+    <label>6. Shopping Cart</label>
+    <textarea id="cartInput" readonly>[{"productName":"Pen","quantity":2,"price":10},{"productName":"Book","quantity":1,"price":50}]</textarea>
+    <div class="controls"><button onclick="runCart()">Run</button></div>
+    <pre id="out6"></pre>
+  </div>
+
+  <!-- 7 -->
+  <div class="task">
+    <label>7. Reverse Characters to String</label>
+    <input id="charsInput" type="text" value='["J","S"]'>
+    <div class="controls"><button onclick="runReverse()">Run</button></div>
+    <pre id="out7"></pre>
+  </div>
+
+  <!-- 8 -->
+  <div class="task">
+    <label>8. Remove Out-of-Stock</label>
+    <textarea id="invInput" readonly>[{"productName":"Laptop","stockquantity":5},{"productName":"Mouse","stockquantity":0},{"productName":"Keyboard","stockquantity":10}]</textarea>
+    <div class="controls"><button onclick="runInventory()">Run</button></div>
+    <pre id="out8"></pre>
+  </div>
+
+<script>
+function safeParse(id, expected){
+  try {
+    return JSON.parse(document.getElementById(id).value);
+  } catch {
+    return {invalid: true, msg: "invalid — expected pattern: "+expected};
+  }
+}
+function safeStringify(v){return JSON.stringify(v,null,2);}
+function matrix2dViewer(v, indent=4){
+  let mLength = `${Math.max(...v.flat())}`.length;
+    if (v.length>0){
+    let s = "[\n"
+    for (let i=0; i<v.length; i++){
+      s+=" ".repeat(indent);
+      s+="[";
+      for (let j=0; j<v[i].length; j++){
+        s+=`${v[i][j]}`.padStart(mLength, " ");
+        if (j!=v[i].length-1){
+          s+=", ";
+        }
+      }
+      s+="]"
+      if (i!=v.length-1){
+        s+=",\n";
+      }
+    }
+    return s+"\n]";
+
+  } else{
+    return "[]"
+  }
+}
+
+function runRank(){
+  const data = safeParse("studentsInput",'[{"name":"str","marks":num},...]');
+  document.getElementById("out1").textContent = data.invalid ? data.msg :
+    safeStringify([...data].sort((a,b)=>b.marks-a.marks).map((s,i)=>({...s,rank:i+1})));
+}
+
+function runBooks(){
+  const data = safeParse("booksInput","[num,num,...]");
+  document.getElementById("out2").textContent = data.invalid ? data.msg :
+    safeStringify([...data].sort((a,b)=>a-b));
+}
+
+function runLatin(){
+  const n = Number(document.getElementById("latinInput").value);
+  if(!Number.isInteger(n)||n<1){
+    document.getElementById("out3").textContent="invalid — expected pattern: positive integer";
+    return;
+  }
+  let square = [];
+    for (let i = 0; i < n; i++) {
+        let row = [];
+        for (let j = 0; j < n; j++) {
+            row.push(((-i - j + 2*n) % n) + 1);
+        }
+        square.push(row);
+    }
+  document.getElementById("out3").textContent=matrix2dViewer(square);
+}
+
+function runExam(){
+  const correct = safeParse("correctInput",'["a","b",...]');
+  const student = safeParse("studentInput",'["a","b",...]');
+  if(correct.invalid){ document.getElementById("out4").textContent=correct.msg; return; }
+  if(student.invalid){ document.getElementById("out4").textContent=student.msg; return; }
+  let score=0;
+  for(let i=0;i<correct.length;i++){
+    if(student[i]==="") continue;
+    if(student[i]===correct[i]) score+=4;
+    else score-=1;
+  }
+  if(score<0) score=0;
+  document.getElementById("out4").textContent="Score: "+score;
+}
+
+function runAverage(){
+  const data = safeParse("avgInput","[num,num,...]");
+  if(data.invalid){ document.getElementById("out5").textContent=data.msg; return; }
+  const sum=data.reduce((a,b)=>a+b,0);
+  document.getElementById("out5").textContent="Avg: "+Math.round(sum/data.length);
+}
+
+function runCart(){
+  const data = safeParse("cartInput",'[{"productName":"str","quantity":num,"price":num},...]');
+  if(data.invalid){ document.getElementById("out6").textContent=data.msg; return; }
+  const total=data.reduce((t,i)=>t+i.quantity*i.price,0);
+  document.getElementById("out6").textContent="Cart: "+safeStringify(data)+"\nTotal: "+total;
+}
+
+function runReverse(){
+  const data = safeParse("charsInput",'["J","S",...]');
+  document.getElementById("out7").textContent = data.invalid ? data.msg : data.reverse().join("");
+}
+
+function runInventory(){
+  const data = safeParse("invInput",'[{"productName":"str","stockquantity":num},...]');
+  document.getElementById("out8").textContent = data.invalid ? data.msg :
+    safeStringify(data.filter(i=>i.stockquantity>0));
+}
+</script>
+</body>
+</html>

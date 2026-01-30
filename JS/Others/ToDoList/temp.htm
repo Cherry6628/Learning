@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Task Dashboard</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#00bdc7",
+              "background-light": "#f9fafa",
+              "background-dark": "#21262c",
+            },
+            fontFamily: {
+              "display": ["Manrope", "sans-serif"],
+              "heading": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .filled-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#101818] dark:text-white transition-colors duration-300">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="w-64 flex flex-col bg-white dark:bg-[#1a1e23] border-r border-[#dae6e7] dark:border-[#333b45]">
+<div class="p-6 flex items-center gap-3">
+<div class="size-10 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined !text-3xl">task_alt</span>
+</div>
+<div>
+<h1 class="font-heading text-xl tracking-tight leading-none">TaskMaster</h1>
+<p class="text-xs text-[#5e8a8d] dark:text-[#a0bfc1] font-medium">Productivity Pro</p>
+</div>
+</div>
+<nav class="flex-1 px-4 py-4 flex flex-col gap-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary group transition-all" href="#">
+<span class="material-symbols-outlined filled-icon">grid_view</span>
+<span class="font-bold text-sm">My Tasks</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#5e8a8d] dark:text-[#a0bfc1] hover:bg-[#f0f5f5] dark:hover:bg-[#2c343d] transition-all" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-medium text-sm">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#5e8a8d] dark:text-[#a0bfc1] hover:bg-[#f0f5f5] dark:hover:bg-[#2c343d] transition-all" href="#">
+<span class="material-symbols-outlined">manage_accounts</span>
+<span class="font-medium text-sm">Manage Account</span>
+</a>
+<div class="mt-8 mb-4 px-4 text-[10px] uppercase tracking-widest font-bold text-[#5e8a8d]">Categories</div>
+<a class="flex items-center gap-3 px-4 py-2 rounded-xl text-[#5e8a8d] hover:text-primary transition-colors" href="#">
+<div class="size-2 rounded-full bg-orange-400"></div>
+<span class="text-sm">Personal</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 rounded-xl text-[#5e8a8d] hover:text-primary transition-colors" href="#">
+<div class="size-2 rounded-full bg-blue-400"></div>
+<span class="text-sm">Work</span>
+</a>
+</nav>
+<div class="p-4 border-t border-[#dae6e7] dark:border-[#333b45] flex flex-col gap-2">
+<button class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#5e8a8d] dark:text-[#a0bfc1] hover:bg-red-50 dark:hover:bg-red-900/10 hover:text-red-500 transition-all">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-medium text-sm">Logout</span>
+</button>
+<div class="flex items-center gap-3 px-4 py-2">
+<div class="size-8 rounded-full bg-cover bg-center ring-2 ring-primary/20" data-alt="User profile avatar circle" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAOdBdg6nnfws0xtnztcrOrTrhLVMBd4x3e8ghMpgYdnfIuazBJ5aSiwJGo49zFZ9Lt4ZNuqc4HQ7uHk-t83eCcljpHcVgNpZhrctxmvR-qWx4kuYsoYLfVKmDfOmZ925m4P4gEjhkr_WfGImvGbjpVMKIrP99JSZ2nupN5aETTeNoSce0vETEnIL0mG62gu9AQ1z94-s2_ezKgAo4dVrz-e2VxrItdSOQJH3lzey4Tb25sgZKUrBdeYlupEIBTIeTpo099ULsGd1Y");'></div>
+<div class="overflow-hidden">
+<p class="text-xs font-bold truncate">Alex Morgan</p>
+<p class="text-[10px] text-[#5e8a8d]">alex@taskmaster.io</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col overflow-y-auto">
+<!-- Top Header -->
+<header class="h-20 bg-white/80 dark:bg-[#1a1e23]/80 backdrop-blur-md border-b border-[#dae6e7] dark:border-[#333b45] sticky top-0 z-10 px-8 flex items-center justify-between">
+<div class="flex items-center gap-6">
+<h2 class="font-heading text-2xl">My Tasks</h2>
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#5e8a8d]">search</span>
+<input class="bg-[#f0f5f5] dark:bg-[#2c343d] border-none rounded-lg pl-10 pr-4 py-2 text-sm w-64 focus:ring-2 focus:ring-primary" placeholder="Find a task..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-[#f0f5f5] dark:bg-[#2c343d] rounded-lg p-1">
+<button class="p-1.5 rounded-md bg-white dark:bg-[#333b45] shadow-sm">
+<span class="material-symbols-outlined !text-sm">grid_view</span>
+</button>
+<button class="p-1.5 rounded-md text-[#5e8a8d]">
+<span class="material-symbols-outlined !text-sm">view_list</span>
+</button>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-2.5 px-6 rounded-xl flex items-center gap-2 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined !text-xl">add</span>
+<span class="text-sm">Add Task</span>
+</button>
+<button class="size-10 flex items-center justify-center rounded-xl bg-[#f0f5f5] dark:bg-[#2c343d] text-[#5e8a8d] dark:text-[#a0bfc1]">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<div class="p-8 max-w-6xl mx-auto w-full">
+<!-- Quick Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+<div class="bg-white dark:bg-[#1a1e23] p-6 rounded-2xl border border-[#dae6e7] dark:border-[#333b45] shadow-sm flex items-center gap-4">
+<div class="size-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
+<span class="material-symbols-outlined !text-2xl">trending_up</span>
+</div>
+<div>
+<p class="text-xs font-bold text-[#5e8a8d] uppercase tracking-wider">Completion Rate</p>
+<p class="text-2xl font-heading">75% <span class="text-xs text-[#078832] font-display ml-1">+5%</span></p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a1e23] p-6 rounded-2xl border border-[#dae6e7] dark:border-[#333b45] shadow-sm flex items-center gap-4">
+<div class="size-12 bg-orange-400/10 rounded-xl flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined !text-2xl">event_available</span>
+</div>
+<div>
+<p class="text-xs font-bold text-[#5e8a8d] uppercase tracking-wider">Tasks Done</p>
+<p class="text-2xl font-heading">12 <span class="text-xs text-red-500 font-display ml-1">-2%</span></p>
+</div>
+</div>
+<div class="bg-white dark:bg-[#1a1e23] p-6 rounded-2xl border border-[#dae6e7] dark:border-[#333b45] shadow-sm flex items-center gap-4">
+<div class="size-12 bg-blue-400/10 rounded-xl flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined !text-2xl">local_fire_department</span>
+</div>
+<div>
+<p class="text-xs font-bold text-[#5e8a8d] uppercase tracking-wider">Current Streak</p>
+<p class="text-2xl font-heading">5 Days <span class="text-xs text-[#078832] font-display ml-1">+1</span></p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-heading">Today's Tasks</h3>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-[#f0f5f5] dark:bg-[#2c343d] rounded-full text-xs font-bold text-[#5e8a8d]">Pending (8)</span>
+<span class="px-3 py-1 bg-primary/10 rounded-full text-xs font-bold text-primary">Completed (12)</span>
+</div>
+</div>
+<!-- Tasks Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+<!-- Task Card: Multi-count (Water) -->
+<div class="group bg-white dark:bg-[#1a1e23] border border-[#dae6e7] dark:border-[#333b45] rounded-2xl p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="size-12 rounded-xl bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined !text-2xl">water_drop</span>
+</div>
+<span class="px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-[10px] font-bold rounded uppercase">Daily</span>
+</div>
+<h4 class="font-bold text-lg mb-1">Drink Water</h4>
+<div class="flex items-end justify-between mb-4">
+<div class="flex-1">
+<div class="flex justify-between text-xs mb-1.5 font-bold text-[#5e8a8d]">
+<span>Progress</span>
+<span>3/8 glasses</span>
+</div>
+<div class="w-full h-2 bg-[#f0f5f5] dark:bg-[#2c343d] rounded-full overflow-hidden">
+<div class="h-full bg-blue-500 rounded-full transition-all duration-500" style="width: 37.5%"></div>
+</div>
+</div>
+<button class="ml-4 size-10 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Task Card: Single completion (Email) -->
+<div class="group bg-white dark:bg-[#1a1e23] border border-[#dae6e7] dark:border-[#333b45] rounded-2xl p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="size-12 rounded-xl bg-orange-50 dark:bg-orange-900/20 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined !text-2xl">mail</span>
+</div>
+<span class="px-2 py-1 bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 text-[10px] font-bold rounded uppercase">Work</span>
+</div>
+<h4 class="font-bold text-lg mb-1">Email Marketing Team</h4>
+<p class="text-sm text-[#5e8a8d] mb-6">Send weekly analytics update</p>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="size-6 rounded-full border-2 border-white dark:border-[#1a1e23] bg-cover" data-alt="Team member small avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDNXlvL2IgIRvmcXkQ8qMBBktjWxz_LTbd0NAsmPO_uEckH1eGRwXTLwUk2HWtMiARuOhnYPeYDwVKirBy9e-fZcxQ90FCGU0XJgwMFUPA6Onq9stuUqiEiNXWHMpV0zLjR-2WtWgwm6iJFoV63X-Xowac-q2SLfGIxHTwC5Dq4y7ZH0qp-e5zlGHgrkxdy9cYnn4oJvd5VQoz1KDqu-OmA5hzLe6wtakmq8iK1fAXWWJL6CVRru_hbTyBL6_lGzpyh3CUv6dRLzuo");'></div>
+<div class="size-6 rounded-full border-2 border-white dark:border-[#1a1e23] bg-cover" data-alt="Team member small avatar 2" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuJWt-5jQB6SnNK9fOlgnexKqOF9jMeCL1wg4FrkDIurat57OSs64dEumI8wI5XXeOsshALFTpUB3JDf_TR10nfozza83YkUMjAB52V-KTeXg9zuBxdBK5_I6KXq8k6f8tVMBwEVe7MgUeenpe3EEVq7o5ttCigl0aJxOGAuiRx1P4Mw_s-jijmaeXmIc5KFicw10iuz2GWlXvC-8FZTWhAq-jNNSuc6xwjxli1BLYqoWReg84u328adZtdp77RxzygdXmjBmHq2o");'></div>
+</div>
+<button class="size-10 rounded-xl border-2 border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all active:scale-90">
+<span class="material-symbols-outlined">check</span>
+</button>
+</div>
+</div>
+<!-- Task Card: Multi-count (Push-ups) -->
+<div class="group bg-white dark:bg-[#1a1e23] border border-[#dae6e7] dark:border-[#333b45] rounded-2xl p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="size-12 rounded-xl bg-purple-50 dark:bg-purple-900/20 flex items-center justify-center text-purple-500">
+<span class="material-symbols-outlined !text-2xl">fitness_center</span>
+</div>
+<span class="px-2 py-1 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 text-[10px] font-bold rounded uppercase">Fitness</span>
+</div>
+<h4 class="font-bold text-lg mb-1">Push-ups</h4>
+<div class="flex items-end justify-between mb-4">
+<div class="flex-1">
+<div class="flex justify-between text-xs mb-1.5 font-bold text-[#5e8a8d]">
+<span>Daily Goal</span>
+<span>15/50 reps</span>
+</div>
+<div class="w-full h-2 bg-[#f0f5f5] dark:bg-[#2c343d] rounded-full overflow-hidden">
+<div class="h-full bg-purple-500 rounded-full transition-all duration-500" style="width: 30%"></div>
+</div>
+</div>
+<button class="ml-4 size-10 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</div>
+<!-- Task Card: Single (Reading) -->
+<div class="group bg-white dark:bg-[#1a1e23] border border-[#dae6e7] dark:border-[#333b45] rounded-2xl p-5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+<div class="flex justify-between items-start mb-4">
+<div class="size-12 rounded-xl bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-500">
+<span class="material-symbols-outlined !text-2xl">book</span>
+</div>
+<span class="px-2 py-1 bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 text-[10px] font-bold rounded uppercase">Personal</span>
+</div>
+<h4 class="font-bold text-lg mb-1">Read Book</h4>
+<p class="text-sm text-[#5e8a8d] mb-6 italic">"Atomic Habits" - Chapter 4</p>
+<div class="flex items-center justify-between">
+<div class="text-xs font-bold text-[#5e8a8d]">Due: Tonight</div>
+<button class="size-10 rounded-xl border-2 border-primary text-primary flex items-center justify-center hover:bg-primary hover:text-white transition-all active:scale-90">
+<span class="material-symbols-outlined">check</span>
+</button>
+</div>
+</div>
+<!-- Add New Card Empty State -->
+<div class="border-2 border-dashed border-[#dae6e7] dark:border-[#333b45] rounded-2xl p-5 flex flex-col items-center justify-center text-[#5e8a8d] hover:border-primary hover:text-primary transition-all cursor-pointer group min-h-[180px]">
+<div class="size-12 rounded-full bg-[#f0f5f5] dark:bg-[#2c343d] flex items-center justify-center mb-3 group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">add</span>
+</div>
+<p class="font-bold text-sm">Create New Task</p>
+</div>
+</div>
+<!-- Subtle Bottom Bar / Stats Summary -->
+<div class="mt-12 p-4 flex items-center justify-center gap-8 border-t border-[#dae6e7] dark:border-[#333b45]">
+<div class="flex items-center gap-2 text-xs font-bold text-[#5e8a8d]">
+<span class="size-2 rounded-full bg-primary"></span>
+                        5 tasks remaining today
+                    </div>
+<div class="flex items-center gap-2 text-xs font-bold text-[#5e8a8d]">
+<span class="size-2 rounded-full bg-green-500"></span>
+                        3 high priority
+                    </div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

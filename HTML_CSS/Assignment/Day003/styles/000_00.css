@@ -1,0 +1,140 @@
+:root {
+    --border-line-color: rgb(66, 66, 66);
+}
+
+body {
+    
+    font-family: "DM Sans",sans-serif;
+    text-align: left;
+    background-color: #1C1A19;
+    color: white;
+    /* text-align: justify; */
+    line-height: 27px;
+}
+
+
+header {
+    max-height: 54px; max-width:654px;
+    height: 100%;
+    margin: auto;
+    border: 1px solid var(--border-line-color);
+    border-radius: 10px;
+    margin-bottom: 2px;
+}
+
+
+#mainpart {
+    max-width:632px; margin: auto;
+    padding: 10px;
+    border-left: 1px solid var(--border-line-color);
+    border-right: 1px solid var(--border-line-color);
+    border-bottom: 1px solid var(--border-line-color);
+    margin-bottom: 20px;
+}
+#mainpart h1 {
+    text-decoration-line: underline;
+    text-decoration-color: #94CEFC;
+    text-decoration-thickness: 10px;
+    text-underline-offset: 5.292px;
+}
+
+#profile {
+    height: 40px;
+    padding: 7px;
+    border-radius: 20px;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0px;
+    background-color: #1C1A19;
+    /* max-height: 54px; */
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    margin-right: 10px;
+}
+#icon {
+    padding: 11px;
+    border: 1px solid var(--border-line-color);
+    border-radius: 11px;
+    /* color: white; */
+    /* fill: #fff; */
+}
+.icon{
+    width: 16px; height: 16px;
+    border: 1px solid white;
+    border-radius: 11px;
+    padding: 10.5px;
+}
+main p {
+    color: #BEBDBD;
+}
+
+.flex_row{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    gap: 12px;
+    /* margin: 10px; */
+    
+}
+
+.part{
+    /* max-width: 90%; */
+    padding: 2% 0% 5% 0%;
+    border-bottom: 1px solid var(--border-line-color);
+}
+.line{
+    width: 40px;
+    height: 3px;
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: #94CEFC;
+}
+
+article p{
+    font-size: 14px;
+}
+
+.part h5 {
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: #94CEFC;
+    text-underline-offset: 6px;
+    
+}
+.part h4{
+    font-size: 17px;
+}
+
+.highlight{
+    text-decoration-line: underline;
+    /* text-decoration- */
+    color: white;
+}
+.part-flex{
+    /* float: right; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 7px;
+    border-bottom: none;
+    line-height: 0;
+    margin: 10;
+    gap: 5px;
+}
+
+.part-flex .icon{
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    height: 16px; width: 16px;
+    margin: 10px 0px 0px 0px;
+}

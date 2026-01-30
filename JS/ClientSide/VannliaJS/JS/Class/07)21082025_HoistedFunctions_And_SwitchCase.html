@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    console.log('---HOISTING---');
+    a();
+    function a(){  // will be hoisted
+        console.log("I am hoisted function");
+    }
+    a()
+
+
+    try{
+        a1();
+    } catch{
+        console.log("a1 not found")
+    }
+    let a1 = function (){  // will not be hoisted
+        console.log("I am a1");
+    }
+    a1();
+
+
+    console.log();
+    console.log("switch-case")
+    let mark = Number(prompt());
+    switch (true){
+        case mark>90: console.log("Grade A+"); break;
+        case mark>75: console.log("Grade A"); break;
+        case mark>50: console.log("Grade B"); break;
+        case mark>35: console.log("Grade C"); break;
+        case mark>0: console.log("Fail"); break;
+        default: console.log("Invalid!!!");
+    }
+
+
+</script>
+</html>

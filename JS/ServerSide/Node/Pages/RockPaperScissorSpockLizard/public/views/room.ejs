@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Room <%= roomCode %></title>
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <div id="winner-popup"></div>
+        <main id="rpsls-ui">
+            <div class="player-side">
+                <div class="opt"><img id="p1opt" /></div>
+            </div>
+            <section>
+                <section id="score-board">
+                    <h2>Room: <%= roomCode %></h2>
+                    <p id="status">Waiting for opponent...</p>
+                    <p id="score">You: 0 | Opponent: 0</p>
+                </section>
+                <section id="options">
+                    <div class="option" data-choice="rock"><img src="/images/icon-rock.svg" /><div class="cover"></div></div>
+                    <div class="option" data-choice="paper"><img src="/images/icon-paper.svg" /><div class="cover"></div></div>
+                    <div class="option" data-choice="scissor"><img src="/images/icon-scissors.svg" /><div class="cover"></div></div>
+                    <div class="option" data-choice="lizard"><img src="/images/icon-lizard.svg" /><div class="cover"></div></div>
+                    <div class="option" data-choice="spock"><img src="/images/icon-spock.svg" /><div class="cover"></div></div>
+                </section>
+            </section>
+            <div class="player-side">
+                <div class="opt"><img id="p2opt" /></div>
+            </div>
+        </main>
+        <button id="instructions-btn">View Rules</button>
+        <div id="instructions-popup">
+            <div class="popup-content">
+                <h2 class="popup-title">Game Instructions</h2>
+                <img src="/images/image-rules-bonus.svg" />
+            </div>
+        </div>
+        <script>const ROOM_CODE = "<%= roomCode %>";</script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/style.js"></script>
+        <script src="/js/room.js"></script>
+    </body>
+</html>

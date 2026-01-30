@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function sep(){console.log("\n\n\n\n");}
+    let arr = [1, 2, 2, 2, 3, 4, 5];
+    console.log(arr);
+
+    arr.unshift(0);
+    console.log(arr);
+    arr.shift();
+    console.log(arr);
+    arr.length = 20;
+    console.log(arr);
+
+    console.log(arr.indexOf(2));      // 1
+    console.log(arr.lastIndexOf(2));  // 3
+    sep();
+
+    let arr2 = new Array(5);  // Sparse Array (empty)
+    console.log(arr2);
+    arr2[5]="asdf";
+    console.log(arr2)
+    sep();
+
+    let arr3 = new Array(1, 2, 3, 4, 5);
+    console.log(arr3)
+    
+    sep();
+
+    let arr4 = new Array(2, );
+    console.log(arr4);
+
+    let a1 = new Array(2);
+    let a2 = Array(2);
+    let a3 = Array(2);
+
+    console.log(a1===a2, a2===a3);
+
+    sep();
+
+    console.log(Array.isArray(a1), Array.isArray(23));
+    sep();
+
+    // Array Destructuring
+    let [a, [b, c, ...v], [], n] = [10, [20, 30, 40, 50, 60, 70, 80, 90], [234],null];  
+    let values =  [a, [b, c, ...v], [], n] 
+    // rest operator - packs multiple data into a single array
+    // Destructuring Declaration
+    console.log(values)
+    console.log(a, b, c);
+
+    console.log(...v)  // spread operator - unpacks a single array
+
+    function f(a, ...b){
+        console.log(b);
+    }
+    f(1, 2, 3, 4, 5,6, 7, 8);
+    function x(a){
+        console.log("Expected values: "+a)
+        console.log("Got: "+arguments);
+        return arguments;
+        // console.log("sdsddsdssdfdffdsdsddssdsdddsdssssssssssss")
+    }
+
+
+    function max(){
+        if (arguments.length >0){
+            m = arguments[0];
+            for (let i = 1; i<arguments.length; console.log(++i)){
+                if (arguments[i]>m){m=arguments[i];}
+                
+            } return m;
+        } return null;
+    }
+
+</script>
+</html>

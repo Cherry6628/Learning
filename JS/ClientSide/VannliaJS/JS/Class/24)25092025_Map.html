@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let l = console.log;
+    let map = new Map();
+    console.log(map);
+    map.set(2, 344);
+    map.set(2, 344);
+    map.set(2, 344);  // dont duplicate, instead overwrites it
+    map.set(2, 3443);  // finally the value for 2 is 3443
+    map.set(2e10, 3443);
+    map.set([1,2], 3);
+    let y = [1, 2, 4];
+    map.set(y, 3)
+    l(map);
+
+    l(map.get(2e10));  // 3443
+    l(map.get([1,2]))  // undefined.  here array is not a primitive datatype. so this one creates a new instance of array and then checks for that new instance of that array and then returns undefined
+    // same goes for objects
+    l(map.get(y));  // 3 -> in this case it gives 3, because we have saved the array referene in a variable y and then we are using it
+    l(map.get(23));  // undefined
+
+    l(map.has(2e10));
+    l(map.has(23));
+
+
+    l(map.delete(2e10));  // logs true
+    l(map.delete(23));  // logs false
+
+    l(map);
+
+    l(map.size);
+
+    l(Array.from(map.keys()));  // returns iterator (converted to array for visualization)
+    l(Array.from(map.values()));  // returns iterator (converted to array for visualization)
+    l(Array.from(map.entries()));  // returns iterator (converted to array for visualization)
+
+    map.forEach(
+        (value, key, map)=>{console.log(value, key, map);}
+    );
+
+
+    map.clear()
+
+    l(map);
+
+    map.set(2, 34);
+
+    l(map);
+
+</script>
+</html>

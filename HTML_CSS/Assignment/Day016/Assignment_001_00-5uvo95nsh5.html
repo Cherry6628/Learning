@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            --img1: url("images/img1.png");
+            --img2: url("images/img2.png");
+            --img3: url("images/img3.png");
+            --box1-color: #96a150;
+            --box2-color: #89cbba;
+            --box3-color: #e86c6f;
+        }
+        *{padding: 0; margin: 0; border: 0; box-sizing: content-box}
+        main{
+            height: 100vh; 
+            width: 100vw; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            background-color: #eaefc7; 
+            gap: 10vw
+        }
+        section{
+            position: relative; 
+            height: 20vw; 
+            width: 20vw;
+        }
+        section > div{
+            position: absolute; 
+            height: 20vw; width: 20vw;
+        }
+        section > div:first-child{
+            background-repeat: no-repeat;
+            background-size: cover; 
+            z-index: 1
+        }
+        section:first-child > div:first-child{
+            background-image: var(--img1)
+        }
+        section:nth-child(2) > div:first-child{
+            background-image: var(--img2)
+        }
+        section:last-child > div:first-child{
+            background-image: var(--img3)
+        }
+        section > div:last-child{
+            padding: 0.5vw; border: 1vw solid black;
+            position: relative; top: 1vw; left: 1vw;
+            z-index:0;
+            transition: transform 1s ease 0s
+        }
+        section:first-child >div:last-child{
+            border-color: var(--box1-color)
+        }
+        section:nth-child(2) >div:last-child{
+            border-color: var(--box2-color)
+        }
+        section:last-child >div:last-child{
+            border-color: var(--box3-color)
+        }
+
+        section:hover >div:last-child{
+            /* top: -1.5vw; left: -1.5vw */
+            transform: translate(-2.5vw, -2.5vw)
+        }
+
+        
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <div></div>
+            <div></div>
+        </section>
+        <section>
+            <div></div>
+            <div></div>
+        </section>
+        <section>
+            <div></div>
+            <div></div>
+        </section>
+
+    </main>
+</body>
+</html>

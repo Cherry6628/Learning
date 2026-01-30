@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+</head>
+<body>
+    <h1>Welcome to the Chat App</h1>
+    <label for="roomName" type="text">Room Name:</label>
+    <input id="roomName" type="text"/>
+    <button id="joinBtn">Join Room</button>
+    <button id="leaveBtn">Leave Room</button>
+    <br>
+    <input id="roomMsgInput" type="text"/>
+    <button id="sendBtnRoom">Send to Room</button>
+    <hr>
+    <input id="msgInput" type="text"/>
+    <button id="sendBtn">Send</button>
+    <div id="messages"></div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/client.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{border: 0; padding: 0; margin: 0; box-sizing: border-box;}
+        .container{
+            display: grid; 
+            grid-template: 1fr 1.5fr 3fr 5fr 1.5fr/repeat(3, 1fr); 
+            height: 100vh;
+            grid-template-areas: "navBar navBar navBar" "head head head" "sideBar container container" "sideBar sec1 sec2" "footer footer footer"
+            
+        }
+        nav{
+            grid-area: navBar;
+            background-color: blue;
+        }
+        header{
+            grid-area: head;
+            background-color:chartreuse;
+        }
+        aside{
+            grid-area: sideBar;
+            background-color:cadetblue;
+        }
+        main{
+            grid-area: container;
+            background-color: crimson;
+        }
+        #s1{
+            grid-area: sec1;
+            background-color: darkorange;
+        } #s2{
+            grid-area: sec2;
+            background-color: deeppink;
+        } footer{
+            grid-area: footer;
+            background-color: grey;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav></nav>
+        <header></header>
+        <aside></aside>
+        <main></main>
+        <section id="s1"></section>
+        <section id="s2"></section>
+        <footer></footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let i = 5;
+    while (i>=0){
+        console.log(i--);
+    }
+    i = 0;
+    while (i<=5){
+        if (i%2==0) console.log(i)
+        i++;
+    }
+    i=0;
+    let x;
+    do {
+        x = Math.random();
+        i++;
+        console.log(i, x)
+    } while (x<0);
+
+    for (let i=0; i<3; i++){
+        for(let j=0; j<3; j++){
+            if (j==2 && i==2){
+                break;
+            }
+            console.log(i, j)
+        }
+    }
+    os: for (let i=0; i<3; i++){
+        for(let j=0; j<3; j++){
+            if (j==2 && i==2){
+                break os;
+            }
+            console.log(i, j)
+        }
+    }
+    function greet(m="Hello", ...n){console.log(m, n)}
+    // function l(){
+    setTimeout(greet, 1000);
+    setTimeout(greet, 3000, "HELOOOOOOOOO", 2342, 2);
+    // }
+    // l();
+
+    // from time import sleep
+    // def setTimeout(handler, timeToSleep, *args):
+    //     sleep(timeToSleep/1000)
+    //     handler(*args)
+</script>
+</html>

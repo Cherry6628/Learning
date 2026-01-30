@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // event loop
+
+    // call stack 
+    // task queue
+    // micro task queue 
+
+    
+    // heap
+
+
+
+    console.log(1);
+    setTimeout(()=>{
+        console.log("Task Queue to Callstack 1")
+    }, 1)
+    setTimeout(()=>{
+        console.log("Task Queue to Callstack 0")
+    }, 0)
+    Promise.resolve().then(()=>{console.log("From Microtask Queue to Callstack")})
+    for (let i=0; i<10;console.log((i++, "From Call Stack")));
+
+    function dosaReady(){return Math.random()>0.5;}
+
+    console.log("\n\n");
+    setTimeout(()=>{
+        let dosaOrder = new Promise((resolve, reject)=>{
+            if (dosaReady()){
+                // console.log("Ready");
+                resolve("Dosa Ready da dei")
+
+            } else{
+                // console.log("Dosa Ila da.. Kelambu");
+                reject("Dosa Ila da... Kelambu..");
+            }
+        })
+
+        dosaOrder
+        .then(
+            // ()=>console.log("Hellllllllllllllllllo")
+            (msg)=>{
+                console.log(msg)
+            }
+        )
+        .catch(
+            (msg)=>{
+                console.log(msg)
+            }
+        )
+        .finally(
+            (msg)=>{
+                console.log(msg);
+            }
+        )
+        // dosaOrder.catch(()=>console.log("MMMHHHHHHHHHH"));
+    }, 2)
+</script>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html><body></body><script>
+let l = console.log;
+// https://regexlearn.com/learn/regex101
+
+
+// test method
+
+let r1 = /World/;
+l(r1.test('Hellooo World'));  // true
+l(r1.test('Hellooo world'));  // false
+
+// case insensitive
+let r2 = /World/i;
+l(r2.test('Hellooo World'));  // true
+l(r2.test('Hellooo world'));  // true
+
+// test multiple RegEx
+let r3 = /cat|mat|bat/i;
+l(r3.test('Hello Cat'));  // true
+l(r3.test('Hello BaT'));  // true
+l(r3.test('asdf'))        // true
+
+
+
+// match method
+
+let word = "Extract the word coding from this string coding coding Coding";
+l(word.match(/coding|this/i));
+l(word.match(/coding|this/ig));
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+// wild card character - .
+let word2 = 'Expression experience extra Points for good handwritting and studying';
+l(/Ex./.test(word2));
+l(word2.match(/Ex./g));
+l(word2.match(/.ing/g));
+
+
+// character set - []
+let word3 = "Extract the& bat cat bit word coding from coding Oding this string"
+l(word3.match(/b[a|i]t/gi));
+l(word3.match(/.*/g));
+l(word3.match(/[a|e|i|o|u]/g));  // gets all vowels;
+
+l(word3.match(/./g));  // l(word3.split(""));
+l(word3.match(/.&./g))  // considers ampersand as a character
+
+
+let word4 = "This Coffee price is $5.00"
+l(word4.match(/[0-5]/g));
+l(word4.match(/[a-z]/g));
+l(word4.match(/[a-zA-Z]/g));
+l(word4.match(/[a-zA-Z0-9]/g));
+l(word4.match(/[a-zA-Z0-9$]/g));
+l(word4.match(/[a-zA-Z0-9$. ]/g), word4.length);
+
+l(word4.match(/[^a-z ]/g))
+
+// AlphaNumberic Characters and Underscore          \w
+// all except \w                                    \W
+l(word4.match(/\w/g));
+l(word4.match(/\W/g));
+
+// \d Numbers
+// \D except Numbers
+l(word4.match(/\d/g));
+l(word4.match(/\D/g));
+
+// \s Space
+// \S Non-Space Characters
+
+
+// One or more occurance +
+l("Mississippi".match(/s+/g));
+// Zero or more occurance *
+l("Mississippi".match(/s*/g));
+l("Assd".match(/s*/g));
+
+
+
+
+
+
+/// Match types
+// greedy match
+// lazy match
+
+
+l('Titanic'.match(/t.*i/ig));     // greedy  - Titani
+l('Titanic'.match(/t.*?i/ig));    // lazy    - Ti, tani
+
+l('Titanic'.match(/.*t/ig));      // greedy  - Tit
+l('Titanic'.match(/.*?t/ig));     // lazy    - T, it
+
+l('Titanic'.match(/[a-z]*/ig));   // greedy  - Titanic, <empty>
+l('Titanic'.match(/[a-z]*?/ig));  // lazy    - <empty>*8
+
+
+l('Missississississippi'.match(/.*i+/));  // greedy - Missississississippi
+l('Missississississippi'.match(/.*?i+/g)); // lazy   - Mi, ssi, ssi, ssi, ssi, ssi, ppi
+
+
+// starts with - ^ (^ inside a charset is NOT.  ^ outside a charset is STARTS WITH)
+// ends with - $
+let word5 = "papaya";
+l(word5.match(/a/g));
+l(word5.match(/a$/g));
+l(word5.match(/p/g));
+l(word5.match(/^p/g));
+
+
+let r = /^[a-zA-Z]{2}\d*$/g;
+l("ae3".match(r))
+
+// ? Optional
+// () Grouping
+// \n nth group
+// (?:) Grouping was not counted
+
+
+// asdf(?=  Positive  Lookahead)
+// asdf(?!  Negative  Lookahead)
+// (?<= Positive Lookbehind)asdf
+// (?<! Positive Lookbehind)asdf
+
+</script></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Quiz</title>
+    <style>
+      body {
+        margin: 20px;
+        background: #0f1113;
+        color: #e6eef6;
+        font-family: system-ui;
+      }
+      button {
+        background: #16181a;
+        border: 1px solid #2a2d30;
+        color: #e6eef6;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      #box {
+        background: #0b0c0d;
+        border: 1px solid #242629;
+        padding: 14px;
+        border-radius: 6px;
+        margin-top: 14px;
+        min-height: 80px;
+      }
+      .opt {
+        margin: 6px 0;
+      }
+      .score {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Quiz</h2>
+    <button id="start">Start Quiz</button>
+    <button id="stop">Stop</button>
+    <div id="box">Idle</div>
+
+    <script>
+      const start = document.getElementById("start");
+      const stop = document.getElementById("stop");
+      const box = document.getElementById("box");
+
+      function d(ms) {
+        return new Promise((r) => setTimeout(r, ms));
+      }
+      async function fetchQuestions() {
+        const r = await fetch(
+          "https://opentdb.com/api.php?amount=5&type=multiple"
+        );
+        const j = await r.json();
+        return j.results.map((q) => {
+          const opts = [...q.incorrect_answers, q.correct_answer];
+          console.log(q.correct_answer);
+          for (let i = opts.length - 1; i > 0; i--) {
+            const n = Math.floor(Math.random() * (i + 1));
+            [opts[i], opts[n]] = [opts[n], opts[i]];
+          }
+
+          return {
+            question: q.question,
+            correct: q.correct_answer,
+            options: opts,
+          };
+        });
+      }
+      let abort = false;
+      async function startQuiz() {
+        abort = false;
+        start.disabled = true;
+        stop.disabled = false;
+        const qs = await fetchQuestions();
+        let score = 0;
+        for (const q of qs) {
+          if (abort) break;
+          box.innerHTML =
+            "<div>" +
+            q.question +
+            "</div>" +
+            q.options
+              .map(
+                (o) =>
+                  `<div class='opt'><label><input type='radio' name='o' value='${o}'> ${o}</label></div>`
+              )
+              .join("") +
+            "<div class='score'>Score: " +
+            score +
+            "</div>";
+          await d(5000);
+          const selected = document.querySelector("input[name='o']:checked");
+          if (selected && selected.value === q.correct) score++;
+        }
+        box.textContent = abort
+          ? "Stopped."
+          : "Quiz Complete. Final Score: " + score + "/" + qs.length;
+        start.disabled = false;
+        stop.disabled = true;
+      }
+      start.onclick = () => startQuiz();
+      stop.onclick = () => (abort = true);
+    </script>
+  </body>
+</html>

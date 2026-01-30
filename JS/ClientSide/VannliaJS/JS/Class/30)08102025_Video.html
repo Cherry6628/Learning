@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <video controls id="video" height="480px">
+        <source src="vid000.mp4"/>
+        <track default src="cc.vtt"></track>
+    </video>
+    <button id="play">Play</button>
+    <button id="pause">Pause</button>
+
+    <br>
+    <button id="fast"><br>&nbsp;&nbsp;&nbsp;&nbsp;+&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;</button>
+    <button id="slow"><br>&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;</button>
+    <button id="up"><br>&nbsp;&nbsp;&nbsp;&nbsp;UP&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;</button>
+    <button id="down"><br>&nbsp;&nbsp;&nbsp;&nbsp;DOWN&nbsp;&nbsp;&nbsp;&nbsp;<br>&nbsp;</button>
+    
+</body>
+<script>
+    let playbtn = document.getElementById('play');
+    let pauseBtn = document.getElementById('pause');
+    let video = document.getElementById('video');
+
+    playbtn.addEventListener('click', ()=>{
+        video.play();
+    });pauseBtn.addEventListener('click', ()=>{
+        video.pause();
+    });
+    video.addEventListener('play', ()=>{
+        console.log("playing")
+    })
+    
+    video.addEventListener('pause', ()=>{
+        console.log("paused")
+    })
+    
+    video.addEventListener('ended', ()=>{
+        console.log("ended")
+    })
+    
+    // button.addEventListener('click', ()=>{
+        // video.play();
+    // });
+    let fast = document.getElementById('fast');
+    let slow = document.getElementById('slow');
+    let up = document.getElementById('up');
+    let down = document.getElementById('down');
+
+    fast.addEventListener('click', ()=>{
+        video.playbackRate += 0.2;
+    })
+    slow.addEventListener('click', ()=>{
+        video.playbackRate -= 0.2;
+    })
+    up.addEventListener('click', ()=>{
+        video.volume <=0.9 ? video.volume+=0.1:null;
+        console.log("Volume: "+video.volume);
+    })
+    down.addEventListener('click', ()=>{
+        video.volume >=0.1 ? video.volume-=0.1:null;
+        console.log("Volume: "+video.volume);
+    })
+
+
+</script>
+</html>

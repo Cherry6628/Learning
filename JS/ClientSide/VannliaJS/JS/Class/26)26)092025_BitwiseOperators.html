@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="en"><head><meta 
+charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>.</title></head><body></body><script>
+
+
+
+    let l = console.log;
+    let a,b;
+
+    a = 5; b = 7;
+
+    // 32 bit representation
+
+    // AND
+    //         5 = 00000000000000000000000000000101
+    //         7 = 00000000000000000000000000000111
+    l(a&b); // 5 = 00000000000000000000000000000101
+    l(a&=b);
+
+    function oddOrEven(n){l(n&1==1?"Odd": "Even");}
+    oddOrEven(23);
+
+
+
+    // OR
+    a = 5; b = 7;
+    //         5 = 00000000000000000000000000000101
+    //         7 = 00000000000000000000000000000111
+    l(a|b); // 7 = 00000000000000000000000000000111
+    l (a|=b);
+
+
+
+    // NOT
+    a = 5;
+    /*  5 = 00000000000000000000000000000101
+       ~5 = 11111111111111111111111111111010
+    MSB is sign bit.
+    MSB is 1 -> it is negative
+    ~5 = -2**31 + 2**30 + 2**29 + ... + 2**3 + 0 + 2**1 + 2**0 = -6
+    ~5 = -6
+    
+    */
+    l(~a);
+
+
+
+    // XOR
+    a = 5; b = 7;
+    //         5 = 00000000000000000000000000000101
+    //         7 = 00000000000000000000000000000111
+    l(a^b); // 2 = 00000000000000000000000000000010
+    l(a^=b);
+
+
+
+    // Shift Operators
+
+    // Zero Fill Left Shift
+    a = 5;    //   5 = 00000000000000000000000000000101
+    l(a<<b);  //  20 = 00000000000000000000000000010100
+
+
+    // Zero Filling Right Shift
+    a = 9;    // 9 = 00000000000000000000000000001001
+    l(a>>>2); // 2 = 00000000000000000000000000000010
+
+    a = -9    //         -9 = 11111111111111111111111111110111
+    l(a>>>2); // 1073741821 = 00111111111111111111111111111101
+
+
+
+    // Sign Propagating Right Shift
+    a=-9;      // -9 = 11111111111111111111111111110111
+    l(a>>2);   // -3 = 11111111111111111111111111111101
+
+    function binToNumber(binString, size=32){
+        binString=binString.padStart(size, "0"); let res=-(binString[0]*(2**(size-1)));
+        for(let i=1;i<size;i++){res+=(binString[i]*(2**(size-i-1)));}return res;
+    }
+
+    
+
+
+</script></html>

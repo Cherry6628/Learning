@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head></head><body></body>
+<script>
+    const now = new Date()
+    let date=Date.now();
+    console.log(date);
+
+    console.log("\"\"");
+    console.log("\tHello\nWorld\rASDF");
+
+
+    let primitiveStr = "ab";
+    let objStr = new String(primitiveStr);
+
+    console.log(primitiveStr);
+    console.log(objStr);
+    console.log(objStr.valueOf());
+    
+    console.log(typeof primitiveStr);
+    console.log(typeof objStr);
+    console.log(typeof objStr.valueOf());
+
+    console.log(primitiveStr==objStr);
+    console.log(primitiveStr==objStr.valueOf());
+    console.log(primitiveStr===objStr);
+    console.log(primitiveStr===objStr.valueOf());
+
+    console.log(Date.now()-date);
+    let t = Date.parse("2025-08-26 10:53:00+0530");
+    let u = Date.UTC(2025, 7, 26, 10, 53, 0, 0);
+    console.log(t);
+    console.log(u);
+    console.log((u-t)/3600000);
+
+
+    now.setTime(8640000000000000);
+    console.log(now);
+
+    console.log(now.toLocaleDateString("ar-EG"))
+    
+
+
+</script>
+</htm

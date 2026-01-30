@@ -1,0 +1,87 @@
+*{
+    box-sizing: border-box;
+    color: white;
+    margin: 0px; border: 0px; padding: 0px;
+
+}
+html, body{
+    height: 100%; width: 100%;
+    font-size: 120%
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    height: 100%;
+    width: 100%;
+    
+    background-color: #674BB1;
+    background-image: url("../huddle-landing-page-with-single-introductory-section-master/images/bg-desktop.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding:2% 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* gap: 3vh */
+
+}
+#logo{
+    height: 73.86px;
+    width: 300px;
+    background-image: url("../huddle-landing-page-with-single-introductory-section-master/images/logo.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+article{
+    display: flex;
+    gap: 1vw;
+    justify-content: space-between
+}
+#illustration{
+    /* min-width: 600px;
+    max-width: 40vw */
+    width: 60%
+}
+footer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    font-size: 20px;
+    height: fit-content;
+    width: 100%;
+}
+.round-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px; width: 40px;
+    border: 0.5px solid white;
+    border-radius: 50%;
+}
+
+#content{
+    max-width: 35%;
+    line-height: 1.5;
+}
+#content h2{margin-bottom: 3vw}
+#content p{margin-bottom: 1vw}
+.button{
+    background-color: white;
+    border-radius: 70px;
+    width: fit-content;
+    height: fit-content;
+    padding: 1vh 8vh;
+    color: #674bb1;
+    margin-bottom: 3vh;
+    /* max-width: 32%; */
+}
+section{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh
+}

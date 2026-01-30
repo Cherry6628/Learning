@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Array Static Methods</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- Array.isArray -->
+  <div class="container">
+    <div class="method-title">Array.isArray()</div>
+    <div class="info">
+      <div class="syntax">Syntax: Array.isArray(value)</div>
+      <div class="param"><b>Parameters:</b> <br>• value – The item to test</div>
+      <div class="return"><b>Returns:</b> Boolean</div>
+    </div>
+    <div class="editor">
+      <div class="editor-block">
+        <textarea id="textarea1_1">console.log(Array.isArray([1, 2, 3]));</textarea>
+        <button onclick="exec('textarea1_1', 'output1_1')">▶ Run</button>
+        <div id="output1_1" class="output"></div>
+      </div>
+      <div class="editor-block">
+        <textarea id="textarea1_2">console.log(Array.isArray("hello"));</textarea>
+        <button onclick="exec('textarea1_2', 'output1_2')">▶ Run</button>
+        <div id="output1_2" class="output"></div>
+      </div>
+      <div class="editor-block">
+        <textarea id="textarea1_3">console.log(Array.isArray());</textarea>
+        <button onclick="exec('textarea1_3', 'output1_3')">▶ Run</button>
+        <div id="output1_3" class="output"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Array.of -->
+  <div class="container">
+    <div class="method-title">Array.of()</div>
+    <div class="info">
+      <div class="syntax">Syntax: Array.of(element1, element2, ...)</div>
+      <div class="param"><b>Parameters:</b> <br>• elements – A list of values</div>
+      <div class="return"><b>Returns:</b> Array</div>
+    </div>
+    <div class="editor">
+      <div class="editor-block">
+        <textarea id="textarea2_1">let array1 = Array(1, 2, 3, 4);
+console.log("Array(1, 2, 3, 4) gives ");
+console.log(array1);
+
+
+let array2 = Array.of(1, 2, 3, 4);
+console.log("Array.of(1, 2, 3, 4) gives ");
+console.log(array2);</textarea>
+        <button onclick="exec('textarea2_1', 'output2_1')">▶ Run</button>
+        <div id="output2_1" class="output"></div>
+      </div>
+      <div class="editor-block">
+        <textarea id="textarea2_2">// let array1 = Array(5.5);
+// console.log("Array(5.5) throws error.");
+// console.log(array1);
+
+let array2 = Array.of(5.5);
+console.log("Array.of(5.5) gives ");  // safe alternative
+console.log(array2);</textarea>
+        <button onclick="exec('textarea2_2', 'output2_2')">▶ Run</button>
+        <div id="output2_2" class="output"></div>
+      </div>
+      <div class="editor-block">
+        <textarea id="textarea2_3">let array1 = Array(5);
+console.log("Array(5) gives ");
+console.log(array1);
+
+let array2 = Array.of(5);
+console.log("Array.of(5) gives ");
+console.log(array2);</textarea>
+        <button onclick="exec('textarea2_3', 'output2_3')">▶ Run</button>
+        <div id="output2_3" class="output"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Array.from -->
+  <div class="container">
+    <div class="method-title">Array.from()</div>
+    <div class="info">
+      <div class="syntax">Syntax: Array.from(arrayLike, mapFn, thisArg)</div>
+      <div class="param"><b>Parameters:</b><br> • arrayLike – iterable<br>• mapFn – optional<br>• thisArg – optional</div>
+      <div class="return"><b>Returns:</b> Array</div>
+    </div>
+    <div class="editor">
+      <div class="editor-block">
+        <textarea id="textarea3_1">let array = Array.from("HELLO");
+
+console.log('Array.from("HELLO") gives');
+console.log(array);</textarea>
+        <button onclick="exec('textarea3_1', 'output3_1')">▶ Run</button>
+        <div id="output3_1" class="output"></div>
+      </div>
+      <div class="editor-block">
+        <textarea id="textarea3_2">let array = Array.from([1, 2, 3, 4, 5], (x) => 2*x);
+
+console.log("Array.from([1, 2, 3, 4, 5], (x) => 2*x) gives")
+console.log(array);</textarea>
+        <button onclick="exec('textarea3_2', 'output3_2')">▶ Run</button>
+        <div id="output3_2" class="output"></div>
+      </div>
+      <div class="editor-block">
+        <textarea id="textarea3_3">let array = Array.from("HELLO", (x, i) => i+x);
+
+console.log('Array.from("HELLO", (x) => x+x) gives');
+console.log(array);</textarea>
+        <button onclick="exec('textarea3_3', 'output3_3')">▶ Run</button>
+        <div id="output3_3" class="output"></div>
+      </div>
+      <!-- <div class="editor-block">
+        <textarea id="textarea3_5">let result = Array.from(
+    [1, 2, 3, 4, 5], 
+    function(x){ return this*x;}, 
+    30
+);
+console.log(result);</textarea>
+        <button onclick="exec('textarea3_5', 'output3_5')">▶ Run</button>
+        <div id="output3_5" class="output"></div>
+      </div> -->
+      <div class="editor-block">
+        <textarea id="textarea3_4">const emojiMap = { cat:"🐱", dog:"🐶" };
+
+let emojis = Array.from(
+    ["cat","dog"], 
+    function(x){ return this[x];}, 
+    emojiMap
+);
+console.log(emojis);</textarea>
+        <button onclick="exec('textarea3_4', 'output3_4')">▶ Run</button>
+        <div id="output3_4" class="output"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Array.fromAsync -->
+  <!-- <div class="container">
+    <div class="method-title">Array.fromAsync()</div>
+    <div class="info">
+      <div class="syntax">Syntax: Array.fromAsync(asyncIterable, mapFn, thisArg)</div>
+      <div class="param"><b>Parameters:</b><br>• asyncIterable – promise-like iterable<br>• mapFn – optional<br>• thisArg – optional</div>
+      <div class="return"><b>Returns:</b> Promise → Array</div>
+    </div>
+    <div class="editor">
+
+      <div class="editor-block">
+        <textarea id="textarea4_1">console.log(Array.fromAsync("HELLO"));</textarea>
+        <button onclick="exec('textarea4_1', 'output4_1')">▶ Run</button>
+        <div id="output4_1" class="output"></div>
+      </div>
+
+      <div class="editor-block">
+        <textarea id="textarea4_2">let x;
+async function func(){
+    x = fetch("https://httpbin.org/delay/6")
+    console.log("Value of x is", x);
+    return "Exitted the function";
+}</textarea>
+        <button onclick="exec('textarea4_2', 'output4_2')">▶ Run</button>
+        <div id="output4_2" class="output"></div>
+      </div>
+
+      <div class="editor-block">
+        <textarea id="textarea4_3">async function demo(){
+  let promises = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)];
+  let result = await Array.fromAsync(promises, x => x * 10);
+  console.log(result);
+}
+
+demo();</textarea>
+        <button onclick="exec('textarea4_3', 'output4_3')">▶ Run</button>
+        <div id="output4_3" class="output"></div>
+      </div>
+
+      <div class="editor-block">
+        <textarea id="textarea4_4">  async function demo(){
+
+    let urls = ["https://httpbin.org/delay/1","https://httpbin.org/delay/1"];
+
+    let responses = Array.fromAsync(urls, u => fetch(u));
+    console.log(responses);
+
+    responses = await responses;
+
+    console.log(responses.map(r=>r.status));
+  }
+  demo();
+        </textarea>
+        <button onclick="exec('textarea4_4', 'output4_4')">▶ Run</button>
+        <div id="output4_4" class="output"></div>
+      </div>
+
+      <div class="editor-block">
+        <textarea id="textarea4_5">  async function demo(){
+    let arr = await Array.fromAsync("hello");
+    console.log(arr);
+  }
+  demo();
+        </textarea>
+        <button onclick="exec('textarea4_5', 'output4_5')">▶ Run</button>
+        <div id="output4_5" class="output"></div>
+      </div>
+
+      <div class="editor-block">
+        <textarea id="textarea4_6">
+  async function demo(){
+    let mixed = [Promise.resolve("A"), "B", Promise.resolve("C")];
+    let arr = await Array.fromAsync(mixed);
+    console.log(arr);
+  }
+  demo();
+        </textarea>
+        <button onclick="exec('textarea4_6', 'output4_6')">▶ Run</button>
+        <div id="output4_6" class="output"></div>
+      </div>
+
+    </div>
+  </div> -->
+
+
+  <script>
+    function exec(input_id, output_id) {
+      let code = document.getElementById(input_id).value;
+      let output_place = document.getElementById(output_id);
+      output_place.innerText = "";
+
+      let logs = [];
+      const originalLog = console.log;
+      console.log = function(...args) {
+        logs.push(args.join(" "));
+        originalLog.apply(console, args);
+      };
+
+      try {
+        let result = eval(code);
+        if (result !== undefined) logs.push(result);
+      } catch (err) {
+        logs.push("Error: " + err.message);
+      }
+
+      console.log = originalLog;
+      output_place.innerText = logs.join("\n");
+    }
+    for (let i of document.getElementsByTagName("textarea")){
+      i.spellcheck="false";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Document</title></head><body>
+<form enctype="multipart/form-data" method="post" action="http://localhost:8765/app0/fileshow">
+    <input type="file" name="fileData">
+    <input type="text" name="text">
+    <input type="submit">
+</form></body><script>
+    let file=document.querySelector("input[type='file']");
+    file.addEventListener('change', ()=>{
+        console.log(file.file[0]);
+    })
+</script></html>

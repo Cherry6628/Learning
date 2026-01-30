@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Not This Way</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Courier New', monospace;
+      background: #0f0f0f;
+      color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      width: 150%;
+      height: 150%;
+      background: radial-gradient(circle at center, #3a3a3a 0%, #0f0f0f 100%);
+      filter: blur(60px);
+      z-index: -1;
+    }
+
+    .message {
+      text-align: center;
+      max-width: 600px;
+      padding: 2rem;
+      font-size: 1.4rem;
+      line-height: 1.6;
+      letter-spacing: 0.5px;
+      opacity: 0.92;
+    }
+
+    .message h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #ff6565;
+    }
+
+    .message p {
+      color: #bcbcbc;
+    }
+
+    .code {
+      margin-top: 1.5rem;
+      font-size: 0.95rem;
+      background: #1a1a1a;
+      padding: 0.8rem 1rem;
+      border-left: 4px solid #ff6565;
+      font-family: monospace;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <div class="message">
+    <h1>Wrong turn?</h1>
+    <p>Looks like you’ve reached a place that doesn’t list its contents.<br>
+    No files here. No secrets. Just space and silence.</p>
+    <div class="code">
+      // directory listing: disabled<br>
+      // move along, explorer
+    </div>
+  </div>
+</body>
+</html>

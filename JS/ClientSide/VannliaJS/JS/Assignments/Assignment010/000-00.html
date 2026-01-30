@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: black; color: white; }
+        .task { border: 1px solid #555; padding: 15px; margin-bottom: 15px; border-radius: 8px; background: #222; }
+        button { margin-top: 5px; }
+        .output { margin-top: 8px; font-weight: bold; color: lightgreen; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Assignment 010</h1>
+
+    <!-- Task 1 -->
+    <div class="task">
+        <h3>1. Get Last Student Data</h3>
+        <button onclick="getLastStudent()">Get Last Roll Number</button>
+        <div id="out1" class="output"></div>
+    </div>
+
+    <!-- Task 2 -->
+    <div class="task">
+        <h3>2. Movie Ticket Finder</h3>
+        <button onclick="findSeats()">Find Seats</button>
+        <div id="out2" class="output"></div>
+    </div>
+
+    <!-- Task 3 -->
+    <div class="task">
+        <h3>3. Find the Needle</h3>
+        <button onclick="findNeedleBtn()">Find Needle</button>
+        <div id="out3" class="output"></div>
+    </div>
+
+    <!-- Task 4 -->
+    <div class="task">
+        <h3>4. Average of Numbers</h3>
+        <input id="avgInput" placeholder="e.g. 1,2,3,4">
+        <button onclick="avgBtn()">Find Average</button>
+        <div id="out4" class="output"></div>
+    </div>
+
+    <!-- Task 5 -->
+    <div class="task">
+        <h3>5. Count Positives / Sum Negatives</h3>
+        <input id="posNegInput" placeholder="e.g. 1,2,-3,-4,5">
+        <button onclick="posNegBtn()">Calculate</button>
+        <div id="out5" class="output"></div>
+    </div>
+
+    <!-- Task 6 -->
+    <div class="task">
+        <h3>6. First Non-Consecutive Number</h3>
+        <input id="nonConsInput" placeholder="e.g. 1,2,3,4,6,7">
+        <button onclick="nonConsBtn()">Check</button>
+        <div id="out6" class="output"></div>
+    </div>
+
+    <!-- Task 7 -->
+    <div class="task">
+        <h3>7. Add Length to Words</h3>
+        <input id="addLenInput" placeholder="e.g. apple ban">
+        <button onclick="addLenBtn()">Process</button>
+        <div id="out7" class="output"></div>
+    </div>
+
+    <!-- Task 8 -->
+    <div class="task">
+        <h3>8. Sum of Differences in Array</h3>
+        <input id="diffInput" placeholder="e.g. 2,1,10">
+        <button onclick="diffBtn()">Calculate</button>
+        <div id="out8" class="output"></div>
+    </div>
+</body>
+
+<script>
+    // Task 1
+    function getLastStudent() {
+        let students = [101, 102, 103, 104, 105];
+        document.getElementById("out1").innerText = "Last roll number: " + students[students.length - 1];
+    }
+
+    // Task 2
+    function findSeats() {
+        let seats = ["Booked", "Available", "Booked", "Available", "Booked"];
+        let firstAvailable = seats.indexOf("Available")+1;
+        let lastAvailable = seats.lastIndexOf("Available")+1;
+        document.getElementById("out2").innerText =`First available: Seat no. ${firstAvailable}\nLast available: Seat no. ${lastAvailable}`;
+    }
+
+    // Task 3
+    function findNeedleBtn(arr=["hay","junk","hay","hay","moreJunk","needle","randomJunk"]){
+        let index = arr.indexOf("needle");
+        document.getElementById("out3").innerText = index!=-1?("Found the needle at position " + index):"Needle Not Found";
+    }
+
+    // Task 4
+    function avgBtn() {
+        let input = document.getElementById("avgInput").value.split(",").map(Number);
+        let result = (input.length === 0 || isNaN(input[0])) ? 0 :
+        input.reduce((a,b)=>a+b,0) / input.length;
+        document.getElementById("out4").innerText = "Average = " + result;
+    }
+
+    // Task 5
+    function posNegBtn() {
+        let arr = document.getElementById("posNegInput").value.split(",").map(Number);
+        if (!arr || arr.length === 0 || arr.includes(NaN)) {
+        document.getElementById("out5").innerText = "Invalid Input found !!!";
+        return;
+        }
+        let positives = 0, negativesSum = 0;
+        arr.forEach(n => {
+        if (n > 0) positives++;
+        else if (n < 0) negativesSum += n;
+        });
+        document.getElementById("out5").innerText = `[${positives}, ${negativesSum}]`;
+    }
+
+    // Task 6
+    function nonConsBtn() {
+        let arr = document.getElementById("nonConsInput").value.split(",").map(Number);
+        let res = null;
+        for (let i = 1; i < arr.length; i++) {
+        if (arr[i] !== arr[i-1]+1) {
+            res = arr[i];
+            break;
+        }
+        }
+        document.getElementById("out6").innerText = res === null ? "All consecutive" : "First non-consecutive: " + res;
+    }
+
+    // Task 7
+    function addLenBtn() {
+        let str = document.getElementById("addLenInput").value;
+        let result = str.split(" ").map(w => w + " " + w.length);
+        document.getElementById("out7").innerText = JSON.stringify(result);
+    }
+
+    // Task 8
+    function diffBtn() {
+        let arr = document.getElementById("diffInput").value.split(",").map(Number);
+        if (arr.length <= 1 || isNaN(arr[0])) {
+        document.getElementById("out8").innerText = 0;
+        return;
+        }
+        arr.sort((a,b)=>b-a);
+        let sum = 0;
+        for (let i=0; i<arr.length-1; i++) {
+        sum += arr[i] - arr[i+1];
+        }
+        document.getElementById("out8").innerText = "Sum of differences = " + sum;
+    }
+</script>
+</html>

@@ -1,0 +1,121 @@
+:root{
+    --t2-max-block-height: 40px;
+    --t2-min-block-height: 10px;
+    --t2-color: green;
+    --t2-speed: 1s;
+    --t2-transition-timing-function: linear;
+    --t2-radius-from-center: 50px;
+}
+#rounds{
+    --t2-step-size: calc((var(--t2-max-block-height) - var(--t2-min-block-height)) / 4);
+    height: calc(2 * var(--t2-radius-from-center) + var(--t2-max-block-height));
+    width:  calc(2 * var(--t2-radius-from-center) + var(--t2-max-block-height));
+    position: relative;
+    /* background-color: yellow; */
+}
+#rounds div{
+    background-color: green; border-radius: 50%;
+    animation-timing-function: var(--t2-transition-timing-function);
+    position: absolute; transform: translate(-50%, -50%);
+}
+#rounds div:first-child{
+    height: var(--t2-min-block-height);
+    width: var(--t2-min-block-height);
+    left: calc(50% + var(--t2-radius-from-center)); 
+    top: calc(50%); opacity: 0.9;
+    animation: round1 var(--t2-speed) var(--t2-transition-timing-function) infinite 0s normal;
+}
+#rounds div:nth-child(2){
+    height: calc(var(--t2-min-block-height) + var(--t2-step-size));
+    width: calc(var(--t2-min-block-height) + var(--t2-step-size));
+    left: calc(50% + var(--t2-radius-from-center)); 
+    top: calc(50%);  opacity: 0.8;
+    animation: round2 var(--t2-speed) var(--t2-transition-timing-function) infinite 0s normal;
+}
+#rounds div:nth-child(3){
+    height: calc(var(--t2-min-block-height) + 2 * var(--t2-step-size));
+    width: calc(var(--t2-min-block-height) + 2 * var(--t2-step-size));
+    left: calc(50% + var(--t2-radius-from-center)); 
+    top: calc(50%);  opacity: 0.7;
+    animation: round3 var(--t2-speed) var(--t2-transition-timing-function) infinite 0s normal;
+}
+#rounds div:nth-child(4){
+    height: calc(var(--t2-min-block-height) + 3 * var(--t2-step-size));
+    width: calc(var(--t2-min-block-height) + 3 * var(--t2-step-size));
+    left: calc(50% + var(--t2-radius-from-center)); 
+    top: calc(50%);  opacity: 0.6;
+    animation: round4 var(--t2-speed) var(--t2-transition-timing-function) infinite 0s normal;
+}
+#rounds div:last-child{
+    height: var(--t2-max-block-height);
+    width: var(--t2-max-block-height);
+    left: calc(50% + var(--t2-radius-from-center)); 
+    top: calc(50%);  opacity: 0.5;
+    animation: round5 var(--t2-speed) var(--t2-transition-timing-function) infinite 0s normal;
+}
+
+@keyframes round1 {
+    0%        {left: calc(50% + var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0);}
+    9%        {left: calc(50% + var(--t2-radius-from-center) * 0.809); top: calc(50% + var(--t2-radius-from-center) * 0.588); }
+    18%       {left: calc(50% + var(--t2-radius-from-center) * 0.309); top: calc(50% + var(--t2-radius-from-center) * 0.951); }
+    27%       {left: calc(50% - var(--t2-radius-from-center) * 0.309); top: calc(50% + var(--t2-radius-from-center) * 0.951); }
+    36%       {left: calc(50% - var(--t2-radius-from-center) * 0.809); top: calc(50% + var(--t2-radius-from-center) * 0.588); }
+    45%       {left: calc(50% - var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+    54%       {left: calc(50% - var(--t2-radius-from-center) * 0.809); top: calc(50% - var(--t2-radius-from-center) * 0.588); }
+    63%       {left: calc(50% - var(--t2-radius-from-center) * 0.309); top: calc(50% - var(--t2-radius-from-center) * 0.951); }
+    72%       {left: calc(50% + var(--t2-radius-from-center) * 0.309); top: calc(50% - var(--t2-radius-from-center) * 0.951); }
+    81%       {left: calc(50% + var(--t2-radius-from-center) * 0.809); top: calc(50% - var(--t2-radius-from-center) * 0.588); }
+    90%, 100% {left: calc(50% + var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+}
+@keyframes round2 {
+    0%        {left: calc(50% + var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+    7.5%      {left: calc(50% + var(--t2-radius-from-center) * 0.809); top: calc(50% + var(--t2-radius-from-center) * 0.588); }
+    15%       {left: calc(50% + var(--t2-radius-from-center) * 0.309); top: calc(50% + var(--t2-radius-from-center) * 0.951); }
+    22.5%     {left: calc(50% - var(--t2-radius-from-center) * 0.309); top: calc(50% + var(--t2-radius-from-center) * 0.951); }
+    30%       {left: calc(50% - var(--t2-radius-from-center) * 0.809); top: calc(50% + var(--t2-radius-from-center) * 0.588); }
+    37.5%     {left: calc(50% - var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+    45%       {left: calc(50% - var(--t2-radius-from-center) * 0.809); top: calc(50% - var(--t2-radius-from-center) * 0.588); }
+    52.5%     {left: calc(50% - var(--t2-radius-from-center) * 0.309); top: calc(50% - var(--t2-radius-from-center) * 0.951); }
+    60%       {left: calc(50% + var(--t2-radius-from-center) * 0.309); top: calc(50% - var(--t2-radius-from-center) * 0.951); }
+    67.5%     {left: calc(50% + var(--t2-radius-from-center) * 0.809); top: calc(50% - var(--t2-radius-from-center) * 0.588); }
+    75%, 100% {left: calc(50% + var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+
+}
+@keyframes round3 {
+    0%        {left: calc(50% + var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+    6%        {left: calc(50% + var(--t2-radius-from-center) * 0.809); top: calc(50% + var(--t2-radius-from-center) * 0.588); }
+    12%       {left: calc(50% + var(--t2-radius-from-center) * 0.309); top: calc(50% + var(--t2-radius-from-center) * 0.951); }
+    18%       {left: calc(50% - var(--t2-radius-from-center) * 0.309); top: calc(50% + var(--t2-radius-from-center) * 0.951); }
+    24%       {left: calc(50% - var(--t2-radius-from-center) * 0.809); top: calc(50% + var(--t2-radius-from-center) * 0.588); }
+    30%       {left: calc(50% - var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+    36%       {left: calc(50% - var(--t2-radius-from-center) * 0.809); top: calc(50% - var(--t2-radius-from-center) * 0.588); }
+    42%       {left: calc(50% - var(--t2-radius-from-center) * 0.309); top: calc(50% - var(--t2-radius-from-center) * 0.951); }
+    48%       {left: calc(50% + var(--t2-radius-from-center) * 0.309); top: calc(50% - var(--t2-radius-from-center) * 0.951); }
+    54%       {left: calc(50% + var(--t2-radius-from-center) * 0.809); top: calc(50% - var(--t2-radius-from-center) * 0.588); }
+    60%, 100% {left: calc(50% + var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+}
+@keyframes round4 {
+    0%        {left: calc(50% + var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+    4.5%      {left: calc(50% + var(--t2-radius-from-center) * 0.809); top: calc(50% + var(--t2-radius-from-center) * 0.588); }
+    9%        {left: calc(50% + var(--t2-radius-from-center) * 0.309); top: calc(50% + var(--t2-radius-from-center) * 0.951); }
+    13.5%     {left: calc(50% - var(--t2-radius-from-center) * 0.309); top: calc(50% + var(--t2-radius-from-center) * 0.951); }
+    18%       {left: calc(50% - var(--t2-radius-from-center) * 0.809); top: calc(50% + var(--t2-radius-from-center) * 0.588); }
+    22.5%     {left: calc(50% - var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+    27%       {left: calc(50% - var(--t2-radius-from-center) * 0.809); top: calc(50% - var(--t2-radius-from-center) * 0.588); }
+    31.5%     {left: calc(50% - var(--t2-radius-from-center) * 0.309); top: calc(50% - var(--t2-radius-from-center) * 0.951); }
+    36%       {left: calc(50% + var(--t2-radius-from-center) * 0.309); top: calc(50% - var(--t2-radius-from-center) * 0.951); }
+    40.5%     {left: calc(50% + var(--t2-radius-from-center) * 0.809); top: calc(50% - var(--t2-radius-from-center) * 0.588); }
+    45%, 100% {left: calc(50% + var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+}
+@keyframes round5 {
+    3%        {left: calc(50% + var(--t2-radius-from-center) * 0.809); top: calc(50% + var(--t2-radius-from-center) * 0.588); }
+    6%        {left: calc(50% + var(--t2-radius-from-center) * 0.309); top: calc(50% + var(--t2-radius-from-center) * 0.951); }
+    9%        {left: calc(50% - var(--t2-radius-from-center) * 0.309); top: calc(50% + var(--t2-radius-from-center) * 0.951); }
+    12%       {left: calc(50% - var(--t2-radius-from-center) * 0.809); top: calc(50% + var(--t2-radius-from-center) * 0.588); }
+    15%       {left: calc(50% - var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+    18%       {left: calc(50% - var(--t2-radius-from-center) * 0.809); top: calc(50% - var(--t2-radius-from-center) * 0.588); }
+    21%       {left: calc(50% - var(--t2-radius-from-center) * 0.309); top: calc(50% - var(--t2-radius-from-center) * 0.951); }
+    24%       {left: calc(50% + var(--t2-radius-from-center) * 0.309); top: calc(50% - var(--t2-radius-from-center) * 0.951); }
+    27%       {left: calc(50% + var(--t2-radius-from-center) * 0.809); top: calc(50% - var(--t2-radius-from-center) * 0.588); }
+    30%, 100% {left: calc(50% + var(--t2-radius-from-center) * 1);     top: calc(50% + var(--t2-radius-from-center) * 0); }
+}

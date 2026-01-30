@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+    
+</style>
+</head>
+<body>
+<main>
+
+</main>
+</body>
+<script defer>
+function Car(model, brand, fuel){
+    this.model = model;
+    this.brand = brand;
+    this.fuel = fuel;
+    // this.start = function(){
+    // // need not to be instance method, to minimize storage. 
+    // // instead can be a prototype
+    //     console.log(this.model+" is running");
+    // }
+    // this.__proto__ = null;  // this will delete the prototype and breaks the prototype chain
+}
+
+let c1 = new Car('Boat Tail', 'Rolls Royce', 'diesel');
+let c2 = new Car('M4', 'BMW', 'diesel');
+
+console.log(c1);
+console.log(c1.__proto,"\n", c1.__proto__.__proto__, "\n", c1.__proto__.__proto__.__proto__)
+
+console.log(c2);
+
+Car.prototype.start = function(){console.log(this.model, "is running.")}  // edits the prototype, so that it minimized the memory
+
+
+
+class Person{
+    constructor (name, grade){
+        this.name = name;
+        this.grade = grade;
+        this.willAlwaysBeUndefined = undefined;
+    }
+}
+class Student extends Person{
+    constructor(name, class_, grade){
+        super().name = name;
+        super.grade = grade;
+        this.class = class_;
+    }
+}
+
+let s = new Student("Sanjeevi", "ZS2027", "Z");
+
+
+
+
+
+function Car2(){
+    this.model= "adf",
+    this.brand= "ASdfa",
+    this.fuel= "petrol"
+    this.__proto__= Car.prototype
+    
+}
+
+
+
+
+String.prototype.capitalizeFirstLetter = function(){
+    console.log(this);
+    if (this){ 
+        return this.charAt(0).toUpperCase()+this.slice(1);
+    } return "";
+}
+let x = "asdf";
+console.log(x.capitalizeFirstLetter());
+</script>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "Learning",
+  "license": "ISC",
+  "author": "Sanjeevi",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "node index.js",
+    "a": "node index.js"
+  },
+  "dependencies": {
+    "@socket.io/admin-ui": "^0.5.1",
+    "axios": "^1.13.2",
+    "chalk": "^5.6.2",
+    "colour": "^0.7.1",
+    "cowsay": "^1.6.0",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1",
+    "http": "^0.0.1-security",
+    "mysql2": "^3.16.0",
+    "postman-request": "^2.88.1-postman.46",
+    "socket.io": "^4.8.1",
+    "uuid": "^13.0.0",
+    "yargs": "^18.0.0"
+  }
+}

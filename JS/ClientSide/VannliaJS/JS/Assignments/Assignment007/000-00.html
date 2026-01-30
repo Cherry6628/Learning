@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 007</title>
+    <style>input{width: 200px}</style>
+</head>
+<body>
+    <h2>JavaScript Assignment 007</h2>
+
+    <input id="wordInput" placeholder="Enter a word">
+    <button onclick="showWord('wordInput','output1')">Show Characters</button>
+    <p id="output1"></p>
+
+    <input id="revInput" placeholder="Enter a word">
+    <button onclick="revWord('revInput','output2')">Reverse String</button>
+    <p id="output2"></p>
+
+    <input id="palInput" placeholder="Check Palindrome">
+    <button onclick="palindrome('palInput','output3')">Check</button>
+    <p id="output3"></p>
+
+    <button onclick="arrayCheck('output4')">Check Array Instance</button>
+    <p id="output4"></p>
+
+    <button onclick="greaterThan10(getListInput(), 'output5')">Numbers > 10</button>
+    <p id="output5"></p>
+
+    <button onclick="sortAsc(getListInput(), 'output6')">Sort Ascending</button>
+    <p id="output6"></p>
+
+    <button onclick="highestScore('output7')">Find Highest Score</button>
+    <p id="output7"></p>
+
+    <input id="nameInput" placeholder="Enter a Name">
+    <button onclick="firstLetter('nameInput','output8')">Extract First Letter</button>
+    <p id="output8"></p>
+
+    <button onclick="wordLengths(getStringList(),'output9')">Word Lengths</button>
+    <p id="output9"></p>
+
+    <input id="animalInput" placeholder="Enter Animal (dog / eagle / shark)">
+    <button onclick="classifyAnimal('animalInput','output10')">Classify Animal</button>
+    <p id="output10"></p>
+
+</body>
+<script>
+    function showWord(input_id, output_id){
+        let word = document.getElementById(input_id).value;
+        let c = "";
+        for (let i=0; i<word.length; i++){
+            c += word[i] + "<br>";
+        }
+        document.getElementById(output_id).innerHTML = c;
+    }
+
+    function revWord(input_id, output_id){
+        let word = document.getElementById(input_id).value;
+        let w = "";
+        for (let i=word.length-1; i>=0; i--){
+            w += word[i];
+        }
+        document.getElementById(output_id).innerText = w;
+    }
+
+    function palindrome(input_id, output_id){
+        let word = document.getElementById(input_id).value;
+        let l = word.length;
+        for (let i=0; i<Math.ceil(l/2); i++){
+            if (word[i] !== word[l-i-1]){
+                document.getElementById(output_id).innerText = "Not A Palindrome";
+                return;
+            }
+        }
+        document.getElementById(output_id).innerText = "Is a Palindrome";
+    }
+
+    function arrayCheck(output_id){
+        let arr = getListInput();
+        let msg = "arr is Array: " + (arr instanceof Array) + 
+                  ", arr is Object: " + (arr instanceof Object);
+        document.getElementById(output_id).innerText = msg;
+    }
+
+    let greaterThan10 = (input_list, output_id) => {
+        let res = input_list.filter(num => num > 10);
+        document.getElementById(output_id).innerText = listToString(res);
+    }
+
+    function sortAsc(input_list, output_id){
+        for (let i=0; i<input_list.length; i++){
+            for (let j=i+1; j<input_list.length; j++){
+                if (input_list[i] > input_list[j]){
+                    [input_list[i], input_list[j]] = [input_list[j], input_list[i]];
+                }
+            }
+        }
+        document.getElementById(output_id).innerText = input_list;
+    }
+
+    let highestScore = (output_id, arr=[15,42,33,21])=>{
+        let m = arr[0];
+        for (let i=1; i<arr.length; i++){
+            if (arr[i]>m){
+                m = arr[i];
+            }
+        }
+        document.getElementById(output_id).innerText = m;
+    }
+
+    function firstLetter(input_id, output_id){
+        let name = document.getElementById(input_id).value;
+        document.getElementById(output_id).innerText = name ? name[0] : "No Input";
+    }
+
+    let wordLengths = (words, output_id)=>{
+        let res = words.map(w => w.length);
+        document.getElementById(output_id).innerText = listToString(res);
+    }
+
+    function classifyAnimal(input_id, output_id){
+        let species = document.getElementById(input_id).value.toLowerCase();
+        let type;
+        if (species === "dog") type = "Mammal";
+        else if (species === "eagle") type = "Bird";
+        else if (species === "shark") type = "Fish";
+        else type = "Unknown Animal";
+        document.getElementById(output_id).innerText = type;
+    }
+
+    // Helper
+    function listToString(arr){
+        return "[" + arr.join(", ") + "]";
+    }
+    function getNumberInput(msg="Enter the Number: "){
+        let n = Number(prompt(msg)); 
+        if (isNaN(n) || (! isFinite(n))){ return 0; } 
+        return n; 
+    }
+    function getStringList(msg="Total Number of Elements: "){
+        let n = Number(prompt(msg));
+        if (!Number.isInteger(n)){return [];}
+        let res = [];
+        for (let i=0; i<n; i++){
+            res[i] = prompt("Word "+i+": ");
+        }
+        return res;
+    }
+    // function sleep(ms) { 
+        // return new Promise(resolve => setTimeout(resolve, ms)); 
+    // } 
+    
+    function getListInput(msg="Total Number of Elements: "){
+        let n = Number(prompt(msg)); 
+        if (!Number.isInteger(n)){return [];}
+        let res = []; 
+        for (let i=0; i<n; i++){
+            res[i] = getNumberInput(`Value ${i+1}: `);
+        } 
+        return res;
+    }
+</script>
+</html>

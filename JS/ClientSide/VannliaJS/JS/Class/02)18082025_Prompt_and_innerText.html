@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Hello, I am <span id="name">a Human Being</span></p>
+    <p>I am <span id="age"></span> years old.</p>
+    <p>My Project Name is <span id="projectname">null</span></p>
+    <p>I am from <span id="place">Earth</span></p>
+    
+</body>
+<script>
+    // let myName;  // declaration
+    // let num1, num2, num3; // declaration
+    // myName = "Hello"; //initialization
+
+    // let p=1, q=2, r=3;
+    // let a, b, c=10;
+
+    // area="asdf";  //Automatically declared in var scope
+    // var area;
+    // var area; // var allows redeclaration
+
+    // const pi = 3.1415926535897932384626433832795028;
+    // area = "sdfas";
+    // c = 30;
+    // //const e; e=4324;  //throws error -> const declaration must be initialized
+
+    // let $448484484984598w;
+    
+
+    const Name=prompt("Your Name ? "), age=Number(prompt("Your Age ?")), projectName=prompt("Project Name ? "), place=prompt("Your Location ? ");
+    console.log(Name, age, projectName, place);
+    document.getElementById("name").innerText=Name;
+    document.getElementById("age").innerText=age;
+    document.getElementById("projectname").innerText=projectName;
+    document.getElementById("place").innerText=place;
+    // console.debug("debugging...");
+    // console.warn("warning...");
+    // console.log("logging...")
+
+</script>
+</html>

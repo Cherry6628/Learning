@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 008</title>
+</head>
+<body>
+  <h2>JavaScript Assignment 008 (While, Do...While, Timers)</h2>
+
+  <h3>1. Patterns (from Assignment 003)</h3>
+  <button onclick="patterns()">Show Patterns</button>
+  <pre id="out1"></pre>
+
+  <h3>2. Sum of Digits</h3>
+  <input id="num2" placeholder="Enter number">
+  <button onclick="sumDigits()">Find Sum</button>
+  <p id="out2"></p>
+
+  <h3>3. Reverse a Number</h3>
+  <input id="num3" placeholder="Enter number">
+  <button onclick="reverseNumber()">Reverse</button>
+  <p id="out3"></p>
+
+  <h3>4. ATM PIN Entry</h3>
+  <button onclick="atmPin()">Start ATM</button>
+  <p id="out4"></p>
+
+  <h3>5. Print Numbers Until 0</h3>
+  <button onclick="printUntilZero()">Start</button>
+  <p id="out5"></p>
+
+  <h3>6. Random until 7 (do...while)</h3>
+  <button onclick="randomUntil7()">Generate</button>
+  <p id="out6"></p>
+
+  <h3>7. Login System</h3>
+  <button onclick="loginSystem()">Login</button>
+  <p id="out7"></p>
+
+  <h3>8. Simple Menu System</h3>
+  <button onclick="menuSystem()">Open Menu</button>
+  <p id="out8"></p>
+
+  <h3>9. Countdown Timer (5 → 0)</h3>
+  <button onclick="countdown()">Start Countdown</button>
+  <p id="out9"></p>
+
+  <h3>10. Time’s Up after 10s</h3>
+  <button onclick="timesUp()">Start Timer</button>
+  <p id="out10"></p>
+
+</body>
+<script>
+    function patterns(n=5) {
+        // Square Hollow Pattern
+        let i = 0, pattern1 = "";
+        while (i < n) {
+            let j = 0;
+            while (j < n) {
+                if (i == 0 || i == n-1 || j == 0 || j == n-1) {
+                pattern1 += "*";
+                } else {
+                pattern1 += " ";
+                }
+                j++;
+            }
+            pattern1 += "\n";
+            i++;
+        }
+
+        // Right Half Pyramid
+        i = 1;
+        let pattern2 = "";
+        while (i <= n) {
+            let j = 0;
+            while (j < i) {
+                pattern2 += "* ";
+                j++;
+            }
+            pattern2 += "\n";
+            i++;
+        }
+
+        // Number Increasing Pyramid
+        i = 1;
+        let pattern3 = "";
+        while (i <= n) {
+            let j = 1;
+            while (j <= i) {
+                pattern3 += j + " ";
+                j++;
+            }
+            pattern3 += "\n";
+            i++;
+        }
+
+        let finalOutput = 
+        "Square Hollow Pattern:\n" + pattern1 + "\n" +
+        "Right Half Pyramid:\n" + pattern2 + "\n" +
+        "Number Increasing Pyramid:\n" + pattern3;
+
+        document.getElementById("out1").innerText = finalOutput;
+    }
+
+    function sumDigits() {
+        let n = Number(document.getElementById("num2").value);
+        let sum = 0;
+        while (n > 0) {
+            sum += n % 10;
+            n = Math.floor(n / 10);
+        }
+        document.getElementById("out2").innerText = "Sum = " + sum;
+    }
+
+    function reverseNumber() {
+        let n = Number(document.getElementById("num3").value);
+        let rev = 0;
+        while (n > 0) {
+            rev = rev * 10 + (n % 10);
+            n = Math.floor(n / 10);
+        }
+        document.getElementById("out3").innerText = "Reverse = " + rev;
+    }
+
+    function atmPin() {
+        let correctPin = "1234";
+        let attempts = 0;
+        while (attempts < 3) {
+        let pin = prompt("Enter PIN:");
+            if (pin === correctPin) {
+                document.getElementById("out4").innerText = "Access Granted!";
+                return;
+            }
+            attempts++;
+        }
+        document.getElementById("out4").innerText = "Card Blocked!";
+    }
+
+    function printUntilZero() {
+        let res = "";
+        while (true) {
+            let n = Number(prompt("Enter number (0 to stop):"));
+            if (n === 0) break;
+            res += n + " ";
+        }
+        document.getElementById("out5").innerText = res;
+    }
+
+    function randomUntil7() {
+        let num;
+        let res = "";
+        do {
+            num = Math.floor(Math.random() * 10);
+            res += num + " ";
+        } while (num !== 7);
+        document.getElementById("out6").innerText = res;
+    }
+
+    function loginSystem() {
+        let correctPassword = "secret";
+        let attempt;
+        do {
+            attempt = prompt("Enter password:");
+        } while (attempt !== correctPassword);
+        document.getElementById("out7").innerText = "Login Successful!";
+    }
+
+    function menuSystem() {
+        let balance = 1000;
+        while (true) {
+        let choice = prompt("Menu:\n1. Check Balance\n2. Deposit\n3. Exit");
+        if (choice === "1") {
+            alert("Balance: " + balance);
+        } else if (choice === "2") {
+            let dep = Number(prompt("Enter deposit amount:"));
+            balance += dep;
+        } else if (choice === "3") {
+            break;
+        }
+        }
+        document.getElementById("out8").innerText = "Exited Menu";
+    }
+
+    function countdown() {
+        let i = 5;
+        function tick() {
+        document.getElementById("out9").innerText = i;
+        if (i > 0) {
+            i--;
+            setTimeout(tick, 1000);
+        }
+        }
+        tick();
+    }
+
+    function timesUp() {
+        setTimeout(
+            () => {
+                document.getElementById("out10").innerText = "Time’s up!";
+            }, 10000
+        );
+    }
+</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link type="image/x-icon" src="" />
+  </head>
+  <body></body>
+  <script>
+    let fun = console.log;
+
+    fun(typeof 234);
+    fun(Number("234.2342"));
+    fun(typeof "Hello World...");
+
+    let str1 = "Hello";
+    let str2 = "Hello";
+    let str3 = `Hello`;
+    fun(str1, str2, str3);
+
+    str3 = `Hello ${"hello"}`;
+
+    let bool = true;
+    let bool2 = false;
+
+    // console.log(typeOf "true");
+    fun(Number.MAX_SAFE_INTEGER, Number.MAX_VALUE);
+    fun(Number.MIN_SAFE_INTEGER, Number.MIN_VALUE);
+    fun(Number.MAX_SAFE_INTEGER * 2);
+
+    let bigint = 324243n;
+    let bigint2 = BigInt(2342342342342323424333333333333333333333);
+    fun(typeof bigint);
+
+    let undf = undefined;
+    let nul = null;
+    fun(typeof undf, typeof nul);
+
+    let sym = Symbol("asdf");
+
+    let arr = [
+      1,
+      2,
+      3,
+      4,
+      5,
+      5,
+      6,
+      6,
+      "hello",
+      "sdfasdfasdfa",
+      234n,
+      true,
+      ,
+      "345",
+    ];
+    fun(arr);
+
+    fun(arr[12]);
+
+    let dict = {
+      1: 23,
+      W$234: "@34234234",
+      car: {
+        name: "ford",
+        wheels: 4,
+        wheelIsHealthy: [true, true, true, false],
+      },
+    };
+    fun(dict);
+  </script>
+</html>

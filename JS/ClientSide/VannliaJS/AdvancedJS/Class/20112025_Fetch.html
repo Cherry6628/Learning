@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        *{
+            background-color: black;
+            color: white;
+            margin:0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+<script>Object.temp=function(){let s = document.getElementsByTagName('script');for (let c of s){if(c.innerText.includes('Live reload enabled.')){c.previousSibling.remove(); c.remove();}}s = document.createTreeWalker(document,NodeFilter.SHOW_COMMENT,null,false);let a;while(a=s.nextNode())if(a.nodeValue.includes("Code injected by live-server"))a.remove();document.currentScript.remove();return Object.temp};delete Object.temp();</script>
+<script>
+    let api = "https://ipwho.is/";
+    const ME="";
+    let target="8.8.8.8";
+
+    let ip = target;
+    let resp = fetch(api+ip)
+
+    console.log(resp);  // Promise with Response Object
+    // resp.then((res)=>{
+    //     console.log(res);        // Response Object
+    //     console.log(res.json()); // Promise with Object
+    // })
+
+    // resp is Promise Object with Response Object
+    resp.then((res)=>res.json())  // res is Response Object.
+    // resp.then is Promise Object (here this promise has promise with object)
+    .then((res)=>{
+        console.log(res)
+    });
+
+
+
+    function response(url, options={}){
+        return fetch(url, options).then((r)=>r.json());
+    }
+    let key = "r8ePawGO/139OaQJNiCG2Q==HA087P5EiOMlvmT8 x";
+    let options = {
+        method: "GET",
+        headers:{
+            "X-Api-Key": key,
+        },
+    }
+    let apininja = response("https://api.api-ninjas.com/v2/quotes?categories=success,wisdom", options);
+    apininja
+    .then(x=>console.log(x))
+    .catch(x=>console.log(x))
+
+
+
+    let opt = {
+        method: "POST",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({})
+    }
+    let httpbin = response("https://httpbin.org/post", opt);
+    httpbin.then(x=>console.log(x));
+</script>
+</html>

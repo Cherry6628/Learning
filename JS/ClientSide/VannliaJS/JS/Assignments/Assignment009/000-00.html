@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            vertical-align: middle;
+        }
+        body{
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+        <!-- 1. Email Domain Extractor -->
+    <div class="task">
+        <label>Email Domain Extractor</label>
+        <input id="emailInput" placeholder="alex@gmail.com">
+        <button onclick="showDomain()">Check</button>
+        <p id="emailOutput"></p>
+    </div>
+
+    <!-- 2. Username Validation -->
+    <div class="task">
+        <label>Username Validation</label>
+        <input id="unameInput" placeholder="username">
+        <button onclick="checkUname()">Validate</button>
+        <p id="unameOutput"></p>
+    </div>
+
+    <!-- 3. Palindrome Checker -->
+    <div class="task">
+        <label>Palindrome Checker</label>
+        <input id="palInput" placeholder="madam">
+        <button onclick="checkPal()">Check</button>
+        <p id="palOutput"></p>
+    </div>
+
+    <!-- 4. Secret Code Generator -->
+    <div class="task">
+        <label>Secret Code Generator</label>
+        <input id="secretInput" placeholder="javascript">
+        <button onclick="makeSecret()">Generate</button>
+        <p id="secretOutput"></p>
+    </div>
+
+    <!-- 5. Word Counter -->
+    <div class="task">
+        <label>Word Counter</label>
+        <textarea id="wordCountInput" rows="3" placeholder="Type a sentence"></textarea>
+        <button onclick="countWords()">Count</button>
+        <p id="wordCountOutput"></p>
+    </div>
+
+    <!-- 6. Phone Number Formatter -->
+    <div class="task">
+        <label>Phone Number Formatter</label>
+        <input id="phoneInput" placeholder="9876543210">
+        <button onclick="formatPhone()">Format</button>
+        <p id="phoneOutput"></p>
+    </div>
+
+    <!-- 7. Password Strength Checker -->
+    <div class="task">
+        <label>Password Strength Checker</label>
+        <input id="passInput" placeholder="Password123#">
+        <button onclick="checkPass()">Check</button>
+        <p id="passOutput"></p>
+    </div>
+
+    <!-- 8. Reverse Each Word -->
+    <div class="task">
+        <label>Reverse Each Word</label>
+        <input id="revInput" placeholder="I love JS">
+        <button onclick="reverseWords()">Reverse</button>
+        <p id="revOutput"></p>
+    </div>
+
+    <!-- 9. Isogram Checker -->
+    <div class="task">
+        <label>Isogram Checker</label>
+        <input id="isoInput" placeholder="machine">
+        <button onclick="checkIso()">Check</button>
+        <p id="isoOutput"></p>
+    </div>
+
+    <!-- 10. Cyclops Number -->
+    <div class="task">
+        <label>Cyclops Number Checker</label>
+        <input id="cyclopInput" type="number" placeholder="5">
+        <button onclick="checkCyclop()">Check</button>
+        <p id="cyclopOutput"></p>
+    </div>
+
+    <!-- 11. Remove Exclamation Marks -->
+    <div class="task">
+        <label>Remove Exclamation Marks</label>
+        <input id="exInput" placeholder="Hi!!Hello!!!!">
+        <button onclick="removeEx()">Remove</button>
+        <p id="exOutput"></p>
+    </div>
+
+    <!-- 12. Alternate Case -->
+    <div class="task">
+        <label>Alternate Case</label>
+        <input id="altInput" placeholder="altERnaTIng cAsE">
+        <button onclick="doAlt()">Transform</button>
+        <p id="altOutput"></p>
+    </div>
+
+    <!-- 13. Friends Filter -->
+    <div class="task">
+        <label>Friends Filter (4 letters)</label>
+        <input id="friendsInput" placeholder="Ryan,Kieran,Joe,Yous">
+        <button onclick="filterFriends()">Filter</button>
+        <p id="friendsOutput"></p>
+    </div>
+
+    <!-- 14. GADERYPOLUKI Cipher -->
+    <div class="task">
+        <label>GADERYPOLUKI Cipher</label>
+        <input id="gadeInput" placeholder="Ala has a cat">
+        <button onclick="doGade()">Encrypt</button>
+        <p id="gadeOutput"></p>
+    </div>
+
+    <!-- 15. Reverse Suffix List -->
+    <div class="task">
+        <label>Reverse Suffix List</label>
+        <input id="suffixInput" placeholder="abcde">
+        <button onclick="doSuffix()">Generate</button>
+        <p id="suffixOutput"></p>
+    </div>
+</body>
+<script>
+    function domainExtractor(mail){
+        let parts = mail.split("@");
+        if(parts.length!==2) return "INVALID EMAIL";
+        return parts[1];
+    }
+
+    function isValidUname(uname){ 
+        return (!uname.includes(" ") && uname===uname.toLowerCase()); 
+    }
+
+    function isPalindrome(word){ 
+        return word===word.split("").reverse().join(""); 
+    }
+
+    function secretCodeGenerateWith(word){ 
+        let vowels = "aeiouAEIOU";
+        let result = "";
+        for(let c of word){
+        result += vowels.includes(c) ? "*" : c;
+        }
+        return result;
+    }
+
+    function wordCounter(text){
+        let trimmed = text.trim();
+        if(trimmed==="") return 0;
+        let arr = trimmed.split(" ");
+        let count = 0;
+        for(let w of arr){
+        if(w!=="") count++;
+        }
+        return count;
+    }
+
+    function phoneNumberFormatter(num){ 
+        if ((!(Number.isFinite(Number(num)))) || num.length!=10 || num.toLowerCase().includes("x")|| num.toLowerCase().includes("b") || num.toLowerCase().includes("o")){
+            return "Invalid Number.";
+        }
+        num=num.toString(); 
+        return `(${num.slice(0,3)}) ${num.slice(3,6)}-${num.slice(6)}`; 
+    }
+
+    function passwordStrengthChecker(p){ 
+        let hasSpecial = p.includes("@")||p.includes("#");
+        return (p.length>=8 && hasSpecial && p!==p.toLowerCase()&&p!==p.toUpperCase()); 
+    }
+
+    function reverseEachWord(sentence){ 
+        return sentence.split(" ").map(w=>w.split("").reverse().join("")).join(" "); 
+    }
+
+    function isIsogram(word){
+        word = word.toLowerCase().replaceAll(" ", "").replaceAll("-", "").replaceAll("_", ""); 
+        let temp = ""; 
+        for (let i of word){ 
+            if ("abcdefghijklmnopqrstuvwxyz".includes(i)){ 
+                if (temp.includes(i)){
+                    return false;
+                } 
+                temp += i; 
+            } 
+        } 
+        return true; 
+    }
+
+    function isCyclopsNumber(n){ 
+        if (!Number(n)) return false;
+        let b=n.toString(2); 
+        return b.length%2===1 && b[Math.floor(b.length/2)]==="0"; 
+    }
+
+    function removeExclamationMarks(word){ 
+        return word.replaceAll("!", "");
+    }
+
+    function alternateCase(word){ 
+        let res = "";
+        for(let c of word){
+        res += (c===c.toLowerCase()?c.toUpperCase():c.toLowerCase());
+        }
+        return res;
+    }
+
+    function friendsOnly(names){ 
+        names = names.map(x=>x.replaceAll("\"", "").replaceAll("'", ""));
+        return names.filter(n=>n.trim().length===4); 
+    }
+
+    function gaderypoluki(word){ 
+        let map={"G":"A","A":"G","D":"E","E":"D","R":"Y","Y":"R","P":"O","O":"P","L":"U","U":"L","K":"I","I":"K"}; 
+        return word.split("").map(ch=>map[ch.toUpperCase()]? (ch===ch.toUpperCase()?map[ch]:map[ch.toUpperCase()].toLowerCase()):ch).join(""); 
+    }
+
+    function reverseSuffixList(word){ 
+        let arr=[];
+        for (let i=word.length; i>0; i--){
+            arr.push(word.substring(0, i).split("").reverse().join(""));
+        }
+        return arr;
+    }
+
+
+
+    // Helpers
+    function showDomain(){
+        document.getElementById("emailOutput").innerText=domainExtractor(document.getElementById("emailInput").value);
+    }
+    function checkUname(){
+        document.getElementById("unameOutput").innerText=isValidUname(document.getElementById("unameInput").value)?"Valid":"Invalid";
+    }
+    function checkPal(){
+        document.getElementById("palOutput").innerText=isPalindrome(document.getElementById("palInput").value);
+    }
+    function makeSecret(){
+        document.getElementById("secretOutput").innerText=secretCodeGenerateWith(document.getElementById("secretInput").value);
+    }
+    function countWords(){
+        document.getElementById("wordCountOutput").innerText=wordCounter(document.getElementById("wordCountInput").value);
+    }
+    function formatPhone(){
+        document.getElementById("phoneOutput").innerText=phoneNumberFormatter(document.getElementById("phoneInput").value);
+    }
+    function checkPass(){
+        document.getElementById("passOutput").innerText=passwordStrengthChecker(document.getElementById("passInput").value)?"Strong":"Weak";
+    }
+    function reverseWords(){
+        document.getElementById("revOutput").innerText=reverseEachWord(document.getElementById("revInput").value);
+    }
+    function checkIso(){
+        document.getElementById("isoOutput").innerText=isIsogram(document.getElementById("isoInput").value)?"Is Isogram":"Not A Isogram";
+    }
+    function checkCyclop(){
+        document.getElementById("cyclopOutput").innerText=isCyclopsNumber(Number(document.getElementById("cyclopInput").value));
+    }
+    function removeEx(){
+        document.getElementById("exOutput").innerText=removeExclamationMarks(document.getElementById("exInput").value);
+    }
+    function doAlt(){
+        document.getElementById("altOutput").innerText=alternateCase(document.getElementById("altInput").value);
+    }
+    function filterFriends(){
+        let arr=document.getElementById("friendsInput").value.split(",");
+        document.getElementById("friendsOutput").innerText=friendsOnly(arr);
+    }
+    function doGade(){ 
+        document.getElementById("gadeOutput").innerText=gaderypoluki(document.getElementById("gadeInput").value);
+    }
+    function doSuffix(){
+        document.getElementById("suffixOutput").innerText=JSON.stringify(reverseSuffixList(document.getElementById("suffixInput").value));
+    }
+</script>
+
+
+</html>

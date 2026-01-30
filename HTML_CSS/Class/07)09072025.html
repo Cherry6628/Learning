@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Float</title>
+    </head>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+            border: 0px;
+        }
+        html, body, div{
+            height: 100%;
+            width: 100%;
+        }
+        /* #parent{
+            border: 5px solid black;
+            height: 80%;
+            width: 90%;
+            margin: 5%;
+        }
+        .children{
+            height: 20%;
+            width: 20%;
+            
+        } */
+        #child0{
+            width: 20%;
+            height: 40%;
+            float: left;
+            background-color: green;
+        }
+        #child1{
+            width: 80%;
+            height: 20%;
+            float: left;
+            background-color: green;
+        }
+        #child2{
+            width: 20%;
+            height: 40%;
+            float: left;
+            background-color: red;
+            clear: left;
+        }
+        #child3{
+            width: 80%;
+            height: 20%;
+            float: right;
+            background-color: red;
+            /* clear: left; */
+        }
+    </style>
+    <body>
+        <!-- <div id="parent">
+            <div style="background-color: green;" class="children" id="child1"><p>1</p></div>
+            <div style="background-color: red;  " class="children" id="child2"><p>2</p></div>
+            <div style="background-color: blue; " class="children" id="child3"><p>3</p></div>
+            <div style="background-color: pink; " class="children" id="child4"><p>4</p></div>
+        </div> -->
+        <div>
+            <header id="child0"></header>
+            <header id="child1"></header>
+
+            <nav id="child3"></nav>
+            <nav id="child2"></nav>
+            
+            <aside></aside>
+            <article></article>
+            <footer></footer>
+        </div>
+    </body>
+</html>

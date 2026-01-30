@@ -1,0 +1,40 @@
+:root {
+    --t4-tile-size: 40px;
+    --t4-gap: 6px;
+    --t4-speed: 2s;
+    --t4-delay-step: 0.1s;
+    --t4-bg: #6cf;
+    --t4-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+#flipripple {
+    display: grid;
+    grid-template-columns: repeat(3, var(--t4-tile-size));
+    grid-template-rows: repeat(3, var(--t4-tile-size));
+    gap: var(--t4-gap);
+    perspective: 800px;
+    /* background-color: yellow; */
+}
+
+#flipripple div {
+    width: var(--t4-tile-size);
+    height: var(--t4-tile-size);
+    background: var(--t4-bg);
+    transform-style: preserve-3d;
+    animation: flip var(--t4-speed) var(--t4-timing-function) infinite ;
+    transform-origin: center;
+}
+
+#flipripple div:nth-child(1) { animation-delay: 0s; }
+#flipripple div:nth-child(2) { animation-delay: calc(1 * var(--t4-delay-step)); }
+#flipripple div:nth-child(3) { animation-delay: calc(2 * var(--t4-delay-step)); }
+#flipripple div:nth-child(4) { animation-delay: calc(1 * var(--t4-delay-step)); }
+#flipripple div:nth-child(5) { animation-delay: calc(2 * var(--t4-delay-step)); }
+#flipripple div:nth-child(6) { animation-delay: calc(3 * var(--t4-delay-step)); }
+#flipripple div:nth-child(7) { animation-delay: calc(2 * var(--t4-delay-step)); }
+#flipripple div:nth-child(8) { animation-delay: calc(3 * var(--t4-delay-step)); }
+#flipripple div:nth-child(9) { animation-delay: calc(4 * var(--t4-delay-step)); }
+
+@keyframes flip {
+    0%, 10%, 90%, 100% { transform: rotateX(0) rotateY(0); }
+    50% { transform: rotateX(180deg) rotateY(180deg); }
+}

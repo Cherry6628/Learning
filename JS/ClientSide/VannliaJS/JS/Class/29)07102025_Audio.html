@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>This is an Audio</h1>
+    <main>
+        <p data-file="HelloWorld">Hello World</p>
+        <p data-file="Javascript">This is JavaScript</p>
+        <p data-file="0123456789">1234567890</p>
+        <audio></audio>
+    </main>
+    
+</body>
+<script src="tempscr.js" defer></script>
+<script>
+    // let body = document.body;
+    // let audio = new Audio('js.mp3');
+    let l = console.log;
+    // l(audio);
+    // audio.controls = true;
+    // body.appendChild(audio);
+
+    // // audio.play();
+
+    let aud;
+    function init(){
+        let p0 = document.querySelectorAll('main>p[data-file]')[0];
+        let p1 = document.querySelectorAll('main>p[data-file]')[1];
+        let p2 = document.querySelectorAll('main>p[data-file]')[2];
+
+        p0.addEventListener('click', play);
+        p1.addEventListener('mouseover', play);
+        p2.addEventListener('dblclick', play);
+        aud = document.querySelector('audio');
+        aud.controls = true;
+    }
+
+    function play(e){
+        let t = e.target;
+        // console.log(t);
+        let a = t.getAttribute('data-file')+".mp3";
+        aud.setAttribute('src', a);
+        aud.play();
+        aud.addEventListener('play', ()=>{
+            console.log('Audio Playing');
+        })
+        aud.addEventListener('play', ()=>{
+            console.log('Audio Ended.....');
+        })
+        aud.addEventListener('pause', ()=>{
+            console.log('Audio Paused');
+        })
+        aud.addEventListener('timeupdate', ()=>{
+            console.log("Updating.[][][][][][][][][]")
+        })
+        aud.volume = 0.5;
+        aud.playbackRate = 3
+
+
+    }
+    init();
+
+</script>
+</html>

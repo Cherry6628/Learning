@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planets</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <link type="text/css" rel="stylesheet" href="css/header.css">
+    <link type="text/css" rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <%-include("partials/header")%>
+    <main>
+        <section class="planet-content">
+            <div class="planet-image-container">
+                <img id="main-planet-img" src="img/planet-mercury.svg" alt="Planet Image" class="planet-diagram">
+                <img id="geology-img" src="img/geology-mercury.png" alt="Geology View" class="geology-diagram" style="display: none;">
+            </div>
+            
+            <div class="planet-info">
+                <h1 id="planet-name" class="planet-name">Mercury</h1>
+                
+                <p id="planet-description" class="planet-description">
+                    </p>
+                <p class="source-link text">
+                    Source: <a href="#" target="_blank">Wikipedia <span>&#x2197;</span></a>
+                </p>
+
+                <div id="tabs" class="tabs">
+                    <button class="tab-button" data-view="overview" data-tab-number="01">
+                        <span class="tab-number">01</span>
+                        <span class="tab-text">Overview</span>
+                    </button>
+                    <button class="tab-button" data-view="internal" data-tab-number="02">
+                        <span class="tab-number">02</span>
+                        <span class="tab-text">Internal Structure</span>
+                    </button>
+                    <button class="tab-button" data-view="geology" data-tab-number="03">
+                        <span class="tab-number">03</span>
+                        <span class="tab-text">Surface Geology</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="planet-stats">
+            <div class="stat-box">
+                <h3 class="stat-label">Rotation Time</h3>
+                <h2 id="stat-rotation" class="stat-value"></h2>
+            </div>
+            <div class="stat-box">
+                <h3 class="stat-label">Revolution Time</h3>
+                <h2 id="stat-revolution" class="stat-value"></h2>
+            </div>
+            <div class="stat-box">
+                <h3 class="stat-label">Radius</h3>
+                <h2 id="stat-radius" class="stat-value"></h2>
+            </div>
+            <div class="stat-box">
+                <h3 class="stat-label">Average Temp.</h3>
+                <h2 id="stat-temp" class="stat-value"></h2>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/endpoints.js"></script>
+
+</body>
+</html>

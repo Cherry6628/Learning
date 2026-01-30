@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      border: 0;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #map {
+      height: 100vh;
+      width: calc(100vw - 320px);
+      float: left;
+    }
+
+    #weather {
+      height: 100vh;
+      width: 320px;
+      float: right;
+      overflow-y: auto;
+      background: linear-gradient(to bottom, #000000, #000000);
+      color: #fff;
+      padding: 20px;
+      box-shadow: -3px 0 8px rgba(0, 0, 0, 0.3);
+    }
+
+    #weather h2 {
+      margin-top: 0;
+      font-size: 1.5em;
+      border-bottom: 1px solid #555;
+      padding-bottom: 8px;
+    }
+
+    .weather-section {
+      margin-bottom: 20px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.5);
+
+      border-radius: 8px;
+    }
+
+    .weather-section img {
+      vertical-align: middle;
+      width: 50px;
+      height: 50px;
+    }
+
+    .weather-section div {
+      margin-bottom: 5px;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #ffa500;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+  <div id="map"></div>
+  <div id="weather"></div>
+
+
+  <script>
+    let api = "1e2c22b3d7167079da1b3afe6038d650";
+    const map = L.map('map').setView([0, 0], 2);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    map.on('click', function (e) {
+      let lat = e.latlng.lat;
+      let lng = e.latlng.lng;
+      if (lng > 180) lng -= 360;
+      if (lng < -180) lng += 360;
+      console.log("Clicked:", lat, lng);
+      getData(lat, lng, api);
+      map.setView([lat, lng]);
+    });
+    document.querySelector(".leaflet-control:not(.leaflet-control-zoom)").remove();
+    function getData(LAT, LON, API_KEY) {
+      fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LON}&appid=${API_KEY}&units=metric`).then(x => x.json()).then(x => { console.log(x); render(x); })
+    }
+
+    function render(data) {
+      const weatherDiv = document.getElementById('weather');
+      weatherDiv.innerHTML = "";
+
+      const city = document.createElement('h2');
+      city.textContent = data.name || "Unknown";
+      weatherDiv.appendChild(city);
+
+      const weatherSection = document.createElement('div');
+      weatherSection.className = 'weather-section';
+      weatherSection.innerHTML = `
+    <div><span class="label">Weather:</span> ${data.weather[0].main} (${data.weather[0].description}) 
+    <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png" alt="icon"></div>
+    <div><span class="label">Temperature:</span> ${data.main.temp} °C</div>
+    <div><span class="label">Feels like:</span> ${data.main.feels_like} °C</div>
+    <div><span class="label">Min:</span> ${data.main.temp_min} °C, <span class="label">Max:</span> ${data.main.temp_max} °C</div>
+    <div><span class="label">Humidity:</span> ${data.main.humidity}%</div>
+    <div><span class="label">Pressure:</span> ${data.main.pressure} hPa</div>
+    <div><span class="label">Wind:</span> ${data.wind.speed} m/s, ${data.wind.deg}°</div>
+    <div><span class="label">Clouds:</span> ${data.clouds.all}%</div>
+    <div><span class="label">Visibility:</span> ${data.visibility} m</div>
+                          `;
+
+      const sunDiv = document.createElement('div');
+      sunDiv.className = 'weather-section';
+      const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString();
+      const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString();
+      sunDiv.innerHTML = `<div><span class="label">Sunrise:</span> ${sunrise}</div>
+    <div><span class="label">Sunset:</span> ${sunset}</div>
+    <div><span class='label'>Latitude</span> ${data.coord.lat}</div>
+    <div><span class='label'>Longitude</span> ${data.coord.lon}</div>`;
+
+      weatherDiv.appendChild(weatherSection);
+      weatherDiv.appendChild(sunDiv);
+    }
+
+  </script>
+
+</body>
+
+</html>
+
+

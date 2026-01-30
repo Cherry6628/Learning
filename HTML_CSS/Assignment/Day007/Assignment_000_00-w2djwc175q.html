@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document 0</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <style>
+        /* *{
+            margin: 0px; border: 0px; padding: 0px;
+        } */
+        
+        main {
+            margin: 20px;
+            background-color: #F3F4F6;
+            background-image: url("our-team-layout-master/resources/Background_decor.svg");
+            background-repeat: no-repeat;
+            height: 568px;
+            width: 1136px;
+            border: 1px solid black;
+            border-radius: 12px;
+        }
+
+        .gradient {
+            background-image: url("our-team-layout-master/resources/Gradient.svg");
+            background-repeat: no-repeat;
+            margin-top: 140px;
+            height: 144px;
+            width: 284px;
+            /* float: left; */
+        }
+
+        .block {
+            height: 284px;
+            width: 284px;
+            float: left;
+        }
+
+        .long {
+            width: 568px;
+        }
+
+        .img {
+            width: 284px;
+            height: 284px;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #img1 {
+            background-color: #C1B6F8;
+            background-image: url("our-team-layout-master/resources/person_1.png");
+        }
+
+        #img2 {
+            background-color: #EDADD2;
+            background-image: url("our-team-layout-master/resources/person_2.png");
+
+            border-top-right-radius: 12px;
+        }
+
+        #img3 {
+            background-color: #9EBDE5;
+            background-image: url("our-team-layout-master/resources/person_3.png");
+        }
+
+        #img4 {
+            background-color: #E4CBAB;
+            background-image: url("our-team-layout-master/resources/person_4.png");
+        }
+
+        #img5 {
+            background-color: #86CBBE;
+            background-image: url("our-team-layout-master/resources/person_5.png");
+            border-bottom-right-radius: 12px;
+        }
+        #meetthebrainmain{
+            padding: 32px;
+            font-size: 15px;
+        }
+        #meetthebrainmain h1{
+            font-size: 36px;
+            font-weight: 500;
+        }
+        #ourteam{
+            color: blue;
+        }
+        #membersblock p, #membersblock img, #membersblock pre{
+            float: left;
+            margin: 0px;
+        }
+        #membersblock{
+            margin: 230px 35px 0px;
+            font-weight: 750;
+        }
+        .img section{
+            float: left;
+            margin: 60% 10%;
+            color: white;
+        }
+        .img section h2{margin-bottom: 0px;}
+        .img section p{
+            margin-top: 10px;
+        }
+        .inter {
+            font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+        }
+    </style>
+
+</head>
+
+<body class="inter">
+    <main>
+        <div class="block long">
+            <div id="meetthebrainmain">
+                <p id="ourteam">Our team</p>
+                <h1>Meet the brain</h1>
+                <p>We are proud to have them as part of out community and look forward to continuing to push the boundaries of what's possible in the world of digital art.</p>
+            </div>
+        </div>
+
+        <div class="block img" id="img1">
+            <section><h2>Liam Novak</h2><p>Software Engineer</p></section>
+            <div class="gradient"></div>
+        </div>
+        <div class="block img" id="img2">
+            <section><h2>Sophia Moretti</h2><p>Business Development Manager</p></section>
+            <div class="gradient"></div>
+        </div>
+
+        <div class="block">
+            <div id="membersblock"><p>See all members</p><pre> </pre><img src="our-team-layout-master/resources/arrow up right.svg" height="19px" width="19px"/></div>
+        </div>
+
+        <div class="block img" id="img3">
+            <section><h2>Ethan Rossi</h2><p>Business Development Manager</p></section>
+            <div class="gradient"></div>
+        </div>
+        <div class="block img" id="img4">
+            <section><h2>Isabella Ricci</h2><p>UX Designer</p></section>
+            <div class="gradient"></div>
+        </div>
+        <div class="block img" id="img5">
+            <section><h2>Noah Conti</h2><p>Content Creator</p></section>
+            <div class="gradient" style="border-bottom-right-radius: 12px"></div>
+        </div>
+    </main>
+</body>
+
+</html>

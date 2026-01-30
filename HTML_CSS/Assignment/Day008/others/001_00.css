@@ -1,0 +1,91 @@
+:root{
+    --border-radius: 1vw;
+}
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+}
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400';
+html, body, main{
+    min-height: 100vh;
+    min-width: 100vw;
+    max-height: fit-content;
+    max-width: fit-content;
+    color: #E5E7EB;
+}
+main{
+    background-image: url("../simple-feature-section-master/resources/Background_image.svg");
+    background-color: #121826;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5vw;
+}
+.heading{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2vh;
+    text-align: center;
+    margin-top: 50px;
+
+}
+h2{
+    font-size: 2rem;
+    line-height: 1.4;
+}
+h4{
+    font-size: 1.2rem; line-height: 1.6;
+    /* height:  */
+}
+p{
+    font-size: 1.15rem;
+    line-height: 1.3;
+    color: #999;
+}
+.articles{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
+    width: 80%;
+    margin-bottom: 50px
+}
+.articles article{
+    min-height: 420px;
+    width: 333.75px;
+    background-color: #212936;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1vh;
+    align-items: flex-start;
+    border-radius: var(--border-radius);
+    padding: 1.5vw 1.5vw
+}
+.articles article p{
+
+    height: 80px;
+}
+.emoji{
+    padding: 1.5vh;
+    font-size: 1.5rem;
+    border-radius: 50%
+}
+.hand{
+    background-color: #FDEED7;
+}
+.fc{
+    background-color: #DEE9FB;
+}
+.thought{
+    background-color: #FBE5E7;
+}
+
+img{
+    width: 100%;
+    border-radius: var(--border-radius);
+}

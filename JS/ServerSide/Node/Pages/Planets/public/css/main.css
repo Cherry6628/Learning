@@ -1,0 +1,167 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--c2);
+    background-image: url("../img/background-stars.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+main {
+    padding: 0 165px;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 122px);
+    justify-content: space-around;
+}
+
+.planet-content {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 100px;
+    margin-top: 50px;
+}
+
+.planet-image-container {
+    grid-column: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.planet-diagram {
+    width: 500px; 
+    height: 500px;
+}
+
+.planet-info {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.planet-name {
+    margin-bottom: 24px;
+    font-size: 80px;
+    line-height: 103px;
+}
+
+.planet-description {
+    color: var(--c4);
+    margin-bottom: 24px;
+    font-size: 100%;
+    line-height: 25px;
+    opacity: 100%;
+}
+
+.source-link {
+    /* opacity: 50%; */
+    margin-bottom: 39px;
+    font-size: 12px;
+}
+
+.source-link a {
+    color: var(--c1);
+    opacity: 50%;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.tab-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px 28px;
+    width: 100%;
+    text-transform: uppercase;
+    border: 1px solid var(--c3);
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.tab-button:hover:not(.active-tab) {
+    background-color: var(--c3);
+    border-color: var(--c3);
+}
+
+.tab-button .tab-number {
+    font-family: var(--spartan);
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 25px;
+    letter-spacing: 2.5px;
+    color: var(--c1);
+    opacity: 50%;
+    margin-right: 28px;
+}
+
+.tab-button .tab-text {
+    font-family: var(--spartan);
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 25px;
+    letter-spacing: 2.5px;
+    color: var(--c1);
+    opacity: 100%;
+}
+
+
+
+.active-tab .tab-number {
+    opacity: 100%;
+}
+
+.planet-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 87px;
+    margin-bottom: 50px;
+}
+
+.stat-box {
+    width: 255px;
+    height: 128px;
+    border: 1px solid var(--c3);
+    padding: 20px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.stat-label {
+    opacity: 50%;
+    font-size: 16px;
+    letter-spacing: 0.7px;
+}
+
+.stat-value {
+    font-size: 40px;
+    line-height: 52px;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
+}
+
+.planet-image-container {
+    position: relative;
+}
+
+.geology-diagram {
+    position: absolute;
+    width: 210px;
+    height: 250px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -50px;
+    z-index: 10;
+}

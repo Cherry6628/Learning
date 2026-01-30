@@ -1,0 +1,75 @@
+@media screen and (max-width: 1024px) {
+    .flex-wrapper {
+         flex-direction: column;
+         height: 100%;
+    }
+    .background-image-cover {
+         width: 100%;
+         height: fit-content;
+         position: static
+    }
+    .content {
+         width: 100%;
+         height: fit-content;
+         padding: 30px 20px;
+    }
+    .full-portfolio, .full-portfolio button{
+         width: 100%;
+    }
+    .background-image-cover > div:first-child {
+         align-items: center;
+         justify-content: center;
+         flex-direction: column;
+         text-align: center;
+         padding: 30px 20px;
+    }
+    .background-image-cover > div:last-child {
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+         padding: 30px 20px;
+    }
+    .content .header,
+    .content .header h1, .content .header p {
+         width: 100%;
+         
+    }
+    .content .header button{
+         width: fit-content;
+         padding: 20px
+    }
+    .content .header p{
+         font-size: 0.9rem;
+    }
+    .content .header h1 {
+         font-size: 1.3rem;
+    }
+    .form {
+         flex-direction: column;
+         gap: 40px;
+    }
+    .footer>div:first-child p{
+         font-size: 0.9rem;
+         margin-top: 20px;
+    }
+    .form > div:first-child,
+    .form > div:last-child {
+         width: 100%;
+    }
+    .contact{
+         margin-top: 30px;
+    }
+    .contact p{
+         font-size: 0.6rem;
+    }
+    .form > div:first-child div {
+         flex-direction: column;
+         align-items: flex-start;
+         width: 100%;
+         gap: 20px;
+    }
+    .form input,
+    .form textarea {
+         width: 100%;
+    }     
+}

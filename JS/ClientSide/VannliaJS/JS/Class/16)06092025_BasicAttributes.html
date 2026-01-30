@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="01.js" defer></script> -->
+    <style>
+        .h{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <h1 class="headingg main-heading-class" id="headinggg" title="IAMTHETITLEATDOMAINDOTTLD">DOM Class</h1>
+        asdfasdfasdf<ul class="ullist">dsffsff
+            <li class="item" style="visibility: hidden;">ASDFASD</li>
+            <li class="item"><div></div></li>
+            <li class="item"></li>
+            <li class="item"></li><li class="item"></li>
+        </ul>
+        <button onclick="addClass('headinggg', 'h')">Add class color</button>
+        <button onclick="removeClass('headinggg', 'h')">Remove class color</button>
+        <button onclick="toggleClass('headinggg', 'h')">Toggle class color</button>
+    </main>
+</body>
+<script>
+// window.document.getElementById()
+window.console.log(document.title, window.document.title);
+document.title="DOM";
+document.write("adfs")
+
+console.log(document.getElementsByClassName("headingg"), document.querySelectorAll(".headingg"))
+let headingElement = document.querySelector(".headingg")
+let headingElements = document.querySelectorAll(".headingg")
+console.log(typeof headingElement, typeof headingElements)
+
+console.log(headingElement.attributes)
+
+let ul = document.querySelector("ul")
+console.log(ul.childElementCount)
+let l = console.log;
+l(ul.children);
+// l(l(l(l(l(l(l(l())))))))
+l(ul.childNodes);
+l(ul.TEXT_NODE);
+
+
+function addClass(idname, classname){
+    // console.log(idname)
+    return document.getElementById(idname).classList.add(classname, 'main-heading-class')
+}
+function removeClass(idname, classname){
+    document.getElementById(idname).classList.remove(classname, 'main-heading-class');
+}
+function toggleClass(idname, classname){
+    document.getElementById(idname).classList.toggle(classname)
+}
+
+l(headingElement.className)
+l(headingElement)
+l(headingElement.nodeType)
+l(headingElement.className)
+l(typeof headingElement.className)
+l(ul.firstChild)         // first node
+l(ul.firstElementChild)  // first element
+l(ul.lastChild)
+l(ul.lastElementChild)
+l(ul.TEXT_NODE)
+// l(ul.)
+l(ul.textContent)  // dont calculate styles, but dont parses
+
+l(ul.innerText)  // calculates styles, parses
+l(ul.innerHTML)
+l(ul.outerText)
+l(ul.outerHTML)
+
+let changeinnerhtml = ()=> ul.innerHTML = "DKLDKLFSDKLKLDKLDSKLKLSDLKLKKLDLKDSLKSDLKSDLKDFSLKLKDFLKDFLKDFLKSDLKDSDSFKLDFJHKDFLSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS"
+let changeouterhtml = ()=> ul.innerHTML = "<ol><li>adsfasdf</li></ol>"
+// invoke them... to test
+
+
+for (let i of ul.childNodes){
+    l(i.previousSibling, i, i.nextSibling)
+}
+</script>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <ul id="fruits">
+            <div>
+            <li>Apple</li>
+            <li>Banana</li>
+            <li>Catermelon</li>
+            <li>Dorange</li>
+            <li>Empkin</li>
+            </div>
+        </ul>
+        <p>HHHHHHHHHHHHHHHHHHHHHEEEEEEEEEEELOOOOO</p>
+        <button>&nbsp;</button>
+    </div>
+</body>
+<script src="jquery-3.7.1.min.js"></script>
+<script defer>
+
+        function normalJS(){
+            let fruits = document.getElementById("fruits");
+            console.log(fruits);
+        }
+        function jQueryJS(){
+            let fruits = $("#fruits");
+            console.log(fruits);
+        }
+        document.addEventListener('DOMContentLoaded',normalJS);
+        $(document).ready(jQueryJS);
+
+        console.log($("#fruits").next());
+        $("#fruits").next().css('border', '1px solid red');
+        $("#fruits").next().css({color:'red'});
+        console.log($("#fruits").prev());
+
+
+        console.log($("#fruits").find("li").first());
+        console.log($("#fruits").find("li").last());
+
+        $('button').on('click',()=>{
+            alert("Hello")
+        })
+
+
+        
+        
+        console.log("\n\n\n");
+</script>
+</html>

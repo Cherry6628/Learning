@@ -1,0 +1,45 @@
+    .profile-card,
+    .profile-card * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        box-sizing: border-box;
+    }
+    .profile-card {
+        display: flex;
+        padding: 20px;
+    }
+    .profile-card img {
+        /* height:100%;
+        width:100%; */
+        height: min(200px, 40vw);
+        /* width: attr(height); */
+    }
+    .profile-card .image-container * {
+        margin: auto !important;
+        /* display: inline-block; */
+        width: fit-content;
+    }
+    .profile-card .image-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 10px;
+    }
+    .profile-card .image-container button {
+        padding: 10px;
+        border-radius: 15px;
+        width: 100px !important;
+    }
+    .profile-card .info {
+        padding: 20px;
+    }
+    .profile-card .info > div{
+        height:100%;
+        width:100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 20px;
+    }
+    .profile-card {}

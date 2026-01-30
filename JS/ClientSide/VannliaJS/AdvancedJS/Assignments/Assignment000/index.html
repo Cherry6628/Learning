@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>IP & Geo Lookup Tool (XHR)</title>
+  <style>
+    :root{
+        --font-color: #c6c6c6;
+        --body-color: #111111;
+        --input-color: #222222;
+        --button-color: #333333;
+        --button-hover-color: #444444;
+        --container-color: #1e1e1e;
+        --result-color: #181818;
+        --small-text-color: #9a9a9a;
+        --color0: #4c8bf5;
+        --color1: #3bd186;
+        --color2: #d67eff;
+    }
+    *{
+        box-sizing: border-box;
+        padding: 0;
+        margin:0;
+        border: 0;
+    }
+    body { 
+        font-family: sans-serif;
+        width: 100vw;
+        height: 100vh;
+        padding-top:40px;
+        line-height: 1.6;
+        background-color: var(--body-color);
+        color: var(--font-color);
+    }
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        background: var(--input-color);
+        color: var(--font-color);
+        border: 1px solid var(--button-color);
+        border-radius: 4px;
+    }
+    button {
+        padding: 10px 15px;
+        cursor: pointer;
+        background: var(--button-color);
+        color: var(--font-color);
+        border: 1px solid var(--button-hover-color);
+        border-radius: 4px;
+        transition: background 0.5s;
+    }
+    button:hover {
+        background: var(--button-hover-color);
+    }
+    #result {
+        margin-top: 20px;
+        padding: 15px;
+        background: var(--result-color);
+        border: 1px solid var(--button-color);
+        border-radius: 6px;
+        font-weight: 900;
+        color: var(--font-color);
+        overflow: scroll;
+    }
+    #result:not(:has(div)) {
+        display: none;
+    }
+    #container{
+        background-color: var(--container-color);
+        padding: 20px;
+        margin: auto;
+        width: min(100vw, 700px);
+        border-radius: min(2.5vw, 12.5px);
+        border: 1px solid var(--button-color);
+    }
+    h2{
+        text-decoration: underline;
+        color: var(--font-color);
+    }
+    input[type=checkbox]{
+        display: inline-block;
+        width: fit-content;
+        margin: 0 20px 0 0;
+    }
+    #options{
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #raw span{
+        font-size: 10px;
+        color: var(--small-text-color);
+    }
+    #raw{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        align-items: center;
+    }
+    #result span{
+        font-size: 16px;
+        font-weight: 900;
+    }
+    .b{color: var(--color0);}
+    .g{color: var(--color1);}
+    .p{color: var(--color2);}
+  </style>
+</head>
+<body>
+    <div id="container">
+        <h2>IP / Geo Lookup Tool</h2>
+
+        <div style="margin-top:20px;">
+            <input id="ipAddress" type="text" placeholder="Enter IP address (e.g. 8.8.8.8)" />
+            <div id="options">
+                <div id="buttons">
+                    <button id="lookupBtn">Lookup IP</button>
+                    <button id="myIpBtn">Detect My IP</button>
+                    <button id="clear">Clear Result</button>
+                </div>
+                <div id="raw">
+                    <span>Show Raw Data</span>
+                    <input type="checkbox" id="rawInp">
+                </div>
+            </div>
+        </div>
+
+        <div id="result"></div>
+    </div>
+</body>
+
+<script>
+function lookup(ip) {
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET","https://ipwho.is/"+ip);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState===4) {
+            if (xhr.status===200) render(JSON.parse(xhr.responseText));
+            else document.getElementById("result").textContent = "Request failed.";
+        }
+    };
+    xhr.send();
+}
+
+function formatObject(obj) {
+    let html = `<span class='p'>{</span><br>`;
+    const entries = Object.entries(obj);
+
+    entries.forEach(([key, value], i) => {
+        const comma = i === entries.length-1?"":"<span class='p'>,</span>";
+        html += "&nbsp;".repeat(4);
+        html += `<span class='g'>${key}</span><span class='p'>:</span> `;
+
+        if (value && typeof value === "object") {
+            html += `<div style="margin-left:20px">${formatObject(value)}${comma}</div>`;
+        } else {
+            html += `<span class='b'>${escapeHTML(String(value))}</span>${comma}<br>`;
+        }
+    });
+
+    html += `<span class='p'>}</span>`;
+    return html;
+}
+
+function escapeHTML(str) {
+    return str.replace(/[&<>"]/g, c => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;"
+    }[c]));
+}
+
+function render(data) {
+    let showRaw = document.getElementById("rawInp");
+
+    if(showRaw.checked) {
+        document.getElementById("result").innerHTML = `<div><code>${formatObject(data)}</code></div>`;
+        return;
+    }
+
+    if (!data.success) {
+        document.getElementById("result").innerHTML = `
+            <div>
+                <strong>Status:</strong> failed<br>
+                <strong>Message:</strong> ${data.message || "Unknown error"}<br>
+            </div>`;
+        return;
+    }
+
+    document.getElementById("result").innerHTML = `
+        <div>
+            <strong>IP:</strong> ${data.ip}<br>
+            <strong>Country:</strong> ${data.country} (${data.country_code})<br>
+            <strong>City:</strong> ${data.city}<br>
+            <strong>Region:</strong> ${data.region} (${data.region_code})<br>
+            <strong>Postal:</strong> ${data.postal}<br>
+            <strong>Timezone:</strong> ${data.timezone.id}<br>
+            <strong>Timezone_abbr:</strong> ${data.timezone.abbr}<br>
+            <strong>Timezone_is_dst:</strong> ${data.timezone.is_dst}<br>
+            <strong>Timezone_offset:</strong> ${data.timezone.offset}<br>
+            <strong>UTC:</strong> ${data.timezone.utc}<br>
+            <strong>Current_time:</strong> ${data.timezone.current_time}<br>
+            <strong>ISP:</strong> ${data.connection?.isp || "N/A"}<br>
+            <strong>ASN:</strong> ${data.connection?.asn || "N/A"}<br>
+            <strong>Latitude:</strong> ${data.latitude}<br>
+            <strong>Longitude:</strong> ${data.longitude}<br>
+        </div>
+    `;
+}
+
+document.getElementById("lookupBtn").onclick = () => {
+    const ip = document.getElementById("ipAddress").value.trim();
+    if(ip)lookup(ip);
+};
+
+document.getElementById("myIpBtn").onclick = ()=>{lookup("");};
+document.getElementById("clear").onclick = ()=>{document.getElementById("result").innerHTML="";}
+</script>
+
+</html>

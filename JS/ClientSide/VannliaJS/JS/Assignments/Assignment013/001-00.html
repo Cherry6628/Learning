@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image Gallery</title>
+  <style>
+    body{font-family:Inter,system-ui,Arial;margin:18px;background:#111;color:#ddd;text-align:center}
+    h1{color:#eee;margin-bottom:18px}
+    #gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+    #gallery img{width:100%;height:100px;object-fit:cover;cursor:pointer;border-radius:8px;transition:.2s}
+    #gallery img:hover{transform:scale(1.05)}
+    #preview{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;flex-direction:column;z-index:999}
+    #preview img{max-width:80%;max-height:70%;margin-bottom:12px;border-radius:10px}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+    button{padding:8px 14px;border:none;border-radius:6px;background:#0b66c2;color:#eee;cursor:pointer}
+    button:hover{background:#09519a}
+    #addForm{margin-bottom:18px}
+    #addForm input{padding:8px;width:60%;border-radius:6px;border:1px solid #333;background:#222;color:#eee}
+  </style>
+</head>
+<body>
+  <h1>Image Gallery</h1>
+  <form id="addForm">
+    <input type="text" id="newUrl" placeholder="Enter image URL">
+    <button type="submit">Add Image</button>
+  </form>
+  <div id="gallery"></div>
+  <div id="preview">
+    <img id="previewImg">
+    <div class="controls">
+      <button id="prevBtn">Prev</button>
+      <button id="nextBtn">Next</button>
+      <button id="delBtn">Delete</button>
+      <button id="repBtn">Replace</button>
+      <button id="cloneBtn">Clone</button>
+      <button id="highBtn">Highlight</button>
+      <button id="closeBtn">Close</button>
+    </div>
+  </div>
+
+  <script>
+    let images = JSON.parse(localStorage.getItem("gallery")) || [
+      "https://picsum.photos/300/200?1","https://picsum.photos/300/200?2",
+      "https://picsum.photos/300/200?3","https://picsum.photos/300/200?4",
+      "https://picsum.photos/300/200?5","https://picsum.photos/300/200?6",
+    ]
+    let currentIndex = 0
+    const gallery=document.getElementById("gallery")
+    const preview=document.getElementById("preview")
+    const previewImg=document.getElementById("previewImg")
+    function save(){localStorage.setItem("gallery",JSON.stringify(images))}
+    function render(){
+      gallery.innerHTML=""
+      images.forEach((url,i)=>{
+        const img=document.createElement("img")
+        img.src=url
+        img.onclick=()=>openPreview(i)
+        gallery.appendChild(img)
+      })
+      save()
+    }
+    function openPreview(i){currentIndex=i;previewImg.src=images[i];preview.style.display="flex"}
+    document.getElementById("closeBtn").onclick=()=>preview.style.display="none"
+    document.getElementById("nextBtn").onclick=()=>{currentIndex=(currentIndex+1)%images.length;openPreview(currentIndex)}
+    document.getElementById("prevBtn").onclick=()=>{currentIndex=(currentIndex-1+images.length)%images.length;openPreview(currentIndex)}
+    document.getElementById("delBtn").onclick=()=>{images.splice(currentIndex,1);render();preview.style.display="none"}
+    document.getElementById("repBtn").onclick=()=>{let u=prompt("New Image URL:");if(u){images[currentIndex]=u;render();openPreview(currentIndex)}}
+    document.getElementById("cloneBtn").onclick=()=>{images.splice(currentIndex+1,0,images[currentIndex]);render();openPreview(currentIndex+1)}
+    document.getElementById("highBtn").onclick=()=>{gallery.children[currentIndex].classList.toggle("hl")}
+    document.getElementById("addForm").onsubmit=e=>{
+      e.preventDefault()
+      let u=document.getElementById("newUrl").value.trim()
+      if(u){images.push(u);document.getElementById("newUrl").value="";render()}
+    }
+    const style=document.createElement("style")
+    style.textContent=".hl{outline:4px solid #0b66c2}"
+    document.head.appendChild(style)
+    render()
+  </script>
+</body>
+</html>

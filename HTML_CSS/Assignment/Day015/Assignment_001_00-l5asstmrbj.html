@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            --size: 500px;
+        }
+        body{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; width: 100vw;
+        }
+        main{
+            height: var(--size); width: var(--size);
+            transition: transform 6s ease 0s;
+            transform-origin: center;
+            transform-style: preserve-3d;
+            perspective: none;
+            position: relative;
+            transform: rotate3d(-1, -1, 0, 45deg)
+        }
+        main:hover{transform: rotate3d(-1, -1, 0, 405deg);}
+        .face{
+            transform-origin: center;
+            width: var(--size);
+            height: var(--size); position: absolute;
+            display: flex; flex-direction: row; 
+            align-items: center; 
+            justify-content: center; 
+            background-color: red;
+            border: 2px solid black
+        }
+
+        .face1{
+            transform: translateZ(calc(var(--size)/2));
+
+        }
+        .face2{
+            transform: translateZ(calc(var(--size)/(-2))) rotateY(180deg);
+        }
+        .face3{
+            transform: translateX(calc(var(--size)/2)) rotateY(90deg);
+        }
+        .face4{
+            transform: translateX(calc(var(--size)/(-2))) rotateY(-90deg);
+        }
+        .face5{
+            transform: translateY(calc(var(--size)/2)) rotateX(90deg);
+        }
+        .face6{
+            transform: translateY(calc(var(--size)/(-2))) rotateX(-90deg);
+        }
+        img{
+            height: var(--size);
+            width: var(--size);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="face face1"><img src="https://images.fineartamerica.com/images/artworkimages/medium/3/natural-dam-waterfall-1x1-james-barber.jpg"></div>
+        <div class="face face2"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-gQLlFE9GM05fN1byLtQ6iqi3UQVWTmvlJA&s"></div>
+        <div class="face face3"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRarnv7b7hFZElFT6IqslUPYzGQblxYQrxxjw&s"></div>
+        <div class="face face4"><img src="https://www.shutterstock.com/image-photo/jabrayil-khudafarin-bridge-karabakh-azerbaijan-600nw-2373495127.jpg"></div>
+        <div class="face face5"><img src="https://5.imimg.com/data5/TR/FV/OL/ANDROID-95461305/product-jpeg.jpg"></div>
+        <div class="face face6"><img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/little-hawksbill-crag-over-the-white-river-arkansas-landscape-1x1-gregory-ballos.jpg"></div>
+    </main>
+</body>
+</html>

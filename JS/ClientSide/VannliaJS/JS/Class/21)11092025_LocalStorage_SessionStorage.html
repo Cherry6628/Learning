@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>HELLO WORLD</h1>
+    <button>Save Cookie</button>
+    <button onclick="session()">Save Session Data</button>
+    <button onclick="removeSession()">RemoveSession data</button>
+    <button onclick="expirylessCookie()">ExpirelessCookie</button>
+    <button onclick="expiryCookie()">Expiry Cookie</button>
+    <button onclick="clearAllCookies()">Clear all Cookies</button>
+</body>
+<script>
+    // setItem
+    // getItem
+    // removeItem
+    sessionStorage.clear()
+
+    localStorage.setItem('cookie0', 'val0')
+    localStorage.setItem('cookie1', 'val1')
+    localStorage.setItem('cookie2', 'val2')
+    localStorage.setItem('cookie3', 'val3')
+    localStorage.setItem('cookie4', 'val4')
+    console.log(localStorage.getItem('cookie0'))
+
+    let obj = {
+        name: "SANJEEVI"
+    }
+    localStorage.setItem('object1', obj)
+    localStorage.setItem('object2', JSON.stringify(obj));
+
+    obj = JSON.parse(localStorage.getItem('object2'))
+    localStorage.removeItem('object1')
+
+
+    function session(){sessionStorage.setItem('session1', 'VALUE')}
+    function removeSession(){sessionStorage.removeItem('session1')}
+
+
+    // localStorage.clear();
+    function expirylessCookie(){
+        document.cookie+='name=Sanjeevi V; '
+    }
+    function expiryCookie(){
+        expiryHours = 10;
+        expiry = expiryHours*3600000
+        document.cookie+='name=Sanjeevi V; expires='+expiry+";";
+
+    }
+    function clearAllCookies(){
+        document.cookie="";
+    }
+    clearAllCookies()
+</script>
+</html>

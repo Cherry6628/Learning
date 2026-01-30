@@ -1,0 +1,177 @@
+<!DOCTYPE html><html><head><title>.</title></head><body></body><script>
+    // Task 001
+    title("Task 001");
+    function CustomString(val){
+        let str=new String(val);
+        Object.setPrototypeOf(str, CustomString.prototype);
+        return str;
+    }
+    CustomString.prototype = Object.create(String.prototype);
+    CustomString.prototype.constructor = CustomString;
+    function CustomArray(...val){
+        let arr=new Array(...val);
+        Object.setPrototypeOf(arr, CustomArray.prototype);
+        return arr;
+    }
+    CustomArray.prototype = Object.create(Array.prototype);
+    CustomArray.prototype.constructor = CustomArray;
+    CustomString.prototype.charAt = function(index=0){return this[index]??"";}
+    CustomString.prototype.includes = function(substring){
+        for (let i=0; i<this.length-substring.length+1; i++){
+            if (this.slice(i, i+substring.length)==substring){return true;}
+        }
+        return false;
+    }
+    CustomString.prototype.indexOf = function(substring, position=0){
+        for (let i=position; i<this.length-substring.length+1; i++){
+            if (this.slice(i, i+substring.length)==substring){return i;}
+        }
+        return -1;
+    }
+    CustomArray.prototype.every = function(callbackFn, thisArg=null){
+        if (thisArg) callbackFn = callbackFn.bind(thisArg);
+        for(let v of this){
+            if (!callbackFn(v)){
+                return false;
+            }
+        }
+        return true;
+    }
+    CustomArray.prototype.filter = function(callbackFn, thisArg=null){
+        let temp = [];
+        if (thisArg) callbackFn = callbackFn.bind(thisArg);
+        for (let i of this){if (callbackFn(i)) temp.push(i);}
+        return temp;
+    }
+
+    let str = new CustomString("abcdefgh");
+    let arr = new CustomArray(0, 1, 2);
+    let arr2= new CustomArray(0, undefined, 2);
+
+    subtitle("String.prototype.charAt()");
+    console.log(str.charAt());
+    console.log(str.charAt(234));
+    subtitle("String.prototype.includes()");
+    console.log(str.includes("ab"));
+    console.log(str.includes("aa"));
+    subtitle("String.prototype.indexOf()");
+    console.log(str.indexOf("ab"));
+    console.log(str.indexOf("ab", 1));
+    console.log(str.indexOf("z"));
+    subtitle("Array.prototype.every()");
+    console.log(arr.every(x=>x>=0));
+    console.log(arr2.every(x=>x>=0));
+    console.log(arr.every(function(x){return this[x]>=0}, [1, 2, 3]));
+    subtitle("Array.prototype.filter()");
+    console.log(arr.filter(x=>x>0));
+    console.log(arr.filter(function(x){return this[x]}, ["Hello", "", "World"]));
+
+
+    // Task 002
+    title("Task 002");
+    String.prototype.pascalCase = function(){
+        return (this.trim().split(" ").map(i=> i?(i[0].toUpperCase()+i.slice(1).toLowerCase()):"")).join("")
+    }
+    String.prototype.camelCase = function(){
+        return (this.trim().split(" ").map((i, index)=> i?((index!=0?(i[0].toUpperCase()):i[0].toLowerCase())+i.slice(1).toLowerCase()):"")).join("")
+    }
+    String.prototype.snakeCase = function(){
+        return this.trim().toLowerCase().split(" ").filter(v=>v).join("_")
+    }
+    String.prototype.kebabCase = function(){
+        return this.trim().toLowerCase().split(" ").filter(v=>v).join("-")
+    }
+    subtitle("Pascal Case");
+    console.log("   hello   world   HELLO WORLD ".pascalCase());
+    subtitle("Camel Case");
+    console.log("   hello   world   HELLO WORLD ".camelCase());
+    subtitle("Snake Case");
+    console.log("   hello   world   HELLO WORLD ".snakeCase());
+    subtitle("Kebab Case");
+    console.log("   hello   world   HELLO WORLD ".kebabCase());
+
+
+    // Task 003
+    title("Task 003");
+    function Vehicle(type, wheels){
+        this.type = type;
+        this.wheels = wheels;
+    }
+    Vehicle.prototype.move = function(){console.log("The "+this.type+" with "+this.wheels+" wheels is moving.");}
+
+
+    function Car(brand, model, type="Car", wheels=4){
+        this.brand = brand;
+        this.model = model;
+        Vehicle.call(this, type, wheels);
+    }
+    Car.prototype = Object.create(Vehicle.prototype);
+    Car.prototype.constructor = Car;
+    Car.prototype.drive = function(){console.log("The "+this.brand+" "+this.model+" is being driven.");}
+
+    function Bike(brand, type="Bike", wheels=2){
+        this.brand = brand;
+        Vehicle.call(this, type, wheels);
+    }
+    Bike.prototype = Object.create(Vehicle.prototype);
+    Bike.prototype.constructor = Bike;
+    Bike.prototype.ride = function(){console.log("Riding a "+this.brand+" bike.");}
+
+
+    let c1 = new Car("Rolls Royce", "Boat Tail", "Car", 4);
+    let b1 = new Bike("Kawasaki", "Bike", 2);
+
+
+    c1.move();
+    c1.drive();
+
+    b1.move();
+    b1.ride();
+
+    // console.log(c1, b1);
+
+
+    // Task 004
+    title("Task 004");
+    function Plant(name){
+        this.name = name;    
+    }
+    Plant.prototype.grow=function(){console.log("The "+this.name+" is growing.");}
+    function Flower(name, color){
+        this.color = color;
+        Plant.call(this, name);
+    }
+    Flower.prototype = Object.create(Plant.prototype);
+    Flower.prototype.constructor = Flower;
+    Flower.prototype.bloom=function(){console.log("The "+this.color+" Colored "+this.name+" is Blooming.");}
+    function Tree(name, height){
+        this.height = height;
+        Plant.call(this, name);
+    }
+    Tree.prototype = Object.create(Plant.prototype);
+    Tree.prototype.constructor = Tree;
+    Tree.prototype.provideShape=function(){console.log("This "+this.name+" with height "+this.height+"m was in a Shape.");}
+
+    let f1 = new Flower("Sunflower", "Yellow");
+    let t1 = new Tree("Neem", 100);
+    f1.grow();
+    f1.bloom()
+    t1.grow();
+    t1.provideShape();
+
+    // console.log(f1, t1);
+
+    
+
+
+
+
+    // helper
+    function title(...msg){
+        console.log("%c"+msg.join(" "), "color: black; background-color: blue; font-size: 150%;")
+    }
+    function subtitle(...msg){
+        console.log("%c"+msg.join(" "), "color: blue; background-color: black; font-size: 100%;")
+    }
+</script>
+</html>

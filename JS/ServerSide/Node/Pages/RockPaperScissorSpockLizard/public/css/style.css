@@ -1,0 +1,234 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-family: sans-serif;
+}
+#rpsls-ui {
+    --btn-width: 100px;
+    --btn-height: 50px;
+    --choice-size: 10vw;
+    --choice-gap: 1vw;
+    --option-border-size: 0.8vw;
+    background-image: radial-gradient(
+        farthest-corner at top center,
+        #1f3757,
+        #131635
+    );
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+#rpsls-ui * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#rpsls-ui > div {
+    width: 20%;
+    height: 100vh;
+}
+#rpsls-ui > section {
+    width: 60%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.player-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#score-board {
+    margin: 5% 0;
+    background: linear-gradient(145deg, #1f2a47, #27375f);
+    padding: 20px;
+    border-radius: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+#options {
+    position: relative;
+    margin: auto;
+}
+.option {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    border: var(--option-border-size) solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.option:hover {
+    transform: scale(1.1);
+}
+.option img {
+    height: 40%;
+}
+img:not([src]) {
+    visibility: hidden;
+}
+.option:first-child {
+    border-color: #e4a10d;
+}
+.option:nth-child(2) {
+    border-color: #526ef6;
+}
+.option:nth-child(3) {
+    border-color: #e7385b;
+}
+.option:nth-child(4) {
+    border-color: #8b5ee4;
+}
+.option:last-child {
+    border-color: #3eb7ca;
+}
+.cover {
+    position: absolute;
+    inset: 0;
+}
+.opt {
+    aspect-ratio: 1 / 1;
+    height: 40%;
+    max-height: 240px;
+    width: auto;
+    border-radius: 50%;
+    border: var(--option-border-size) solid white;
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+.opt img {
+    width: 50%;
+    height: 50%;
+    object-fit: contain;
+}
+#instructions-popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+.popup-content {
+    width: 50%;
+    height: 50%;
+    background: #1f3757;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.popup-title {
+    color: white;
+    margin-bottom: 20px;
+}
+#winner-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 15px;
+    font-size: 24px;
+    z-index: 2000;
+    font-weight: bold;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+#instructions-btn {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid white;
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 2000;
+}
+#instructions-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+
+@media only screen and (max-width: 800px) {
+    #rpsls-ui {
+        flex-direction: column;
+        --choice-size: 26vw; 
+        --choice-gap: 2vw;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    #rpsls-ui > section {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        position: relative;
+    }
+
+    #score-board {
+        width: 95%;
+        margin: 15px auto;
+        margin-bottom: 160px; 
+    }
+
+    #options {
+        margin: 20px auto 80px auto;
+    }
+
+    #rpsls-ui > .player-side {
+        position: absolute;
+        top: 155px; 
+        width: 50%;
+        height: auto;
+        z-index: 5;
+    }
+
+    #rpsls-ui > .player-side:first-child {
+        left: 0;
+    }
+
+    #rpsls-ui > .player-side:last-child {
+        right: 0;
+    }
+
+    .opt {
+        height: 110px;
+        width: 110px;
+        border-width: 5px;
+        margin: 0 auto;
+        background-color: #1a1a1a;
+    }
+
+    .opt img {
+        width: 60%;
+        height: 60%;
+    }
+
+    #instructions-btn {
+        bottom: 15px;
+    }
+}

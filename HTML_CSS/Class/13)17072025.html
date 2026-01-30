@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html, body{
+            height: 100%;
+            width: 100%;
+        }
+        img{
+            height: 25vh
+        }
+        main{
+            height: fit-content;
+            width: fit-content;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 30px;
+            main: auto;
+        }
+        .blur{filter: blur(5px)}
+        .brightness{filter: brightness(50%)}
+        .contrast{filter: contrast(1.5)}
+        .greyscale{filter: grayscale(100%)}
+        .hue{filter: hue-rotate(45deg)}
+        .invert{filter: invert(0.8)}
+        .opaque{filter: opacity(0.5)}
+        .saturate{filter: saturate(10)}
+        .sepia{filter: sepia(2)}
+    </style>
+</head>
+<body>
+    <main>
+        <div>
+            <h1>Blur</h1>
+            <img class="blur" src="https://onetreeplanted.org/cdn/shop/articles/Forest_Fog_1800x.jpg?v=1682535224"/>
+        </div>
+
+        <div>
+            <h1>Brightness</h1>
+            <img class="brightness" src="https://onetreeplanted.org/cdn/shop/articles/Forest_Fog_1800x.jpg?v=1682535224"/>
+        </div>
+
+        <div>
+            <h1>Contrast</h1>
+            <img class="contrast" src="https://onetreeplanted.org/cdn/shop/articles/Forest_Fog_1800x.jpg?v=1682535224"/>
+        </div>
+
+        <div>
+            <h1>Greyscale</h1>
+            <img class="greyscale" src="https://onetreeplanted.org/cdn/shop/articles/Forest_Fog_1800x.jpg?v=1682535224"/>
+        </div>
+
+        <div>
+            <h1>Hue Rotate</h1>
+            <img class="hue" src="https://onetreeplanted.org/cdn/shop/articles/Forest_Fog_1800x.jpg?v=1682535224"/>
+        </div>
+
+        <div>
+            <h1>Invert</h1>
+            <img class="invert" src="https://onetreeplanted.org/cdn/shop/articles/Forest_Fog_1800x.jpg?v=1682535224"/>
+        </div>
+
+        <div>
+            <h1>Opacity</h1>
+            <img class="opaque" src="https://onetreeplanted.org/cdn/shop/articles/Forest_Fog_1800x.jpg?v=1682535224"/>
+        </div>
+
+        <div>
+            <h1>Saturation</h1>
+            <img class="saturate" src="https://onetreeplanted.org/cdn/shop/articles/Forest_Fog_1800x.jpg?v=1682535224"/>
+        </div>
+
+        <div>
+            <h1>Sepia</h1>
+            <img class="sepia" src="https://onetreeplanted.org/cdn/shop/articles/Forest_Fog_1800x.jpg?v=1682535224"/>
+        </div>
+    </main>
+</body>
+</html>

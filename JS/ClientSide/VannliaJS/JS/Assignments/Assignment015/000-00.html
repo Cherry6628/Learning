@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/c6d19328af.js" crossorigin="anonymous"></script>
+    <style>
+        *{
+            border: 0;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #main-container{
+            /* display: flex !important; flex-wrap: wrap;  */
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            
+            gap: .2rem; 
+            margin-top: 1rem;
+        }
+        @media only screen and (max-width: 1000px){
+            #main-container{
+                grid-template-columns: repeat(3, 1fr) !important;
+            }
+            html, body{
+                font-size: 2.4vw !important;
+            }
+        }
+        @media only screen and (max-width: 700px){
+            #main-container{
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            html, body{
+                font-size: 3.6vw !important;
+            }
+        }
+        @media only screen and (max-width: 500px){
+            #main-container{
+                grid-template-columns: 1fr !important;
+            }
+            html, body{
+                font-size: 7.5vw !important;
+            }
+        }
+        html, body{font-size: 1.5vw;}
+        .product{
+            align-self: center;
+            justify-self: center;
+            width: 12.6666rem;
+            height: 100%;
+            border-radius: 1rem;
+            border: .5px solid #F5F5F5;
+            /* border: .5px solid black; */
+        }
+        img{
+            width: 100%;
+            border-radius: 1rem 1rem 0 0;
+        }
+        .description{
+            width: 100%;
+            height: fit-content;
+            padding: 0.6666rem;
+            
+        }
+        .sponsored-msg{
+            color: #686B6B;
+            display: flex !important;
+            flex-direction: row;
+            /* justify-content: center; */
+            align-items: center;
+            font-size: .4rem;
+            gap: .3rem;
+            height: .6rem;
+            font-weight: 500;
+            margin-bottom: .3rem
+        }
+        
+        .sponsored-msg > .info-icon{
+            color: white;
+            background-color: #969696;
+            font-size: .4rem;
+            vertical-align: middle;
+            width: .6rem;
+            height: .6rem;
+            border-radius: 50%;
+            text-align: center;
+            vertical-align: middle;
+            display: flex !important;
+            justify-content: center;
+            align-items: center;
+
+        }
+        
+        .product-name{
+            font-size: 0.65rem;
+            /* margin-bottom: .3rem; */
+        }
+
+        .star-count, .star, .angle-down{
+            font-size: 0.55rem;
+        }
+        .star-count{
+            margin-right: 0.3rem;
+        }
+        .star{
+            color: #FF6101;
+        }
+        p{
+            height: fit-content;
+            /* display: block; */
+        }
+        .rated-persons-count{
+            color: blue;
+            font-size: 0.5rem;
+        }
+        .angle-down, .rated-persons-count{
+            margin-left: 0.15rem;
+        }
+        .bought-count-message, .service-type{
+            font-size: 0.55rem;
+            color: #585C5C;
+            font-weight: 500;
+            margin-top: 0.3rem;
+            letter-spacing: -.5px;
+            margin-bottom: 0.5rem;
+        }
+        .current-price{
+            font-size: 0.9rem;
+            font-weight: 600;
+
+        }
+        .original-price{
+            font-size: 0.55rem;
+            letter-spacing: -.5px;
+        }
+        .strike{
+            text-decoration: line-through;
+        }
+        sup{
+            font-size: 0.6rem
+        }
+        .mrp{
+            color: #585C5C
+        }
+        .bold{
+            font-weight: 600;
+        }
+        .delivery-msg{
+            font-size: 0.55rem;
+            margin-top: 0.3rem;
+            line-height: 1.5;
+        }
+        /* .service-type{
+            margin-bottom: 0 !important;
+        } */
+        button{
+            padding: 0.35rem 0.5rem;
+            font-size: 0.55rem;
+            color: black;
+            background-color: #FFD812;
+            border-radius: 1rem;
+        }
+        .tag{
+            background-color: #CC0B39;
+            color: white;
+            padding: .2rem;
+            font-size: .6rem;
+            margin-bottom: .3rem;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+    <main id="main-container"></main>
+</body>
+<script>
+    function CreateProductBox(imgURL, name, rating, ratedPersonCount, boughtCount, 
+        currentPrice, actualPrice, offerPercentile, deliveryTime, serviceType, tag=undefined){
+            this.imgURL = imgURL;
+            this.name = name;
+            this.rating = rating;
+            this.ratedPersonCount = ratedPersonCount;
+            this.boughtCount = boughtCount;
+            this.currentPrice = currentPrice;
+            this.actualPrice = actualPrice;
+            this.offerPercentile = offerPercentile;
+            this.deliveryTime = deliveryTime;
+            this.serviceType = serviceType;
+            this.tag = tag;
+            this.element = document.createElement('div');
+    }
+    CreateProductBox.prototype.createElement = function(){
+
+        this.element.classList.add("product");
+        
+        let img = document.createElement('img');
+        img.setAttribute('src', this.imgURL);
+        let description = document.createElement('div');
+        description.classList.add('description');
+        this.element.append(img, description);
+
+
+        let p = document.createElement("p");
+        p.classList.add("sponsored-msg");
+        p.innerHTML = "<span>Sponsored</span><span class=\"info-icon\"><i class=\"fa-solid fa-info\"></i></span>";
+        description.append(p);
+
+        p = document.createElement("p");
+        p.classList.add("product-name");
+        p.innerText=this.name;
+        description.append(p);
+
+
+        p = document.createElement('p');
+        p.innerHTML = `<span class='star-count'>${this.rating}</span>`+('<i class="fa-solid fa-star star"></i>'.repeat(Math.round(this.rating)))+('<i class="fa-regular fa-star star"></i>'.repeat(5-Math.round(this.rating)))+'<i class="fa-solid fa-angle-down angle-down"></i>'+`<span class=rated-persons-count>(${this.ratedPersonCount})</span>`;
+        description.append(p);
+
+        p = document.createElement('p');
+        p.classList.add('bought-count-message');
+        p.innerText = this.boughtCount + " bought in past month";
+        description.append(p);
+        
+        if (this.tag){
+            p = document.createElement('span');
+            p.classList.add('tag');
+            p.innerText = this.tag;
+            description.append(p);
+        }
+
+        p = document.createElement('p');
+        p.innerHTML = '<sup>₹</sup><span class="current-price">'+this.currentPrice+"</span>&nbsp;<span class='original-price'><span class='mrp'>M.R.P:&nbsp;<span class='strike'>₹"+this.actualPrice+"</span></span> <span class='offer'>("+this.offerPercentile+"% off)</span></span>";
+        description.append(p);
+        
+        p = document.createElement("p");
+        p.classList.add('delivery-msg');
+        p.innerHTML = 'FREE delivery as soon as <span class="bold">'+this.deliveryTime+"</span>";
+        description.append(p);
+
+        p = document.createElement("p");
+        p.classList.add('service-type');
+        p.innerText = "Service: "+this.serviceType;
+        description.append(p);
+
+        btn = document.createElement('button');
+        btn.innerText = "Add to cart";
+        description.append(btn);
+
+    }
+    CreateProductBox.prototype.insertInto = function(element){element.append(this.element);}
+    let product0 = new CreateProductBox("images/tv1.png", 
+        "Samsung 108 cm (43 inches) Crystal 4K Vista Ultra HD Smart LED TV UA43UE81AFULXL",
+        "4.0", "3.3K", "100+", "23,990", "39,500", 39, "Thu, 25 Sept, 7am - 9am",
+        "Brand Installation")
+    product0.createElement();
+    product0.insertInto(document.getElementById('main-container'));
+
+    
+    let product1 = new CreateProductBox("images/tv2.png", 
+        "Xiaomi 138cm (55 inch) FX Ultra HD 4K Smart LED Fire TV L55MB-FIN",
+        "3.9", "510", "50+", "29,499", "48,999", 40, "Thu, 25 Sept, 7am - 9am",
+        "Brand Installation")
+    product1.createElement();
+    product1.insertInto(document.getElementById('main-container'));
+
+    
+    let product2 = new CreateProductBox("images/tv3.png", 
+        "Xiaomi 138cm (55 inch) FX Ultra HD 4K Smart LED Fire TV L55MB-AIN",
+        "4.0", "3.7K", "50+", "33,999", "48,999", 31, "Thu, 25 Sept, 7am - 9am",
+        "Brand Installation", 'Deal with GST Savings')
+    product2.createElement();
+    product2.insertInto(document.getElementById('main-container'));
+
+    
+    let product3 = new CreateProductBox("images/tv4.png", 
+        "Xiaomi 138cm (55 inch) FX Ultra HD 4K Smart LED Fire TV L55MB-FIN",
+        "4.0", "3.5K", "1K+", "10,990", "17,900", 39, "Thu, 25 Sept, 7am - 9am",
+        "Brand Installation", 'Limited time deal')
+    product3.createElement();
+    product3.insertInto(document.getElementById('main-container'));
+</script>
+</html>

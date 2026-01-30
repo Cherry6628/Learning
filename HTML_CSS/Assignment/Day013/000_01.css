@@ -1,0 +1,47 @@
+@media only screen and (max-width: 1053px){
+    .response{
+        width: 78vw;
+    }
+    .fgs{
+        width: 78vw
+    }
+    /* . */
+    .sec3{
+        max-width: fit-content
+    }
+    .sec3 > img{
+        max-width: 30vw;
+        margin: 0px 25vw; 
+    }
+    .sec3 .fgs{
+        max-width: 80vw;
+        margin: auto;
+    }
+    .sec2 > .flex-r > .box>p{
+        width: 50vw;
+    }
+    form{
+        width: 80vw
+    }
+    .form > * {
+        max-width: 100%;
+    }
+    .inp input:first-child, .inp input:last-child{width: 72vw}
+    .con{
+        min-width: 80vw;
+        gap: 1vw
+    }
+    .b{gap: 8vw}
+    input{
+        font-size: .8vh;
+        padding: 10px;
+        max-height: fit-content;
+    } .b{gap: 3.5vw}
+    footer h5{font-size: 1rem}
+    ul.baseline{gap: 1.2vw}
+    .start > li > h5 > div{
+        height: 3vw; width: 3vw;
+        padding: 1vw 0vw 1vw 0.5vw;}
+
+     .button{font-size: 1.5vw}
+}

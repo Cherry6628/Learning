@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // Helpers
+    let oneToN = function (i){let p = ""; for (let j=1; j<=i;j++){p+=j+" ";} return p+"\n";}
+    let nStars = function (n){let p=""; for (let j=0; j<n;j++){p+="* ";} return p+"\n";}
+    let factorial = function (v){let r = 1; for (let i=1; i<=v; i++){r*=i;} return r;}
+    let C = function (n_, r_){return factorial(n_)/(factorial(r_)*factorial(n_-r_));}
+    let nSpace = function (n){let p = ""; for (let i=0; i<n;i++){p+=" ";} return p;}
+    let showTitle = function (msg){console.log(`%c${msg}`, 'color: black; background-color: blue; font-size: 20px; font-weight: 900; padding: 20px');}
+
+
+
+    // Patterns 
+    let squareHollowPattern = function (n){
+        let pattern = "";
+        for (let i=0; i<n; i++){
+            for (let j=0; j<n; j++){
+                pattern += (((i==0)||(i==n-1)||(j==0)||(j==n-1))?"*":" ")
+            }
+            pattern+="\n";
+        }
+        return pattern;
+    }
+
+    let numberTriangular = function (n){
+        pattern = "";
+        for (let i=0; i<n; i++){
+            pattern+=nSpace(n-i-1);
+            for (let j=0; j<i+1; j++){
+                pattern+=(i+1)+" ";
+            }
+            pattern += "\n";
+        }
+        return pattern;
+    }
+
+    let numberIncreasingPyramid = function (n){
+        pattern="";
+        for (let i=1; i<=n;i++){
+            pattern+=oneToN(i);
+        }
+        return pattern;
+    }
+
+    let numberIncreasingReversePyramid = function (n){
+        pattern="";
+        for (let i=n; i>0;i--){
+            pattern+=oneToN(i);
+        }
+        return pattern;
+    }
+
+    let numberChangingPyramid = function (n){
+        pattern="";
+        for (let i=0; i<n; i++){
+            for (let j=0; j<=i; j++){
+                pattern+=((i*(i+1)/2)+(j+1))+" ";
+            }
+            pattern+="\n";
+        }
+        return pattern;
+    }
+
+    let zeroOneTriangle = function (n){
+        pattern="";
+        for (let i=1; i<=n;i++){
+            for (let j=1; j<=i;j++){
+                pattern+=(((i+j)%2==0)?1:0)+" ";
+            }
+            pattern+="\n";
+        }
+        return pattern;
+    }
+
+    let palindromeTriangle = function (n){
+        pattern = "";
+        for (let i=0;i<n;i++){
+            pattern+=nSpace((n-i-1)*2);
+            for (let j=i+1; j>1; j--){
+                pattern+=j+" ";
+            }
+            pattern+=oneToN(i+1);
+        }
+        return pattern;
+    }
+
+    let rhombusTriangle = function (n){
+        pattern = "";
+        for (let i=0;i<n;i++){
+            pattern+=nSpace(i)+nStars(n);
+        }
+        return pattern;
+    }
+
+    let diamondPattern = function (n){
+        pattern = "";
+        for (let i=0; i<n; i++){
+            pattern+=nSpace(n-i-1)+nStars(i+1);
+        }
+        for (let i=n-1; i>0; i--){
+            pattern+=nSpace(n-i)+nStars(i);
+        }
+        return pattern;
+    }
+
+    let butterflyStarPattern = function (n){
+        pattern = "";
+        for (let i=0; i<(2*n) - 1; i++){
+            for(let j=0; j<(2*n) -1; j++){
+                if (((i+j)%2==0) && (i<n && (j<i+1 || j>=2*n-i-2) || (i>n && (j<2*n-i || j>i-1) || i==n))){
+                    pattern+="* ";
+                } else {
+                    pattern +="  "
+                }
+            }
+            pattern+="\n";
+        }
+        return pattern;
+    }
+
+    let squareFillPattern = function (n){
+        pattern = "";
+        for (let i=0; i<n; i++){
+            pattern+=nStars(n);
+        }
+        return pattern;
+    }
+    
+    let rightHalfPyramidPattern = function(n){
+        let pattern = "";
+        for (let i=0; i<n; i++){
+            pattern+=nStars(i+1);
+        }
+        return pattern;
+    }
+
+    let reverseRightHalfPyramidPattern = function(n){
+        let pattern = "";
+        for (let i=n; i>0; i--){
+            pattern+=nStars(i);
+        }
+        return pattern;
+    }
+
+    let leftHalfPyramidPattern = function(n){
+        let pattern = "";
+        for(let i=0; i<n;i++){
+            pattern+=nSpace(2*(n-i-1))+nStars(i+1);
+        }
+        return pattern;
+    }
+
+    let reverseLeftHalfPyramidPattern = function(n){
+        let pattern = "";
+        for(let i=0; i<n;i++){
+            pattern+=nSpace(2*i)+nStars(n-i);
+        }
+        return pattern;
+    }
+
+    let kPattern = function(n){
+        let pattern = reverseRightHalfPyramidPattern(n);
+        for (let i=1; i<n; i++){
+            pattern+=nStars(i+1);
+        }
+        return pattern;
+    }
+
+    let triangleStarPattern = function(n){
+        let pattern = "";
+        for (let i=0; i<n; i++){
+            pattern+=nSpace(n-i-1)+nStars(i+1);
+        }
+        return pattern;
+    }
+
+    let reverseNumberTrianglePattern = function(n){
+        let pattern = "";
+        for (let i=1; i<=n; i++){
+            pattern+=nSpace(i-1);
+            for (let j=i; j<=n;j++){
+                pattern+=j+" ";
+            }
+            pattern+="\n";
+        }
+        return pattern;
+    }
+
+    let mirrorImageTrianglePattern = function(n){
+        let pattern = reverseNumberTrianglePattern(n);
+        for (let i=n-1; i>0; i--){
+            pattern+=nSpace(i-1);
+            for (let j=i; j<=n;j++){
+                pattern+=j+" ";
+            }
+            pattern+="\n";
+        }
+        return pattern;
+    }
+
+    let hollowTrianglePattern = function(n){
+        let pattern = "";
+        for (let i=0; i<n; i++){
+            pattern+=nSpace(n-i-1);
+            for (let j=0; j<i+1; j++){
+                if (i==0 || j==0 || i==n-1 || j==i){
+                    pattern+="* ";
+                } else {
+                    pattern+="  ";
+                }
+            }
+            pattern += "\n";
+        }
+        return pattern;
+    }
+
+    let hollowReverseTrianglePattern = function(n){
+        let pattern = "";
+        for (let i=n-1; i>=0; i--){
+            pattern+=nSpace(n-i-1);
+            for (let j=0; j<i+1; j++){
+                if (i==0 || j==0 || i==n-1 || j==i){
+                    pattern+="* ";
+                } else {
+                    pattern+="  ";
+                }
+            }
+            pattern += "\n";
+        }
+        return pattern;
+    }
+
+    let hollowDiamondPyramid = function(n){
+        let pattern = "";
+        for (let i=0; i<n; i++){
+            pattern+=nSpace(n-i-1);
+            for (let j=0; j<=i; j++){
+                if (i==0 || j==0 || j==i){
+                    pattern+="* ";
+                } else {
+                    pattern+="  ";
+                }
+            }
+            pattern+="\n";
+        }
+        for (let i=n-1; i>0; i--){
+            pattern+=nSpace(n-i);
+            for (let j=0; j<i; j++){
+                if (i==0 || j==0 || j==i-1){
+                    pattern+="* ";
+                } else {
+                    pattern+="  ";
+                }
+            }
+            pattern+="\n";
+        }
+        return pattern;
+    }
+
+    let hollowHourglassPattern = function(n){
+        let pattern = hollowReverseTrianglePattern(n);
+        for (let i=1; i<n; i++){
+            for (let j=0; j<n-i-1;j++){
+                pattern+=" ";
+            }
+            for (let j=0; j<i+1; j++){
+                if (i==0 || j==0 || i==n-1 || j==i){
+                    pattern+="* ";
+                } else {
+                    pattern+="  ";
+                }
+            }
+            pattern += "\n";
+        }
+        return pattern;
+    }
+
+    let pascalsTriangle = function(n){
+        let pattern = "";
+        for (let i=0; i<n; i++){
+            pattern+=nSpace(n-i-1);
+            for (let j=0; j<=i; j++){
+                pattern+=(C(i, j))+" ";
+            }
+            pattern+="\n";
+        }
+        return pattern;
+    }
+
+    let rightPascalsTriangle = function(n){
+        let pattern = "";
+        for (let i=0; i<n+1; i++){
+            for (let j=0; j<i; j++){
+                if ((i+j-1)%2==0){
+                    pattern+="* ";
+                } else{
+                    pattern+="  ";
+                }
+            }
+            pattern+="\n";
+        }
+        for (let i=n; i>0; i--){
+            for (let j=0; j<i-1; j++){
+                if ((i+j)%2==0){
+                    pattern+="* ";
+                } else{
+                    pattern+="  ";
+                }
+            }
+            pattern+="\n";
+        }
+        return pattern;
+    }
+
+
+    let init = function(num){
+        showTitle("Pattern 1");
+        console.log(squareHollowPattern(num));
+        showTitle("Pattern 2");
+        console.log(numberTriangular(num));
+        showTitle("Pattern 3");
+        console.log(numberIncreasingPyramid(num));
+        showTitle("Pattern 4");
+        console.log(numberIncreasingReversePyramid(num));
+        showTitle("Pattern 5");
+        console.log(numberChangingPyramid(num));
+
+        showTitle("Pattern 6");
+        console.log(zeroOneTriangle(num));
+        showTitle("Pattern 7");
+        console.log(palindromeTriangle(num));
+        showTitle("Pattern 8");
+        console.log(rhombusTriangle(num));
+        showTitle("Pattern 9");
+        console.log(diamondPattern(num));
+        showTitle("Pattern 10");
+        console.log(butterflyStarPattern(num));
+
+        showTitle("Pattern 11");
+        console.log(squareFillPattern(num));
+        showTitle("Pattern 12");
+        console.log(rightHalfPyramidPattern(num));
+        showTitle("Pattern 13");
+        console.log(reverseRightHalfPyramidPattern(num));
+        showTitle("Pattern 14");
+        console.log(leftHalfPyramidPattern(num));
+        showTitle("Pattern 15");
+        console.log(reverseLeftHalfPyramidPattern(num));
+
+        showTitle("Pattern 16");
+        console.log(kPattern(num));
+        showTitle("Pattern 17");
+        console.log(triangleStarPattern(num));
+        showTitle("Pattern 18");
+        console.log(reverseNumberTrianglePattern(num));
+        showTitle("Pattern 19");
+        console.log(mirrorImageTrianglePattern(num));
+        showTitle("Pattern 20");
+        console.log(hollowTrianglePattern(num));
+
+        showTitle("Pattern 21");
+        console.log(hollowReverseTrianglePattern(num));
+        showTitle("Pattern 22");
+        console.log(hollowDiamondPyramid(num));
+        showTitle("Pattern 23");
+        console.log(hollowHourglassPattern(num));
+        showTitle("Pattern 24");
+        console.log(pascalsTriangle(num));
+        showTitle("Pattern 25");
+        console.log(rightPascalsTriangle(num));
+    }
+    init(Number(prompt("Enter the value of n: ")));
+</script>
+</html>

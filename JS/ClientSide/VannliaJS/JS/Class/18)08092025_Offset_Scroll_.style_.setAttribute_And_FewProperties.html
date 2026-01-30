@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            --brig: 30;
+            padding: 0px;
+            border: 0px;
+            margin: 0px;
+            background-color: black;
+            --c: rgba(255, 255, 255, calc(var(--brig) / 100));
+            color: var(--c);
+        }
+        #big{
+            padding: 10px;
+            border: 2px solid var(--c);
+            height: 200px;
+            width: 200px;
+        }
+        #big{
+            position: relative;
+        }
+        #small{
+            padding: 10px;
+            border: 1px solid var(--c);
+            height: 100px;
+            width: 100px;
+            overflow: scroll;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="big">
+        <div id="small" style="height: 40px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quae doloremque deleniti asperiores modi distinctio mollitia tempore praesentium blanditiis at.</div>
+    </div>
+
+    <input id="inp" type="password" minlength="8" multiple>
+    
+</body>
+<script>
+    document.getElementsByTagName("html")[0].setAttribute("onclick", "navigator.clipboard.writeText('Naa thaan da anaconda')");
+    let l = console.log;
+    let small = document.getElementById("small"), big=document.getElementById("big");
+    l(small.clientHeight, small.clientWidth);
+    l(small.clientTop, small.clientLeft);
+    
+    l(small.offsetHeight, small.offsetWidth);
+    l(small.offsetTop, small.offsetLeft);
+    l(small.offsetParent);
+    l(small.scrollHeight, small.scrollWidth);
+    l(small.scrollTop, small.scrollLeft);
+
+
+
+    let inpbox = document.getElementById("inp");
+    l(inpbox.getAttribute("type"))
+    l(inpbox.attributes);
+    inpbox.className = "NOOOOCLASS yesclass";
+    l(inpbox.classList);
+    inpbox.setAttribute("abcd", "noval");
+    l(inpbox.setAttribute("x", 3424))
+    inpbox.style.outline = "1px solid var(--c)";
+
+
+    l(inpbox)
+
+    l(small.style)  // selects only inline style. selects neither internal nor external
+    small.style.position = "absolute";
+    l(small.style)
+    // function sleep(n){return new Promise(r=>setTimeout(r, n*1000))}
+    // sleep(20);
+    small.style.cssText = "height: 200px";  // erases not only height but all
+    l(small.style)
+
+    
+</script>
+</html>

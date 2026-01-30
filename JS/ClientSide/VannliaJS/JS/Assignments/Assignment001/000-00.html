@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let titleStyle = "color: black; font-size: 20px; background-color: blue"
+
+    console.log('%c------Task 01------', titleStyle);
+    let item1, item2, item3, total_price, discount;
+    item1=250; item2=150;item3=100;discount = 10;
+    total_price = item1+item2+item3;
+    console.log(`Actual Total: ${total_price}`)
+    total_price *= (100-discount)/100;
+    console.log(`Total After Discount: ${total_price}`);
+
+
+    console.log('%c------Task 02------', titleStyle);
+    let m1, m2, m3, m4, m5, total, pass, avg;
+    m1=Number(prompt('Enter your Tamil Mark: '));
+    console.info("Your Tamil Mark:", m1);
+    m2=Number(prompt('Enter your English Mark: '));
+    console.info("Your English Mark:", m2);
+    m3=Number(prompt('Enter your Maths Mark: '));
+    console.info("Your Maths Mark:", m3);
+    m4=Number(prompt('Enter your Science Mark: '));
+    console.info("Your Science Mark:", m4);
+    m5=Number(prompt('Enter your Social Science Mark: '));
+    console.info("Your Social Science Mark:", m5);
+    pass = m1>=35 && m2>=35 && m3>=35 && m4>= 35 && m5>=35;
+    total=m1+m2+m3+m4+m5;
+    console.log("Total:", total);
+    avg = total/5;
+    console.log("Average:", avg);
+    if (pass){
+        console.log('%cYou are PASS', 'color: green; font-weight: 900');
+    } else{
+        console.warn('%cYou are FAIL', 'color: red; font-weight: 900');
+    }
+
+
+    console.log('%c------Task 03------', titleStyle);
+    let l=12, w=8;
+    console.log(`Area = ${l*w} sq.units`);
+
+
+    console.log('%c------Task 04------', titleStyle);
+    let radius = 7;
+    let area = Math.PI*radius**2;
+    console.log(`Area = ${area} sq.units`);
+
+
+    console.log('%c------Task 05------', titleStyle);
+    function celsiusToFahreinheit(c){return 9*c/5+32}
+    cel = celsiusToFahreinheit(Number(prompt("Enter the Temperature in Celsius ? ")));
+    console.log(`${cel} Fahreinheit`)
+
+
+    console.log('%c------Task 06------', titleStyle);
+    let pop = 1000;
+    console.log(`Population after 0 year ${pop}`)
+    console.log(`Population after 1 year ${++pop}`)
+    console.log(`Population after 2 years ${++pop}`)
+    console.log(`Population after 3 years ${++pop}`)
+    console.log(`Population after 4 years ${++pop}`)
+    console.log(`Population after 5 years ${++pop}`)
+
+
+    console.log('%c------Task 07------', titleStyle);
+    let p1, p2, p3, totalExpense;
+    p1=100, p2=50, p3=25;
+    let expenses = [p1, p2, p3];
+    totalExpense = p1+p2+p3;
+    console.log("Total:", totalExpense);
+
+
+    console.log('%c------Task 08------', titleStyle);
+    let yob = Number(prompt("Enter your Year of Birth: "))
+    let cur = 2025;
+    console.log("You are", cur-yob, "years old.");
+
+
+    console.log('%c------Task 09------', titleStyle);
+    let bookstore, book1, book2, book3;
+    book1 = {
+        name: "From the cradle of the Nature",
+        author: "Ruskin Bond"
+    }
+    book2 = {
+        name: "The Brief History of Time: From Big Bangs to Blackholes",
+        author: "Stephen Hawking"
+    }
+    book3 = {
+        name: "Atomic Habits",
+        author: "James Clear"
+    }
+    bookstore = {
+        name: "ZP Library",
+        books: [
+            book1, book2, book3
+        ]
+    }
+    console.log(bookstore);
+/**/
+
+
+    console.log('%c------Task 10------', titleStyle);
+    let studentRecord;
+    studentRecord = {
+        name: "NAMENAMENAME",
+        class: "SSLC",
+        mark: {
+            tamil: m1,
+            english: m2,
+            maths: m3,
+            science: m4,
+            socialScience: m5
+        },
+        total: total,
+        result: null
+    };
+    if (pass){studentRecord.result="pass";} else{studentRecord.result="fail";}
+    console.log(studentRecord);
+
+
+    console.log('%c------Task 11------', titleStyle);
+    let genres, horror, comedy;
+    horror = ["Conjuring 1", "Conjuring 2", "Conjuring 3", "It 1", "It 2", "It3", "Anabelle 1", "Anabelle 2", "Anabelle 3", "Howl"];
+    comedy = ["Herbie", "Dictator", "TED", "Project X"];
+    genres = {horror: horror, comedy:comedy};
+    console.log(genres)
+
+
+    console.log('%c-----Task 12------', 'color: blue; font-size: 20px;');
+    let weather = {
+        timing: {
+            hour: 18,
+            min: 13,
+            sec: 58,
+            date: 20,
+            month: 8,
+            year: 2025
+        },
+        place: ['Tenkasi', 'Surandai', 'Keezhapaavoor'],
+        weather_prediction: {
+            expected_weather: "rain",
+            probability: 0.93
+        }
+    };
+    console.log(weather);
+</script>
+</html>

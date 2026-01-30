@@ -1,0 +1,314 @@
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400';
+*{
+    box-sizing: border-box; 
+    font-weight: 200; 
+    letter-spacing: 0em; 
+    font-family: "Source Sans Pro", Helvetica, sans-serif;
+    font-style: normal;
+}
+html{width: 100%; font-size: 22.666px;}
+body{
+    min-height: 4750px;
+    max-height: fit-content;
+    width: 100%;
+    background-image: linear-gradient(45deg, #e37682 15%, #5f4d93 85%);
+    margin: 0px; border: 0px; padding: 0px;
+    display: flex;
+    justify-content: center;
+}
+p{line-height: 1.6}
+main{
+    width: 1450.67px;
+    height: 100%;
+    text-align: center;
+}
+main header{
+    color: white;
+    background-color: transparent;
+    height: 620px;
+    width: 100%;
+    padding: 158.666px 113.333px 90.666px;
+}
+
+#sec-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: spaec-between;
+    align-items: center    
+}
+
+#sec-arti *{
+    line-height: 1.2;
+}
+h1{font-size:2.75em}
+h2{font-size:2em}
+#sec-arti p{
+    font-size: 1.1rem;
+    line-height: 1.8rem;
+    color: rgba(255, 255, 255, 0.65)
+}
+
+#visiblesection{
+    background-color: white;
+    height: fit-content; color: #636363;
+}
+#visiblesection nav{
+    background-color: #F7F7F7;
+    height: 96.3333px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+}
+
+#visiblesection nav a{
+    background-color: white;
+    line-height: 2.25em;
+    height: 2.25em;
+    padding: 0px 20px;
+    margin: 0 15px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: black;
+}
+.article-c{
+    padding: 113.333px;
+    border-bottom: 1px solid #dddddd;
+    min-height: 700px;
+}
+#article-1{
+    display: flex;
+    justify-content: space-between;
+}
+#article-3{
+    height: 1000px
+}
+#a1-i{
+    border-radius: 50%;
+    background-image: url("pic01.jpg");
+    height: 363px; width: 363px;
+    /* background-attachment: fixed; */
+    background-size: cover;
+}
+.round{
+    border-radius: 50%;
+    padding: 0.65rem;
+    height: fit-content; width: fit-content;
+    border: 1px solid rgba(221, 221, 221, 0.9);
+    margin: auto;
+}
+#a1-c{
+    height: 395px;
+    width: 740px;
+}
+.left{
+    text-align: left;
+}
+h2.left{
+    width: 100%;
+    line-height: 1.5;
+    margin: 0;
+    padding-bottom: 0.7em;
+}
+#line01{
+    height: 0.15vw;
+    width: 6.5em;
+    background-image: linear-gradient(90deg, #efa8b0, #a89cc8, #8cc9f0);
+
+} .space-holder{height:1.4em; width: 10px}
+#a1-c section p, #a1-c section p{line-height: 1.6;}
+#a1-c section div, .button{padding: 20px 40px; border: 1px solid #636363; width: fit-content; text-align: center; border-radius: 10px}
+.floater{
+    float: left;
+} .clear{
+    clear: both
+} #a1-c section{height: fit-content}
+
+#mainhead h2{
+    width: 100%;
+    line-height: 1.5;
+    margin: 0;
+    padding-bottom: 0.7em;
+}
+#mainhead{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#mainhead .space-holder{
+    height: 1.4rem
+}
+
+#mainhead .p{
+    width: 90%;
+    font-size: 1.2em;
+    line-height: 1.5;
+}
+.parts{
+    display: flex;
+    justify-content: center;
+    border-radius: 20px
+}
+.part{
+    height: 170px; width: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; align-content: center; gap: 10px;
+    color: white;
+}
+#part1{
+    background-color: #EFA8B0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+#part2{
+    background-color: #C79CC8;
+}
+#part3{
+    background-color: #A89CC8;
+}
+#part4{
+    background-color: #9BB2E1;
+}
+#part5{
+    background-color: #8CC9F0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.logoset{
+    height: fit-content;
+    margin-top: 20px
+}
+i{
+    font-size: 2.5rem;
+    display: inline-block;
+}
+.part p{
+    margin: 0;
+    font-weight: 500;
+}
+.part strong{
+    font-weight: 500
+}
+.top-a{
+    margin: 50px 0px;
+    line-height: 1.5
+}
+.articles-sec{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: no-wrap;
+    gap: 20px;
+}
+.articles-sec section{
+    height: fit-content;
+    width: fit-content;
+}
+.articles-sec section h2{
+    font-size: 30px;
+}
+.logo-art2 i{
+    display: inline-block;
+    height: 194px; width: 194px;
+    font-size: 110px;
+    border: 1px solid #dddddd;
+    border-radius: 50%;
+    padding: 42px 0px;
+}
+.fa-code{
+    color: #e37682
+}
+.fa-copy{
+    color: #5f4d93
+}
+.fa-gem{
+    color: #8cc9f0
+} 
+.icon{
+    color: white;
+}
+.get{
+    background-color: #8CC9F0;
+    color: white; border: none
+}
+.buttons-g{
+    margin-top: 50px;
+    display: flex; gap: 20px; justify-content: center
+}
+footer{
+    color: #dddddd;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 113.3333px 113.3333px 50px;
+    width: 100%
+}
+footer .section1{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+footer section h2{
+    font-size: 2em;
+}
+footer section p{
+    font-size: 1em;
+    max-width: 40vw;
+}
+footer section{
+    width: fit-content;
+}
+
+footer section .button{
+    border-color: #dddddd;
+}
+.section2 ul li div{
+    width: fit-content;
+    flex-direction: row;
+    display: flex;
+    gap: 20px;
+}
+footer .contact{
+    flex-direction: column;
+    gap: 0px
+}
+.section2 ul li div p{
+    flex-grow: 1
+    /* min-width: 200px */
+}
+.contact li div h4{
+    min-width: 100px;
+    font-weight: 500;
+}
+.contact li div{
+    height: 80px;;
+}
+.soc{
+    height: 59px; min-width: 59px;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.soc .fa-brands{
+
+    font-size: 1.25em;
+}
+.section2 .lastul{
+    gap: 20px
+}
+.tm{
+    color: white;
+    padding: 0px 113.33px 113.33px;
+}
+.double{text-align: justify; columns: 20rem}

@@ -1,0 +1,66 @@
+:root{
+    --t1-color1: red;
+    --t1-color2: blue;
+    --t1-speed: 1s;
+    --t1-transition-timing-function: linear;
+    --t1-block-size: 40px;
+    --t1-block-gap: 10px;
+}
+
+#squares{
+    transform: rotateZ(-45deg); 
+    position: relative;
+    height: calc(2 * var(--t1-block-size) + var(--t1-block-gap)); 
+    width: calc(2 * var(--t1-block-size) + var(--t1-block-gap));
+}
+#squares div:nth-child(2n){
+    background-color: var(--t1-color2);
+}
+#squares div:nth-child(2n+1){
+    background-color: var(--t1-color1);
+}
+#squares div{
+    height: var(--t1-block-size); 
+    width: var(--t1-block-size); 
+    position: absolute;
+}
+#squares div:first-child{
+    z-index: 1; 
+    animation: square1 var(--t1-speed) var(--t1-transition-timing-function) infinite 0s normal
+}
+#squares div:nth-child(2){
+    z-index: 2; 
+    animation: square2 var(--t1-speed) var(--t1-transition-timing-function) infinite 0s normal
+}
+#squares div:nth-child(3){
+    z-index: 3; 
+    animation: square3 var(--t1-speed) var(--t1-transition-timing-function) infinite 0s normal
+}
+#squares div:last-child{
+    z-index: 4; 
+    animation: square4 var(--t1-speed) var(--t1-transition-timing-function) infinite 0s normal
+}
+@keyframes square1{
+    0%, 100% {top: 0; left: 0;}
+    25% {top: 0; left: calc(var(--t1-block-size) + var(--t1-block-gap));}
+    50% {top: calc(var(--t1-block-size) + var(--t1-block-gap)); left: calc(var(--t1-block-size) + var(--t1-block-gap));}
+    75% {top: calc(var(--t1-block-size) + var(--t1-block-gap)); left: 0;}
+}
+@keyframes square2{
+    75% {top: 0; left: 0;}
+    0%, 100% {top: 0; left: calc(var(--t1-block-size) + var(--t1-block-gap));}
+    25% {top: calc(var(--t1-block-size) + var(--t1-block-gap)); left: calc(var(--t1-block-size) + var(--t1-block-gap));}
+    50% {top: calc(var(--t1-block-size) + var(--t1-block-gap)); left: 0;}
+}
+@keyframes square3{
+    50% {top: 0; left: 0;}
+    75% {top: 0; left: calc(var(--t1-block-size) + var(--t1-block-gap));}
+    0%, 100% {top: calc(var(--t1-block-size) + var(--t1-block-gap)); left: calc(var(--t1-block-size) + var(--t1-block-gap));}
+    25% {top: calc(var(--t1-block-size) + var(--t1-block-gap)); left: 0;}
+}
+@keyframes square4{
+    25% {top: 0; left: 0;}
+    50% {top: 0; left: calc(var(--t1-block-size) + var(--t1-block-gap));}
+    75% {top: calc(var(--t1-block-size) + var(--t1-block-gap)); left: calc(var(--t1-block-size) + var(--t1-block-gap));}
+    0%, 100% {top: calc(var(--t1-block-size) + var(--t1-block-gap)); left: 0;}
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Hoisting, Scope</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+// all const, var, let will be hoisted
+console.log(a)
+var a = 10;  // not in TDZ
+
+// console.log(b)  throws reference error
+let b = 10; // in TDZ Temporal Dead Zone
+greet()
+function greet(){
+    console.log("asfasdf")
+}
+console.log(greet1)  // hoisted, but not initialized as a function
+// console.log(greet2, greet3) // throws error
+var greet1 = ()=>console.log("asfasdf var")
+let greet2 = ()=>console.log("asfasdf let")
+const greet3 = ()=>console.log("asfasdf const")
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Global Scope
+let i = 10;
+
+// Local Scope
+// i ) Function Scope - var
+// ii) Block Scope    - let, const
+
+function add(){
+    console.log("CX", cx)
+    {
+        let ax = 10; const bx=20;
+        var cx = 30;
+    }
+    {
+        console.log("adsfaASDFASDFASDs")
+    }
+    // console.log(ax+bx)  // ReferenceError
+    console.log("CX", cx)
+}
+add()
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Type coercion (implicit conversion)
+console.log("Type coercion : ", "2"*2)
+
+// Type casting (explicit conversion)
+console.log("Type casting  : ", Number("2")*2)
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// for-in, for-of loops
+
+object1 = {
+    name: "Sanjeevi",
+    age: 17,
+    id: "ZSTTK426/25",
+    city: "Madurai",
+}
+array1 = ["val1", "val2"];
+
+
+// for-in key/index
+for (let key in object1){
+    console.log(key)
+}
+for (let index in array1){
+    console.log(index)
+}
+
+// for-of value
+
+// for (let value of object){ //throws error
+//     console.log(value)
+// }
+for (let val of array1){
+    console.log(val)
+}
+
+</script>
+</html>

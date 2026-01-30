@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/c6d19328af.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="001_00.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <section>
+            <div id="cards">
+                <div class="card front"><img src="interactive-card-details/images/card-logo.svg"/>
+                    <section class="card-details">
+                        <p>0000 0000 0000</p>
+                        <span class="floater1">JANE APPLESEED</span><span class="floater2">00/00</span>
+                        <div class="clear"></div>
+                    </section>
+                </div>
+                <div class="card back"><span>000</span></div>
+            </div>
+        </section>
+        <section>
+            <form>
+                <div>
+                    <p>CARDHOLDER NAME</p>
+                    <input type="text" placeholder="e.g. Jane Appleseed" required maxlength="50"/>
+                </div>
+                <div>
+                    <p>CARD NUMBER</p>
+                    <input type="text" placeholder="e.g. 1234 5678 9123 0000" inputmode="numeric" required pattern="^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$" maxlength="19"/>
+                </div>
+                <div class="inl floater1">
+                    <p>EXP. DATE (MM/YY)</p>
+                    <input type="text" placeholder="MM" class="inl special" inputmode="numeric" pattern="^(0[1-9]|1[0-2])$" required maxlength="2"/>
+                    <input type="text" placeholder="YY" class="inl special" inputmode="numeric" pattern="^[0-9]{4}$" required maxlength="4"/>
+                </div>
+                <div class="inl floater2">
+                    <p>CVC</p><input type="text" placeholder="e.g. 123" class="inl special no-margin" inputmode="numeric" pattern="^[0-9]{3}$" required maxlength="3"/>
+                </div>
+                <div class="clear"></div>
+                <div class="button"><input type="submit" value="Confirm"/></div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+    "manifest_version":3,
+    "name":"myextension",
+    "version":"1.0.34",
+    "description": "my extension description",
+    "action":{
+        "default_popup": "popup.html"
+    },
+    "icons":{
+        "32": "images/favicon-16x16.png",
+        "64": "images/favicon-32x32.png"
+    }
+}

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini To-Do List</title>
+  <style>
+    
+    body {
+      font-family: Inter, system-ui, Arial;
+      margin: 18px;
+      background: #111;
+      color: #ddd;
+    }
+    h1 {
+      margin-bottom: 18px;
+      color: #eee;
+    }
+    label {
+      display: inline-block;
+      font-size: 80%;
+      margin-bottom: 6px;
+      color: #cccccc;
+    }
+    input, button {
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+    input[type=text] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #333333;
+      border-radius: 6px;
+      background: #222222;
+      color: #eeeeee;
+    }
+    button {
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: none;
+      background: #0b66c2;
+      color: #eeeeee;
+      cursor: pointer;
+      margin-left: 6px;
+    }
+    button:hover {
+      background: #09519a;
+    }
+    #task{
+        margin-bottom: 18px;   
+    }
+    #tasks {
+      margin-top: 18px;
+    }
+    li {
+      background: #1a1a1a;
+      border: 1px solid #444444;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+    li.hovered {
+      background: #222222;
+    }
+    .controls {
+      display: flex;
+      gap: 6px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Mini To-Do List</h1>
+    <label for="task">Enter Task</label>
+    <input id="task" type="text">
+    <div class="controls">
+      <button id="add">Add Task</button>
+      <button id="removeall">Clear All</button>
+    </div>
+    <p id="counter">Total Tasks: 0</p>
+    <ul id="tasks"></ul>
+  </main>
+
+  <script>
+    let inputBar = document.getElementById("task");
+    let addButton = document.getElementById("add");
+    let removeAll = document.getElementById("removeall");
+    let taskList = document.getElementById("tasks");
+    let counter = document.getElementById("counter");
+    let tasks = [];
+
+    function saveTasks() {
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      counter.innerText = `Total Tasks: ${tasks.length}`;
+    }
+
+    function loadTasks() {
+      let stored = localStorage.getItem("tasks");
+      if (stored) {
+        tasks = JSON.parse(stored);
+        tasks.forEach(todo => createTaskElement(todo));
+      }
+      counter.innerText = `Total Tasks: ${tasks.length}`;
+    }
+
+    function createTaskElement(todo) {
+      let li = document.createElement("li");
+      let span = document.createElement("span");
+      let deleteBtn = document.createElement("button");
+      let editBtn = document.createElement("button");
+
+      span.innerText = todo;
+      deleteBtn.innerText = "Delete";
+      editBtn.innerText = "Edit";
+
+      let btnGroup = document.createElement("div");
+      btnGroup.className = "controls";
+      btnGroup.append(editBtn, deleteBtn);
+
+      li.append(span, btnGroup);
+
+      taskList.appendChild(li);
+
+      deleteBtn.addEventListener("click", () => {
+        tasks = tasks.filter(t => t !== span.innerText);
+        li.remove();
+        saveTasks();
+      });
+
+      editBtn.addEventListener("click", () => {
+        if (editBtn.innerText === "Edit") {
+          let input = document.createElement("input");
+          input.type = "text";
+          input.value = span.innerText;
+          li.replaceChild(input, span);
+          editBtn.innerText = "Done";
+          input.focus();
+          input.addEventListener("keypress", e => {
+            if (e.key === "Enter") editBtn.click();
+          });
+        } else {
+          let input = li.querySelector("input");
+          let newText = input.value.trim() || span.innerText;
+          span.innerText = newText;
+          let idx = tasks.indexOf(todo);
+          if (idx !== -1) tasks[idx] = newText;
+          li.replaceChild(span, input);
+          editBtn.innerText = "Edit";
+          saveTasks();
+        }
+      });
+
+      li.addEventListener("mouseenter", () => li.classList.add("hovered"));
+      li.addEventListener("mouseleave", () => li.classList.remove("hovered"));
+    }
+
+    removeAll.addEventListener("click", () => {
+      taskList.innerHTML = "";
+      tasks = [];
+      saveTasks();
+    });
+
+    addButton.addEventListener("click", () => {
+      let todo = inputBar.value.trim();
+      inputBar.value = "";
+      if ((!todo) || tasks.includes(todo)) return;
+      tasks.push(todo);
+      createTaskElement(todo);
+      saveTasks();
+    });
+
+    loadTasks();
+  </script>
+</body>
+</html>

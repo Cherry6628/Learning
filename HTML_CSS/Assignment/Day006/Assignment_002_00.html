@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recreation 002</title>
+        <style>
+            *{
+                box-sizing: border-box;
+                margin: 0px; padding: 0px; border: 0px;
+                font-family: SemiTTF
+            } html, body{
+                width: 100%;
+                height: 100%;
+                background-color: #F4D04E;
+            } @font-face{
+                font-family: SemiTTF;
+                src: url("blog-preview-card-main/assets/fonts/static/Figtree-SemiBold.ttf")
+            } @font-face{
+                font-family: ExtraTTF;
+                src: url("blog-preview-card-main/assets/fonts/static/Figtree-ExtraBold.ttf")
+            }
+            body{
+                padding: 15%
+            }
+            main{
+                /* position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%); */
+
+                background-color: white;
+                border: 2px solid black;
+                border-radius: 10px;
+                width: fit-content;
+                padding: 30px;
+                box-shadow: 10px 10px 5px black;
+                text-align: left;
+            }
+            .img{
+                background-image: url("blog-preview-card-main/assets/images/illustration-article.svg");
+                height: 201px;
+                width: 336px; border-radius: 12px;
+            }
+            section{
+                max-width: 336px;
+                font-size: 14px;
+                margin: 30px 0px;
+            }
+            .highlight{
+                width: 84px;
+                height: 30px;
+                background-color: #F5CF51;
+                text-align: center;
+                padding: 7px; border-radius: 6px;
+                font-family: ExtraTTF;
+            }
+            .published-date{
+                margin: 10px 0px;
+            }
+            article h3, article p{
+                font-family: ExtraTTF;
+                max-width: 336px;
+            }
+            article p{
+                font-family: SemiTTF;
+                color: #C0C0C0;
+                font-weight: 600;
+                margin-top: 30px;
+            }
+            footer{margin-top: 30px;}
+            .img2{
+                width: 42px; 
+                height: 42px;
+                background-image: url("blog-preview-card-main/assets/images/image-avatar.webp");
+                background-size: cover;
+                background-repeat: no-repeat;
+                float: left;
+            }
+            .name{
+                float: left;
+                vertical-align: middle;
+                height: 42px;
+                margin: 11.5px;
+            
+            }
+            .c{
+                clear: both;
+            }
+        </style>
+    </head>
+    <body>
+        <center><main>
+            <div class="img"></div>
+            <section>
+                <div class="highlight">Learning</div>
+                <p class="published-date">Published 21 Dec 2023</p>
+            </section>
+            <article>
+                <h3>HTML & CSS foundations</h3>
+                <p>These languages are the backbone of every website, defining structure, content, and presentation.
+            </article>
+            <footer>
+                <div class="img2"></div>
+                <span class="name">Greg Hooper</span>
+                <div class="c"></div>
+            </footer>
+        </center></main>
+    </body>
+</html>

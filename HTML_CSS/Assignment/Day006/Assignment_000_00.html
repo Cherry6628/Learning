@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recreation of Layouts</title>
+        <style>
+            *{
+                box-sizing: border-box;
+                padding: 0px; margin: 0px; border: 0px;
+
+            }
+            html, body{
+                height: 100%;
+                width: 100%;
+            }
+            body{
+                background-image: linear-gradient(to bottom, #4D94E6, #7A6FED, #A648F2);
+            }
+            main{
+                width: 25%;
+                height: 20%;
+                background-color: white;
+                border-radius: 10px;
+                margin: 4%;
+                padding: 5px;
+                /* border: 5px solid black; */
+            }
+            #part1, #part2, #part3, #part4, #part5, #part6, #part7, #part8, #part9{
+                float: left;
+            }
+            /* #part4, #part7{
+                clear: left;  /* Clearing THe Float PRoperty is not necessary if the height and width are set properly
+            } */
+            div{
+                min-width: 10px;
+                min-height: 10px;
+                border: 5px solid #A7A7A7;   
+            }
+            .div11, .div12, .div13{
+                height: 100%;
+                width: 33.33%;
+                float: left;
+            }
+            .div21{
+                height: 100%;
+                width: 50%;
+                float: left;
+            }
+            .div22, .div23{
+                height: 50%;
+                width: 50%;
+                float: right;
+            }
+
+            .div31, .div32, .div33, .div34, .div35, .div36{
+                height: 50%; width: 33.33%;
+                float: left; /*Clearing THe Float Property is not necessary if the height and width are set properly*/
+            }
+            
+            .div41, .div45{
+                height: 40%;
+            }
+            .div42, .div46{
+                height: 60%;
+            }
+            .div43{
+                height: 75%;
+            }
+            .div44{
+                height: 25%;
+            }
+
+            .div41_42, .div43_44, .div45_46{
+                float: left;
+                height: 100%;
+                width: 33.33%;
+                border: none;
+                margin: 0;
+            }
+
+            .div51, .div52, .div53, .div54, .div55{
+                height: 50%;
+                float: left;
+            }
+            .div51, .div52{
+                width: 50%;
+            }
+            .div53, .div54, .div55{
+                width: 33.333%;
+            }
+            .div62, .div63, .div64, .div65, .div66{
+                width: 33.333%;
+                height: 33.333%;
+            }
+            .div61{
+                height: 66.666%;
+                width: 66.66%;
+                float: left;
+            }
+            .div62, .div63, .div64, .div65, .div66{
+                float: right;
+            }
+            .div63{
+                clear: right;
+            }
+            .div64{
+                clear: both;
+            }
+            .div41_42, .div43_44, .div45_46, .div72_75, .div82_84, .div85_87, .div82_84, .div_85_87, .div91_95, .div96_9a{
+                border: 0px;
+                margin: 0px;
+            }
+            .div71, .div72_75{
+                float: left;
+                width: 50%; height: 100%;
+            }
+            .div72{
+                width: 100%;
+                height: 50%;
+            }
+            .div73{
+                width: 50%;
+                height: 25%;
+                float: left;
+            }
+            .div74{
+                width: 50%;
+                height: 50%;
+                float: right;
+            }
+            .div75{
+                width: 50%;
+                height: 25%;
+                clear: left;
+                float: left;
+            }
+            .div81, .div82_84, .div_85_87, .div83, .div84{
+                float: left;
+            }
+            .div81, .div82_84{
+                width: 40%;
+                height: 100%;
+            }
+            .div85_87{
+                width: 20%;
+                height: 100%;
+                float: right;
+            }
+            .div82{
+                width: 100%;
+                height: 60%;
+            }
+            .div83, .div84{
+                width: 50%;
+                height: 40%;
+            }
+            .div85, .div86, .div87{
+                height: 33.333%;
+                width: 100%;
+            }
+            .div91_95, .div96_9a{
+                width: 50%; height: 100%;
+                float: left;
+            }
+            .div91, .div92, .div93, .div94, .div95, .div96, .div97, .div98, .div99, .div9a{
+                float: left;
+                height: 33.33%;
+                width: 50%;
+            }
+            .div93, .div98{
+                width: 100%;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        <main id="part1">
+            <div class="div11"></div>
+            <div class="div12"></div>
+            <div class="div13"></div>
+        </main>
+
+        <main id="part2">
+            <div class="div21"></div>
+            <div class="div22"></div>
+            <div class="div23"></div>
+        </main>
+
+        <main id="part3">
+            <div class="div31"></div>
+            <div class="div32"></div>
+            <div class="div33"></div>
+            <div class="div34"></div>
+            <div class="div35"></div>
+            <div class="div36"></div>
+        </main>
+        
+        <main id="part4">
+            <div class="div41_42">
+                <div class="div41"></div>
+                <div class="div42"></div>
+            </div>
+            <div class="div43_44">
+                <div class="div43"></div>
+                <div class="div44"></div>
+            </div>
+            <div class="div45_46">
+                <div class="div45"></div>
+                <div class="div46"></div>
+                </div>
+        </main>
+
+        <main id="part5">
+            <div class="div51"></div>
+            <div class="div52"></div>
+            <div class="div53"></div>
+            <div class="div54"></div>
+            <div class="div55"></div>
+        </main>
+
+        <main id="part6">
+            <div class="div61"></div>
+            <div class="div62"></div>
+            <div class="div63"></div>
+            <div class="div64"></div>
+            <div class="div65"></div>
+            <div class="div66"></div>
+        </main>
+
+        <main id="part7">
+            <div class="div71"></div>
+            <div class="div72_75">
+                <div class="div72"></div>
+                <div class="div73"></div>
+                <div class="div74"></div>
+                <div class="div75"></div>
+            </div>
+        </main>
+
+        <main id="part8">
+            <div class="div81"></div>
+            <div class="div82_84">
+                <div class="div82"></div>
+                <div class="div83"></div>
+                <div class="div84"></div>
+            </div>
+            <div class="div85_87">
+                    <div class="div85"></div>
+                <div class="div86"></div>
+                <div class="div87"></div>
+            </div>
+        </main>
+
+        <main id="part9">
+            <div class="div91_95">
+                <div class="div91"></div>
+                <div class="div92"></div>
+                <div class="div93"></div>
+                <div class="div94"></div>
+                <div class="div95"></div>
+            </div>
+            <div class="div96_9a">
+                <div class="div96"></div>
+                <div class="div97"></div>
+                <div class="div98"></div>
+                <div class="div99"></div>
+                <div class="div9a"></div>
+            </div>
+        </main>
+
+    </body>
+</html>

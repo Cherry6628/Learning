@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--Window->document->html->head, body, script-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* *{ */
+            /* box-sizing: border-box; */
+            /* padding: 0px; 
+            margin: 0px;
+            border: 0px; */
+        /* } */
+        body{
+            position: relative;
+            background-color: black;;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        .div, .btn{
+            margin: 100px;
+            border: 1px solid white;
+            vertical-align: top;
+
+        }
+        /* #div2{position:relative} */
+        .div{position: relative;}
+        .div>span{position: absolute; color: white;}
+        .btn{height: 100px; width: 100px; background-color: black; color: white;}
+        @keyframes rotate{
+            25%{
+                transform: rotateZ(90deg)
+            }
+            50%{
+                transform: rotateZ(180deg)
+            }
+            750%{
+                transform: rotateZ(270deg)
+            }
+            0%, 100%{
+                transform: rotateZ(0deg)
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="div" id="div1"><span>div1</span>
+        <div class="div" id="div2"><span>div2</span>
+            <div class="div" id="div3"><span>div3</span>
+                <button id="btn1" class="btn" onclick="func.call(this); func2(event);">Click Me</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="space" style="position: absolute; height: 100vh; width: 100vw;">
+
+    </div>
+</body>
+<script>
+    function blockingSleep(milliseconds) {
+        const start = new Date().getTime();
+        while (new Date().getTime() < start + milliseconds) {
+            // Busy-wait loop: blocks the main thread
+        }
+    }
+    // function func(){
+    //     window.console.clear();
+    //     console.log("Clicked");
+    //     console.log(event);
+    //     console.log(event.target);
+    //     console.log(this);
+    // }
+    // function func2(e){
+    //     console.log("event "+e);
+    // }
+
+    let btn = document.querySelector('.btn');
+    // btn.onclick=func, func2;
+
+
+    // btn.setAttribute('onclick', "")
+    btn.removeAttribute('onclick');
+
+    // btn.addEventListener('click', ()=>{console.log(Math.random())})
+
+    let useCapturing = true;
+    let useBubbling = !useCapturing;
+    window.addEventListener('click', ()=>{console.log('Window5')}, useCapturing)
+    document.addEventListener('click', ()=>{console.log('Document')}, useCapturing)
+    // document.addEventListener('click', ()=>{console.log('Document')})
+    document.querySelector('html').addEventListener('click', ()=>{console.log('HTML')}, useCapturing)
+    document.querySelector('body').addEventListener('click', ()=>{console.log('BODY')}, useCapturing)
+    document.querySelector('#div1').addEventListener('click', ()=>{console.log('DIV1')}, useCapturing)
+    document.querySelector('#div2').addEventListener('click', ()=>{console.log('DIV2')}, useCapturing)
+    document.querySelector('#div3').addEventListener('click', ()=>{console.log('DIV3')}, useCapturing)
+    document.querySelector('#btn1').addEventListener('click', ()=>{console.log('BUTTON')}, useCapturing)
+
+
+
+
+
+    let space = document.getElementsByClassName('space')[0];
+    space.style.position="absolute";
+    space.style.height="100vh";
+    space.style.width="100vw";
+    space.style.backgroundColor="transparent";
+    let starsCount = 500;
+    let shakingChance = 50;
+
+
+    for (let i=0; i<starsCount; i++){
+        let ele = document.createElement('div');
+        space.append(ele);
+        ele.style.height = `${Math.random()*3}px`;
+        ele.style.backgroundColor = "white";
+        ele.style.position="absolute";
+        ele.style.top = `${100 * Math.random()}vh`;
+        ele.style.left = `${100 * Math.random()}vw`;
+        function randomMove(cur) {
+            cur.style.transition = "transform 1s ease";
+            let x = Math.floor(Math.random()*10);
+            let y = Math.floor(Math.random()*10);
+            // console.log(x, y)
+            
+            cur.style.transform = `translate(${x}px, ${y}px)`;
+        }
+        function randomMove2(cur) {
+            cur.style.transition = "transform 1s ease";
+            let x = Math.floor(Math.random()*10);
+            let y = Math.floor(Math.random()*10);
+            // console.log(x, y)
+            
+            cur.style.transform = `translate(${x}vw, ${y}vh)`;
+        }
+        if (Math.random()*100<shakingChance){
+            randomMove(ele);
+            if (Math.random()*100<shakingChance){
+                setInterval(randomMove2.bind(null, ele), 100);
+            } else {
+                setInterval(randomMove.bind(null, ele), 100);
+
+            }
+
+        }
+
+        ele.style.width = ele.style.height;
+
+    }
+</script>
+</html>

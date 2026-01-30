@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <input type="file" name="image" id="image">
+        <button id="submit">Submit</button>
+        <div id="result"></div>
+    </form>
+    <div style="position:relative">
+        <img src="" id="vis">
+    </div>
+    
+</body>
+<script>
+    const key = "r8ePawGO/139OaQJNiCG2Q==HA087P5EiOMlvmT8";
+    let headers = {
+        "X-Api-Key": key
+    }
+    let url="https://api.api-ninjas.com/v1/imagetotext"
+
+    let imageInput = document.querySelector("#image");
+    let result = document.querySelector("#result");
+    let submit = document.querySelector("#submit");
+    let vis = document.getElementById("vis");
+    
+    imageInput.value = "";
+    let p;
+    submit.addEventListener("click", async (e) => {
+        e.preventDefault();
+        let file = imageInput.files[0];
+        if(!file)return;
+
+        vis.setAttribute("src", URL.createObjectURL(file));
+        let out = await getText(file);
+        console.log(out);
+        if (out==null){result.innerHTML="";return;}
+        for(let w of out){
+            result.innerHTML += w.text+"&nbsp;";
+            let div = document.createElement("div");
+            div.style.backgroundColor = "transparent";
+            div.style.border = "1px solid green";
+            // div.style.margin = w.bounding_box.y1+"px 0 0 "+w.bounding_box.x1+"px";
+            div.style.top = w.bounding_box.y1+"px";
+            div.style.left = w.bounding_box.x1+"px"
+            div.style.width = (w.bounding_box.x2-w.bounding_box.x1)+"px";
+            div.style.height = (w.bounding_box.y2-w.bounding_box.y1)+"px";
+            div.style.position = "absolute";
+            vis.parentElement.appendChild(div);
+        }
+
+
+    });
+
+    async function getText(file) {
+
+        if (!file) {
+            console.error("No file selected");
+            return null; // <-- don't return undefined
+        }
+
+        const formData = new FormData();
+        formData.append("image", file);
+
+        try {
+            let res = await fetch(url, {
+                method: "POST",
+                headers: { "X-Api-Key": key },
+                body: formData
+            });
+
+            if (!res.ok) {
+                console.error("API error:", res.status, await res.text());
+                return null;
+            }
+
+            return await res.json();
+
+        } catch (err) {
+            console.error("Network/JSON error:", err);
+            return null;
+        }
+    }
+
+</script>
+</html>

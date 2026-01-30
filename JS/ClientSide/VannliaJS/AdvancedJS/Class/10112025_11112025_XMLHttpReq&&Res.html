@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            color: white;
+            background-color: black;
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        .text-data{
+            min-height: 100px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul id="result">
+        </ul>
+    </div>
+</body>
+<script>
+    let c = document.querySelector("#result");
+    function showResult(data){
+        c.innerHTML += "<li>"+data+"</li>";
+
+    }
+    function data(content=""){
+        let div = document.createElement("div");
+        div.classList.add("text-data");
+        div.innerText = content;
+        return div;
+    }
+    function array(arr){
+        document.createElement('table');
+
+        if (arr==[]){
+            
+        }
+        // for (let ele of )
+    }
+    const xhr = new XMLHttpRequest();
+    console.log("Created: "+xhr.readyState);
+    xhr.open('GET', "https://api.napi-ninjas.com/v1/animals?name=cheetah", true);
+    xhr.setRequestHeader("X-Api-Key", "r8ePawGO/139OaQJNiCG2Q==HA087P5EiOMlvmT8")
+    console.log("Opened: "+xhr.readyState);
+    xhr.send();
+    console.log("Sent: "+xhr.readyState);
+    console.log(xhr.HEADERS_RECEIVED+" header");
+    // readonly UNSENT: 0;
+    // readonly OPENED: 1;
+    // readonly HEADERS_RECEIVED: 2;
+    // readonly LOADING: 3;
+    // readonly DONE: 4;
+    xhr.onload=()=>{
+        if (xhr.status==200){
+            let response = JSON.parse(xhr.responseText);
+            console.log(response, xhr.onload);
+            // console.log(xhr.response);
+            console.log(xhr.readyState);
+    console.log(xhr.HEADERS_RECEIVED+" header");
+        }
+        else{
+            // console.log(xhr.response);
+            console.log(xhr.readyState);
+        }
+        console.log(xhr.readyState===XMLHttpRequest.DONE);
+    }
+    
+
+</script>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            background-color: black;
+            color: white;
+        }
+        section{
+            border-bottom: 1px solid white;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            Sum of Mixed Array: <br>
+            Input: ['5', '0', 9, 3, 2, 1, '9', 6, 7]
+            <div>
+                <button onclick="innerTextChanger('result1', 'Result: '+sumMix(['5', '0', 9, 3, 2, 1, '9', 6, 7]))">Sum Up</button>
+                <p id="result1"></p>
+            </div>
+        </section>
+        <section>
+            Powers of Two: <br>
+            <div>
+                <button onclick="innerTextChanger('result2', 'Result: '+listToString(powersOfTwo(getNumberInput())))">Give Input</button>
+                <p id="result2"></p>
+            </div>
+        </section>
+        <section>
+            Fizz Buzz: <br>
+            <div>
+                <button onclick="innerTextChanger('result3', 'Result: '+listToString(fizzBuzz(getNumberInput())))">Give Input</button>
+                <p id="result3"></p>
+            </div>
+        </section>
+        <section>
+            Repetition of a Number: <br>
+            <div>
+                <button onclick="innerTextChanger(
+                    'result4', 'Result: '+listToString(
+                        createList(
+                            getNumberInput()
+                        )
+                    )
+                )">Give Input</button>
+                <p id="result4"></p>
+            </div>
+        </section>
+        <section>
+            Doubling a List: <br>
+            <div>
+                <button onclick="innerTextChanger(
+                    'result5', 'Result: '+listToString(
+                        doubleList(
+                            getListInput()
+                        )
+                    )
+                )">Give Input</button>
+                <p id="result5"></p>
+            </div>
+        </section>
+        <section>
+            Concatenating 2 Lists: <br>
+            <div>
+                <button onclick="alert('Length and the elements inside each lists will be asked as input continuously.  Give Input Carefully.'); innerTextChanger(
+                    'result6', 'Result: '+listToString(
+                        concatenateLists(
+                            getListInput('Number of Elements in List 1: '), getListInput('Number of Elements in List 2: ')
+                        )
+                    )
+                )">Give Inputs</button>
+                <p id="result6"></p>
+            </div>
+        </section>
+        <section>
+            Odd Indices: <br>
+            <div>
+                <button onclick="innerTextChanger(
+                    'result7', 'Result: '+listToString(
+                        getOddIndices(
+                            getListInput()
+                        )
+                    )
+                )">Give Input</button>
+                <p id="result7"></p>
+            </div>
+        </section>
+        <section>
+            Reverse List: <br>
+            <div>
+                <button onclick="innerTextChanger(
+                    'result8', 'Result: '+listToString(
+                        reverseList(
+                            getListInput()
+                        )
+                    )
+                )">Give Input</button>
+                <p id="result8"></p>
+            </div>
+        </section>
+        <section>
+            Get Element at Index: <br>
+            <div>
+                <button onclick="innerTextChanger(
+                    'result9', 'Result: '+getItemAtIndex(
+                            getListInput()
+                    )
+                )">Give Input</button>
+                <p id="result9"></p>
+            </div>
+        </section>
+        <section>
+            Sum Of First Two Elements: <br>
+            <div>
+                <button onclick="innerTextChanger(
+                    'result10', 'Result: '+sumFirstTwo(
+                            getListInput()
+                    )
+                )">Give Input</button>
+                <p id="result10"></p>
+            </div>
+        </section>
+        <section>
+            Add Two Lists: <br>
+            <div>
+                <button onclick="innerTextChanger(
+                    'result11', 'Result: '+listToString(addLists(
+                            getListInput(), getListInput()
+                    ))
+                )">Give Input</button>
+                <p id="result11"></p>
+            </div>
+        </section>
+        <section>
+            Find Minimum: <br>
+            <div>
+                <button onclick="innerTextChanger(
+                    'result12', 'Result: '+findSmallest(
+                            getListInput()
+                    )
+                )">Give Input</button>
+                <p id="result12"></p>
+            </div>
+        </section>
+
+    </main>
+</body>
+<script>
+    function sumMix(arr){
+        let result = 0;
+        
+        for (let i=0; i<arr.length; result+=Number(arr[i++]));
+        
+        // for(let i=0;i<arr.length;i++){
+        //     result+=Number(arr[i]);
+        // }
+        return result;
+    }
+    function powersOfTwo(n){
+        let result = [];
+        /*
+        for(let i=0;i<=n;result.push(2**i++));
+        */
+        for(let i=0;i<=n;i++){
+            result[i] = 2**i;
+        }
+        return result;
+    }
+    function fizzBuzz(n){
+        let result = [];
+        for (let i=1; i<=n; i++){
+            if (i%15==0){result[i-1]="FizzBuzz";}
+            else if (i%3==0){result[i-1]="Fizz";}
+            else if (i%5==0){result[i-1]="Buzz";}
+            else {result[i-1]=i;}
+        }
+        return result;
+    }
+    function createList(n){
+        return [n, n, n];
+    }
+    function doubleList(arr){
+        // for (let  i = 0; i<arr.length; arr[i]=2*Number(arr[i++]));
+        for (let i=0;i<arr.length;i++){
+            arr[i]=2*Number(arr[i]);
+        }
+        return arr;
+    }
+    function concatenateLists(arr1, arr2){return [...arr1, ...arr2];}
+    function getOddIndices(arr){
+        let res = [];
+        for (let i=1; i<arr.length; i+=2){
+            res[(i/2)-0.5] = arr[i];
+        }
+        return res;
+    }
+    function reverseList(arr){
+        let res = [];
+        for (let i=arr.length-1; i>=0; i--){res[arr.length-i-1]=arr[i];}
+        return res;
+    }
+    function getItemAtIndex(arr, index){
+        return arr[index];
+    }
+    function sumFirstTwo(arr){
+        if (arr.length>1){
+            return arr[0]+arr[1];
+        } else if (arr.length==1){
+            return arr[0];
+        } else{
+            return 0;
+        }
+    }
+    function addLists(arr1, arr2){
+        let res = [];
+        if (arr1.length!= arr2.length){return [];}
+        for (let i=0; i<arr1.length; i++){
+            res[i] = arr1[i]+arr2[i];
+        }
+        return res;
+    }
+    function findSmallest(arr){
+        let s = arr[0];
+        for (let i=1;i<arr.length; i++){
+            if (arr[i]<s){s=arr[i];}
+        }
+        return s;
+    }
+    
+
+    // Helper Functions
+    function getNumberInput(msg="Enter the Number: "){
+        let n = Number(prompt(msg));
+        if (isNaN(n) || (! isFinite(n))){
+            return 0;
+        }
+        return n;
+    }
+    function getListInput(msg="Total Number of Elements: "){
+        let n = Number(prompt(msg));
+        if (!Number.isInteger(n)){
+            return []
+        }
+        let res = [];
+        for (let i=0; i<n; i++){
+            res[i] = getNumberInput(`Value ${i+1}: `);
+        }
+        return res;
+    }
+    function innerTextChanger(id, value){
+        document.getElementById(id).innerText = value;
+    }
+    function listToString(arr){
+        res = "["
+        for (let i=0; i<arr.length;i++){
+            if (arr[i] == undefined){
+                arr[i]="";
+            }
+            if (i!=arr.length-1){
+                res+=arr[i]+", ";
+            } else {
+                res+=arr[i];
+            }
+        }
+        return res+"]";
+    }
+</script>
+</html>

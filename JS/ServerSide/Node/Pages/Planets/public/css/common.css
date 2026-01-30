@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=League+Spartan:wght@100..900&display=swap');
+
+*{
+    box-sizing:border-box;
+    padding:0;
+    margin:0;
+    border:0;
+}
+
+:root{
+    --antonio: "Antonio", sans-serif;
+    --spartan: "League Spartan", sans-serif;
+
+    --c1: #ffffff;
+    --c2: #070724;
+    --c3: #38384f;
+    --c4: #838391;
+    --c5: #419ebb;
+    --c6: #eda249;
+    --c7: #6f2ed6;
+    --c8: #d14c32;
+    --c9: #d83a34;
+    --c10: #CD5120;
+    --c11: #1ec2a4;
+    --c12: #2d68f0;
+
+    --color-mercury: var(--c5);
+    --color-venus: var(--c6);
+    --color-earth: var(--c7);
+    --color-mars: var(--c8);
+    --color-jupiter: var(--c9);
+    --color-saturn: var(--c10);
+    --color-uranus: var(--c11);
+    --color-neptune: var(--c12);
+
+    --b1: #d8d8d8;
+
+
+}
+.antonio{
+    font-family: var(--antonio);
+}
+.spartan{
+    font-family: var(--spartan);
+}
+h1{
+    color: var(--c1);
+    font-family: var(--antonio);
+    font-weight: medium;
+    font-size: 800%;
+    line-height: 1030%;
+}
+
+h2{
+    color: var(--c1);
+    font-family: var(--antonio);
+    font-weight: medium;
+    font-size: 400%;
+    line-height: 520%;
+    letter-spacing: -1.50%;
+}
+
+h3{
+    color: var(--c1);
+    font-family: var(--spartan);
+    font-weight: bold;
+    font-size: 120%;
+    /* line-height: 250%; */
+    letter-spacing: 2.60%;
+    opacity: 50%;
+}
+
+h4{
+    color: var(--c1);
+    font-family: var(--spartan);
+    font-weight: bold;
+    font-size: 110%;
+    line-height: 250%;
+    letter-spacing: 10%;
+    opacity: 50%;
+}
+.text{
+    color: var(--c1);
+    font-family: var(--spartan);
+    font-weight: regular;
+    font-size: 140%;
+    line-height: 250%;
+    opacity: 50%;
+}
+.text2{
+    color: var(--c1);
+    font-family: var(--spartan);
+    font-weight: regular;
+    font-size: 180%;
+    line-height: 250%;
+    opacity: 50%;
+}
+.title{
+    color: var(--c1);
+    font-family: var(--antonio);
+    font-weight: 400;
+    font-size: 280%;
+    line-height: 100%;
+    letter-spacing: -1.050%;
+    text-transform: capitalize;
+}
+
+button{
+    color: var(--c1);
+    background-color: transparent;
+    height: 480%;
+    width: 3500%;
+    /* opacity: 20; */
+    border: 10% solid var(--b1);
+
+
+}
+
+button:active{
+    border: 10% solid var(--c5);
+    background-color: var(--c5);
+}
+
+button:hover{
+    background-color: var(--b1);
+}

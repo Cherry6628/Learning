@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body></body>
+<script>
+    let s0 = Promise.resolve("Vetri !!!!!!");
+    console.log(s0);
+    // try{
+    let s = Promise.reject("");
+    // } catch(e){
+    //     console.log(e);
+    // }
+    s.then((msg)=>console.log("Success: "+msg)).catch((err)=>console.log("Error: "+err));
+    console.log("\n\n\n");
+
+
+    let p1 = Promise.reject(10);
+    let p2 = Promise.reject(20);
+    let p3 = Promise.resolve(30);
+
+
+    // If all promise resolves, then passes the array of all resolved values to callback in then()
+    // If any promise fails, then passes the reason for the first rejected Promise to callback in catch()
+    Promise.all([p1,p2,p3]).then(
+        (v)=>console.log(v)
+    ).catch(
+        (v)=>console.log("rejected: "+v)
+    )
+
+    // If none of the promise throws error, then passes an array of objects of all settled promises
+    // If any exception arise, exception will be passed to catch()
+    Promise.allSettled([p1,p2,p3]).then(
+        (v)=>console.log(v)
+    ).catch(
+        (v)=>console.log("rejected from allSettled: "+v)
+    )
+    // all vs allSettled:
+    /*
+        all         -> if all resolves
+        allSettled  -> if all settles
+    */
+
+    Promise.any([p1,p2,p3]).then(
+        (v)=>console.log("Atleast one of them was succeed: "+v)
+    ).catch(
+        (v)=>console.log("rejected from any: "+v)
+    )
+    // any resolves
+
+
+
+    p1 = new Promise((resolve, reject)=>{
+        setTimeout(()=>resolve("I'm Slow Buddy"), 500);
+    });
+    p2 = new Promise((resolve, reject)=>{
+        setTimeout(()=>resolve("I'm Fast Buddy"), 100);
+    });
+    setTimeout(()=>Promise.race([p1,p2]).then(
+        (v)=>console.log("First Won: "+v)
+    ).catch(
+        (v)=>console.log("rejected from race: "+v)
+    ), 200)
+    // any settles
+    
+    
+
+
+    function getMark(subject, mark){
+        return new Promise((resolve, reject)=>{
+            if(mark<35)reject("You Failed in "+subject);
+            else resolve("You Passed in "+subject);
+        })
+    }
+    let ja= getMark('Java',100);
+    let js= getMark('JS', 100);
+    let ss= getMark('Social Science', 0);
+    Promise.allSettled([ja,js,ss]).then(
+        (r)=>console.log(r)
+    ).catch(
+        (r)=>console.log(r)
+    );
+</script>
+</html>

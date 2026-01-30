@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Float Layout</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body{
+        width: 100%; height: 100%;
+        color: white;
+    }
+    body{
+        /*Flex is used only to position the container in the center.
+        Other Positioning are done with Float*/
+        display: flex; justify-content: center; align-items: center;
+        font-weight: 900;
+        text-align: center;
+    }
+    .container{
+        height: 80%; width: 80%;
+        border: 1px solid black;
+    }
+    header{
+        background-color: #FF3131;
+        margin: 2%;
+        height: 10%;
+
+    }
+    nav{
+        background-color: #0CC0DF;
+        margin: 2%;
+        height: 15%;
+    }
+    section{
+        background-color: #FFBD59;
+        margin: 1% 2%;
+        height: 23%;
+        width: 50%;
+        float: left;
+    }
+    article{
+        background-color: #FF914D;
+        margin: 1% 2% 2%;
+        height: 22%;
+        width: 50%;
+        float: left;
+
+    }
+    aside{
+        background-color: #FF66C4;
+        float: right;
+        width: 10%;
+        margin: 1% 2% 1% 0%;
+        height: 47%;
+        width: 44%;
+    }
+    footer{
+        clear: both;
+        background-color: #737373;
+        margin: 2%;
+        height: 10%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>&lt;header&gt;</header>
+    <nav>&lt;nav&gt;</nav>
+
+    <aside>&lt;aside&gt;</aside>
+    <section>&lt;section&gt;</section>
+
+    <article>&lt;article&gt;</article>
+
+
+    <footer>&lt;footer&gt;</footer>
+  </div>
+</body>
+</html>

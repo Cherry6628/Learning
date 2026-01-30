@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0; margin: 0; border: 0; box-sizing: border-box;
+        }
+        main{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-auto-rows: fit-content;
+            grid-auto-rows: 1fr;
+            padding: 50px;
+            gap: 20px;
+        }
+        .task{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+            height: fit-content;
+        }
+        .task h3{
+            align-self: flex-start;
+        }
+        .user-input{
+            height: 100px;
+            width: 100%;
+            color: blue;
+        }
+        .user-input{
+            outline: 1px solid black;
+        }
+        .result{
+            height: 100px;
+            width: 100%;
+            /* outline: 1px solid black; */
+            color: black;
+            padding: 10px;
+        }
+        .task button{
+            min-width: 100px;
+            max-width: fit-content;
+            height: 50px;
+        }
+        input{
+            padding: 30px 40px;
+            text-wrap: wrap;
+        }
+        .flex-r{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="task" id="ass1">
+            <h3>Number of Days in the Given Month : </h3>
+            <input class="user-input">
+            <div class="flex-r"><p class="result"></p><button onclick="findDaysInAMonth()">Calculate</button></div>
+        </section>
+        <section class="task" id="ass2">
+            <h3>Milliseconds to Date-Time Conversion: </h3>
+            <input class="user-input">
+            <div class="flex-r"><p class="result"></p><button onclick="msToDate()">Calculate</button></div>
+        </section>
+        <section class="task" id="ass3">
+            <h3>Date Comparison: </h3>
+            <div class="flex-r">
+                <input class="user-input date1" type="date">
+                <input class="user-input date2" type="date">
+            </div>
+            <div class="flex-r"><p class="result"></p><button onclick="dateComparison()">Calculate</button></div>
+        </section>
+        <section class="task" id="ass4">
+            <h3>Weekday Finder: </h3>
+            <input class="user-input" type="date">
+            <div class="flex-r"><p class="result"></p><button onclick="weekEndFinder()">Calculate</button></div>
+        </section>
+        <section class="task" id="ass5">
+            <h3>Birthday Countdown: </h3>
+            <input class="user-input" type="date">
+            <div class="flex-r"><p class="result"></p><button onclick="birthdayCountdown()">Calculate</button></div>
+        </section>
+        <section class="task" id="ass6" style="align-items: flex-start; padding: 20px;">
+            <h3>Quotes Inside Quotes</h3>
+            <p class="result1"></p>
+            <p class="result2"></p>
+        </section>
+        <section class="task" id="ass7">
+            <h3>Three Letter Representation of the Month : </h3>
+            <input class="user-input" type="date">
+            <div class="flex-r"><p class="result"></p><button onclick="threeLetterRepr()">Calculate</button></div>
+        </section>
+        <section class="task" id="ass8">
+            <h3>Lowercase Ante meridieum and Post meridieum : </h3>
+            <input class="user-input" type="time" readonly>
+            <div class="flex-r"><p class="result"></p><button onclick="amAndPM()">Calculate</button></div>
+        </section>
+        <section class="task" id="ass9" style="align-items: flex-start; padding: 20px;">
+            <h3>Different Times in Different Timezones:</h3>
+            <p class="result1"></p>
+            <p class="result2"></p>
+            <p class="result3"></p>
+            <div class="flex-r"><p class="result"></p><button onclick="timeInDiffTimezone()">Calculate</button></div>
+        </section>
+        <section class="task" id="ass10" style="align-items: flex-start; padding: 20px;">
+            <h3>Current Time in Different Timezones:</h3>
+            <p class="result1"></p>
+            <p class="result2"></p>
+            <p class="result3"></p>
+            <p class="result4"></p>
+            <div class="flex-r"><p class="result"></p><button onclick="curDate()">Calculate</button></div>
+        </section>
+    </main>
+</body>
+<script defer>
+    function findDaysInAMonth(){
+        let m = Number(inp1.value);
+        inp1.style.color = "blue";
+        inp1.style.outline = "1px solid black";
+        inp1.style.backgroundColor = "transparent";
+        if ([1, 3, 5, 7, 8, 10, 12].includes(m)){
+            res1.innerText="31";
+        } else if ([4, 6, 9, 11].includes(m)){
+            res1.innerText="30";
+        } else if (m==2){
+            res1.innerText="28 (or 29 for Leap Year)"
+        } else {
+            res1.innerText="";
+            inp1.style.outline = "1px solid red";
+            inp1.style.backgroundColor = "rgba(255, 0, 0, 0.1)";
+            inp1.style.color = "red";
+        }
+    }
+    function msToDate(){
+        inp2.style.color = "blue";
+        inp2.style.outline = "1px solid black";
+        inp2.style.backgroundColor = "transparent";
+        if (isNaN(Number(inp2.value)) || Number(inp2.value)%1!=0){
+            res2.innerText="";
+            inp2.style.color = "red";
+            inp2.style.outline = "1px solid red";
+            inp2.style.backgroundColor = "rgba(255, 0, 0, 0.1)";
+            return;
+        }
+        res2.innerText = new Date(Number(inp2.value));
+    }
+    function dateComparison(){
+        let d1 = new Date(inp30.value);
+        let d2 = new Date(inp31.value);
+        if (d1>d2){res3.innerText="Date 1 is older than Date 2"} else if (d1<d2){res3.innerText="Date 2 is older than Day 1"} else{res3.innerText="Given two dates are same."}
+    }
+    function weekEndFinder(){
+        let d = new Date(inp4.value).getDay();
+        res4.innerText = ((d == 0) || (d==6))?"Hurray! It's weekend" : ((d>0&&d<6)?"It's a weekday":"Enter A Valid Date");
+    }
+    function birthdayCountdown(){
+        let d = new Date();
+        let d1 = new Date(d.getFullYear(), new Date(inp5.value).getMonth(), new Date(inp5.value).getDate());
+        d1.setHours(d.getHours()); d1.setMinutes(d.getMinutes());
+        
+        if (d.getDate() === d1.getDate() && d.getMonth() === d1.getMonth()) {
+            res5.innerText = "HURRAY ! It's your birthday today.";
+            return;
+        }
+        if (d > d1) {
+            d1.setFullYear(d.getFullYear() + 1);
+        }
+        d = Math.ceil((d1-d)/(3600000*24));
+        res5.innerText = d+` Day${d>1?'s':''} Left...`;
+        
+    }
+    function quotesInsidequotes(){
+        res60.innerText = "'She said, \"Hello World\"'";
+        res61.innerText = "\"Test 1\" \"Test 2\" \"Test 3\"";
+    }
+    function threeLetterRepr(){
+        if (inp7.value!=""){
+            let d = new Date(inp7.value);
+            res7.innerHTML = "Given Date belongs to Month '<i><b>"+d.toLocaleDateString('en-US', {month: 'short'})+"</b></i>'";
+        }
+    }
+    function amAndPM(){
+        // inp8.value = new Date();
+        // console.log(new Date())
+        let n = new Date();
+        let hh = n.getHours();
+        let mm = n.getMinutes();
+        if (hh<10){hh="0"+hh;} if (mm<10){mm="0"+mm;}
+        inp8.value = `${hh}:${mm}`;
+        res8.innerText = `Its ${hh<12? 'AM': 'PM'} now`
+    }
+    function timeInDiffTimezone(){
+        let d = new Date();
+        res90.innerText = `Asia/Kolkata: ${d.toLocaleString('en-IN', {timeZone: 'Asia/Kolkata'})}`;
+        res91.innerText = `America/New_York: ${d.toLocaleString('en-US', {timeZone: 'America/New_York'})}`;
+        res92.innerText = `Europe/London: ${d.toLocaleString('en-GB', {timeZone: 'Europe/London'})}`;
+    }
+    function curDate(){
+        let d = new Date();
+        res100.innerText = `toLocaleTimeString("en-US") : ${d.toLocaleTimeString("en-US")}`;
+        res101.innerText = `toLocaleTimeString("de-DE") : ${d.toLocaleTimeString("de-DE")}`;
+        res102.innerText = `toLocaleTimeString("ja-JP") : ${d.toLocaleTimeString("ja-JP")}`;
+        res103.innerText = `toLocaleTimeString("ar-EG") : ${d.toLocaleTimeString("ar-EG")}`;
+    }
+    
+    
+    
+    function main(){
+        inp1 = document.querySelector("#ass1 > .user-input");
+        res1 = document.querySelector("#ass1 .result");
+        inp2 = document.querySelector("#ass2 > .user-input");
+        res2 = document.querySelector("#ass2 .result");
+        inp30 = document.querySelector("#ass3 .date1");
+        inp31 = document.querySelector("#ass3 .date2");
+        res3 = document.querySelector("#ass3 .result");
+        inp4 = document.querySelector("#ass4 > .user-input");
+        res4 = document.querySelector("#ass4 .result");
+        inp5 = document.querySelector("#ass5 > .user-input");
+        res5 = document.querySelector("#ass5 .result");
+        res60 = document.querySelector("#ass6 > .result1");
+        res61 = document.querySelector("#ass6 > .result2");
+        inp7 = document.querySelector("#ass7 > .user-input");
+        res7 = document.querySelector("#ass7 .result");
+        inp8 = document.querySelector("#ass8 > .user-input");
+        res8 = document.querySelector("#ass8 .result");
+        res90 = document.querySelector("#ass9 > .result1");
+        res91 = document.querySelector("#ass9 > .result2");
+        res92 = document.querySelector("#ass9 > .result3");
+        res100 = document.querySelector("#ass10 > .result1");
+        res101 = document.querySelector("#ass10 > .result2");
+        res102 = document.querySelector("#ass10 > .result3");
+        res103 = document.querySelector("#ass10 > .result4");
+        quotesInsidequotes();
+    }
+    let days, inp1, res1, inp2, res2, inp30, inp31, res3, inp4, res4, inp5, res5, res60, res61, inp7, res7, inp8, res8, res90, res91, res92, res100, res101, res102, res103;
+    main()
+</script>
+</html>

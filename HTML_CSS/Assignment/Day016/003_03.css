@@ -1,0 +1,37 @@
+:root{
+    --t3-color: cyan;
+    --t3-bar-width: 10px;
+    --t3-min-height: 20px;
+    --t3-max-height: 50px;
+    --t3-gap: 10px;
+    --t3-speed: 1s;
+    --t3-timing-function: cubic-bezier(.38,-0.87,.42,1.86);
+    --t3-delay-step: 0.1s;
+}
+#lines {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: var(--t3-gap);
+    height: calc(var(--t3-max-height) + var(--t3-min-height));
+    /* background-color: yellow; */
+}
+
+#lines div {
+    width: var(--t3-bar-width);
+    height: var(--t3-min-height);
+    background-color: var(--t3-color);
+    animation: pulse var(--t3-speed) var(--t3-timing-function) infinite 0s normal;
+}
+
+#lines div:nth-child(1) {animation-delay: calc(0 * var(--t3-delay-step))}
+#lines div:nth-child(2) {animation-delay: calc(1 * var(--t3-delay-step))}
+#lines div:nth-child(3) {animation-delay: calc(2 * var(--t3-delay-step))}
+#lines div:nth-child(4) {animation-delay: calc(3 * var(--t3-delay-step))}
+#lines div:nth-child(5) {animation-delay: calc(4 * var(--t3-delay-step))}
+
+@keyframes pulse {
+    0%, 100% { height: var(--t3-min-height); }
+    50% { height: var(--t3-max-height); }
+}
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        main>div{
+            background-color: rgb(41, 41, 41);
+            padding: 10px;
+            border-radius: 1vw;
+            margin: 2px;
+        }
+        span{
+            background-color: green;
+            
+        }
+        div div{
+            background-color: white;
+            padding: 0 10px;
+
+        }
+        p{
+            margin: 0;
+            
+        }
+    </style>
+</head>
+<body>
+    <main></main>
+</body>
+<script>
+    let main = document.querySelector('main');
+    function show(...msg){
+        msg = msg.join(" ");
+        let div = document.createElement('div');
+        let p = document.createElement('p');
+        let span = document.createElement('span');
+        p.append(span);
+        span.innerText = JSON.stringify(new Date());
+        let div2 = document.createElement('div');
+        div2.innerText = msg;
+        console.log(msg);
+        div.append(p, div2);
+        main.append(div);
+        
+    }
+
+    function greet(name){show("Hello "+name); clearTimeout(to);}
+    let to = setTimeout(greet, 5000, "Sanjeevi")
+
+    let i=10;
+    let timer = setInterval(
+        ()=>{
+            show(i);
+            i--;
+            if (i==0){
+                clearInterval(timer);
+            }
+        },
+        1000
+    )
+
+
+
+//    document.body.innerHTML = "";
+// document.body.style.height='100vh';
+// x = setInterval(()=>document.body.style.backgroundColor=("rgb("+(Math.floor(Math.random()*255)+1)+","+(Math.floor(Math.random()*255)+1)+","+(Math.floor(Math.random()*255)+1)+")"), 100);
+</script>
+</html>

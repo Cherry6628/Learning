@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let title = function(msg, realtitle){
+        console.log();
+        alert(`This is ${msg}: ${realtitle}`);
+        console.log(`%c${msg}`, 'padding: 30px; color: black; background-color: blue; font-size: 20px;')
+    }
+    let logAlert = function (msg){
+        console.log(msg); alert(msg);
+    }
+
+    title('Task 001', 'Discount Calculator');
+    let price = Number(prompt('How much did you purchase ? '));
+    if (price>=1000){price*=0.9;}
+    logAlert(`Price: ${price}`)
+
+    title('Task 002', 'Login System');
+    let pwd = "admin123";
+    prompt("Enter the Password: ")==pwd? logAlert("Hello User ! You are Welcome..."): logAlert("Invalid Password");
+
+    title('Task 003', 'Password Length Check');
+    pwd = prompt("Enter your password to check its strength: ");
+    pwd.length>=8?logAlert("Your Password is strong."):logAlert("Your Password is too weak !");
+
+
+    title('Task 004', 'Short Long Short');
+    let a = prompt("Enter String A: ");
+    let b = prompt("Enter String B: ");
+    let shortStr = a.length < b.length ? a : b;
+    let longStr = a.length >= b.length ? a : b;
+    logAlert(`${shortStr}${longStr}${shortStr}`);
+
+
+    title('Task 005', 'Leap Year Calculator');
+    let year = Number(prompt("Enter the Year: "));
+    if (year%400==0 || (year%4==0 && year%100!=0)){
+        logAlert("Is A Leap Year.");
+    } else{
+        logAlert("Not A Leap Year.");
+    }
+
+    title('Task 006', 'Odd or Even with Zero Check');
+    let num = Number(prompt("Enter the Number: "));
+    if (num==0){logAlert('Is Zero')} else if(num%2==0){logAlert("Is Even");} else if (num%2==1) {logAlert("Is Odd");} else{logAlert("Invalid Input")}
+
+    title('Task 007', 'Quarter of the Month');
+    let month = Number(prompt("Enter the Month Number (1-12): "));
+    if (month >= 1 && month<=12 && month%1==0){logAlert(`Month ${month} belongs to Quarter ${Math.floor((month-1)/3) + 1}`);} else {logAlert("Invalid Input");}
+
+    title('Task 008', 'Check Number > 100 using Ternary Operator');
+    let n = Number(prompt("Enter a number: "));
+    logAlert(n > 100 ? "Greater than 100" : "Not greater than 100");
+
+    title('Task 009', 'Time-Based Greeting');
+    let hour = Number(prompt("Enter the Hour of the day: "));
+    if (hour >= 6 && hour <= 11) {
+        logAlert("Good Morning");
+    } else if (hour >= 12 && hour <= 17) {
+        logAlert("Good Afternoon");
+    } else if (hour >= 18 && hour <= 21) {
+        logAlert("Good Evening");
+    } else {
+        logAlert("It's either late night or very early!");
+    }
+
+
+    title('Task 010', 'Simple Calculator');
+    let num1 = Number(prompt("Enter first number: "));
+    let operator = prompt("Enter operator (+, -, *, /, %): ");
+    let num2 = Number(prompt("Enter second number: "));
+    let result;
+
+    switch(operator){
+        case '+': result = num1 + num2; break;
+        case '-': result = num1 - num2; break;
+        case '*': result = num1 * num2; break;
+        case '/': result = num2 !== 0 ? num1 / num2 : "Cannot divide by zero"; break;
+        case '%': result = num1 % num2; break;
+        default: result = "Invalid Operator";
+    }
+    logAlert(`Result: ${result}`);
+
+    title('Task 011', 'Traffic Signal Checker');
+    let signal = prompt("Enter signal color (red/yellow/green): ").toLowerCase();
+    switch(signal){
+        case 'red': logAlert("Stop"); break;
+        case 'yellow': logAlert("Get Ready"); break;
+        case 'green': logAlert("Go"); break;
+        default: logAlert("Invalid Signal");
+    }
+
+    title('Task 012', 'Vowel or Consonant Checker (Using if-else and ||)');
+    let char = prompt("Enter a single character: ");
+    if (char.length !== 1) {
+        logAlert("Invalid input! Expected only one character.  Found more than 1 character.");
+    } else {
+        let ch = char.toLowerCase();
+        if (ch === 'a' || ch === 'e' || ch === 'i' || ch === 'o' || ch === 'u') {
+            logAlert("Vowel");
+        } else {
+            logAlert("Consonant");
+        }
+    }
+
+</script>
+</html>

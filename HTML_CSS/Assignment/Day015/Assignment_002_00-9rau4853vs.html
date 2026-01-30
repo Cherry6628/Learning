@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main{
+            height: 100vh; width: 100vw; 
+            display: flex; 
+            justify-content: center; align-items: center;
+        } .box{
+            height: 525px; width: 342px; position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s ease 0s;
+        } .face{
+            height: 525px; width: 342px;
+            background-repeat: no-repeat;
+            background-size: cover; position: absolute;
+            border-radius: 32px;
+        } .face1{
+            background-image: url("images/c1.png");
+            transform: rotateY(180deg)
+        } .face2{
+            background-image: url("images/c2.png");
+            backface-visibility: hidden;
+        } .box:hover{
+            transform: rotateY(180deg)
+        }
+        
+    </style>
+</head>
+<body>
+    <main>
+        <div class="box">
+            <div class="face face1"></div> <!--green-->
+            <div class="face face2"></div> <!-- blue-->
+        </div>
+    </main>
+</body>
+</html>

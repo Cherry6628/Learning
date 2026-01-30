@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="socket.io/socket.io.js"></script>
+<title>Document</title></head><body>
+<button id="stopstart">Stop/Start</button>
+<select required id="toShare">
+    <option value="screen">Screen</option>
+    <option value="camera">Camera</option>
+</select>
+<br>
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+<br>
+<video id="localVideo" autoplay></video>
+<video id="remoteVideo" autoplay></video>
+</body><script src="utils/client.js"></script>
+
+
+</html>

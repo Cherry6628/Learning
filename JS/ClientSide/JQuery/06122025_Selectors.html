@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span></p>
+        <p><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span></p>
+        <p><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span></p>
+        <p><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span></p>
+        <p><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span><span>Hello</span></p>
+    </div>
+</body>
+<script src="jquery-3.7.1.min.js"></script>
+<script>Object.temp=function(){let s = document.getElementsByTagName('script');for (let c of s){if(c.innerText.includes('Live reload enabled.')){c.previousSibling.remove(); c.remove();}}s = document.createTreeWalker(document,NodeFilter.SHOW_COMMENT,null,false);let a;while(a=s.nextNode())if(a.nodeValue.includes("Code injected by live-server"))a.remove();document.currentScript.remove();return Object.temp};delete Object.temp();</script>
+<script>
+    // document.querySelectorAll("*").forEach(b=>{
+    //     b.style.color="red";
+    // })
+    $("*").css("color","red");
+    
+
+    // document.querySelectorAll("span").forEach(b=>{
+    //     b.style.fontSize="20px";
+    // })
+
+    $("span").css("font-size","20px");
+</script>
+</html>

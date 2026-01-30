@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    for (let i = 0; i<=10; i++){
+        if (i**8>10000000){
+            console.log(i);
+            break;
+        }
+        console.log(i);
+    }
+    function sumOf(n){
+        let r = 0;
+        for (n; n>0; n--){
+            r+=n;
+            if (r>Number.MAX_SAFE_INTEGER){
+                r = "Precision Lost...";
+                break;
+            }
+        }
+        alert(r);
+    }
+    // sumOf(Number(prompt()));
+    function productOf(n){
+        if (n==0){
+            alert(0);
+        }
+        else{
+            let p = 1;
+            for (n; n>0; n--){
+                p*=n;
+                if (p>Number.MAX_SAFE_INTEGER){
+                    p = "Precision Lost...";
+                    break;
+                }
+            }
+            alert(p);
+        }
+    }
+    // productOf(Number(prompt()));
+
+    let output = "";
+    for (let i=1; i<=5; i++){
+        for (let j=1; j<=i; j++){
+            output+='*';
+        }
+        output+='\n';
+    }
+    console.log(output);
+    console.log(output);
+    console.log(output);
+
+    output = "";
+    // for (let i=0)
+    // 00 1
+    // 10 2 11 3
+    // 20 4 21 5 22 6
+    // 30 7
+    for (let n=0; n<4; n++){
+        for (let j=0; j<=n; j++){
+            output+=(
+                (n*(n+1)/2)+(j+1)
+            )+" ";
+        }
+        output+="\n";
+    }
+    console.log(output)
+
+    output = "";
+    for (let x=1; x<11; x++){
+        output += x + " ";
+        if (((-1-((1+8*x)**(0.5)))/2 % 1) == 0){
+            output +="\n";
+        }
+    }
+    console.log(output);
+
+    // n*(n+1)/2 = x
+    // n**2+n = 2x
+    /*
+    n**2 + n -2x = 0
+    n = -1+-sqrt(1+8x))/2
+    -(1+sqrt())
+    */
+</script>
+</html>

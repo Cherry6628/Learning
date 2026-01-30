@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0eafc, #cfdef3);
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: #34495e;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px 14px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="number"]:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
+            outline: none;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            transform: scale(1.03);
+        }
+
+        .output {
+            margin-top: 25px;
+            text-align: left;
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .output p {
+            font-size: 18px;
+            margin: 8px 0;
+            color: #2c3e50;
+            display: inline-block;
+        }
+        #result{display: inline-block; width: 60%;}
+
+        .flex-r{display: flex; flex-direction: row; justify-content: space-between;}
+        #who-you-are{
+            font-size: 18px;;
+            line-height: 26px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Age Calculator</h1>
+        <div class="input-group">
+            <label for="day">Day</label>
+            <input type="number" min="1" id="day" max="31">
+        </div>
+        <div class="input-group">
+            <label for="month">Month</label>
+            <input type="number" min="1" id="month" max="12">
+        </div>
+        <div class="input-group">
+            <label for="year">Year</label>
+            <input type="number" id="year">
+        </div>
+        <button onclick="calculate()">Calculate</button>
+        <div class="flex-r">
+            <div class="output">
+                <p id="day-out"></p>
+                <p id="month-out"></p>
+                <p id="year-out"></p>
+            </div>
+            <div id="result">
+                <p id="who-you-are"></p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    const now = new Date();
+    let curYear = now.getFullYear();
+    let curMonth = now.getMonth()+1;
+    let curDay = now.getDate();
+
+
+    let outDay = document.getElementById("day-out");
+    let outMonth = document.getElementById("month-out");
+    let outYear = document.getElementById("year-out");
+    let inputs = document.getElementsByTagName("input");
+    function isLeap(year) {
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
+
+    function numOfDays(month, year) {
+        const daysInMonth = [31, isLeap(year) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        return daysInMonth[month - 1];
+    }
+    function daysMonthsYearsInMid(d1, m1, y1, d2, m2, y2){
+        let years = y2 - y1;
+        let months = m2 - m1;
+        let days = d2 - d1;
+        if (days < 0) {
+            months--;
+            let prevMonth = m2 - 1;
+            let prevYear = y2;
+            if (prevMonth === 0) {
+                prevMonth = 12;
+                prevYear--;
+            }
+            days += numOfDays(prevMonth, prevYear);
+        }
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        return [days, months, years];
+    }
+
+    function calculate(){
+        let enteredDay = Number(document.getElementById("day").value);
+        let enteredMonth = Number(document.getElementById("month").value);
+        let enteredYear = Number(document.getElementById("year").value);
+        let isAdult = document.getElementById("who-you-are");
+
+        if ((enteredDay<1 || enteredDay > numOfDays(enteredMonth, enteredYear) || enteredMonth < 1 || enteredMonth > 12 || enteredYear > curYear)||((enteredYear == curYear) && (enteredMonth > curMonth || (enteredMonth==curMonth && enteredDay>curDay)))){
+            // alertMessage.innerText = "Invalid Input";
+            for (let i=0; i<inputs.length; i++){
+            inputs[i].style.color="red";
+            }
+            isAdult.innerText = "";
+            outDay.innerText = ""; outMonth.innerText = ""; outYear.innerText = "";
+        } else{
+            for (let i=0; i<inputs.length; i++){
+            inputs[i].style.color="black";
+            }
+            // let mid = daysInMid(enteredDay, enteredMonth, enteredYear, curDay, curMonth, curYear);
+            // console.log(mid);
+            let result = daysMonthsYearsInMid(enteredDay, enteredMonth, enteredYear, curDay, curMonth, curYear);
+            let d=result[0], m=result[1], y=result[2];
+            outDay.innerText = `${d} Day${d>1?'s':''}`;
+            outMonth.innerText = `${m} Month${m>1?'s':''}`;
+            outYear.innerText = `${y} Year${y>1?'s':''}`;
+            if (result[2] >= 18) {
+                isAdult.innerText = `It's been ${d} Day${d>1?'s':''}, ${m} Month${m>1?'s':''}, and ${y-18} Year${y-18>1?'s':''} since you are an adult.`;
+            } else {
+                let remainYears = 18 - y - 1;
+                let remainMonths = 12 - m - 1;
+                let remainDays = numOfDays(curMonth, curYear) - d;
+                if (remainDays < 0){remainDays = 0;}
+                if (remainMonths < 0){remainMonths = 0;}
+                isAdult.innerText = `You will become 18 in ${remainYears} Year${remainYears>1?'s':''}, ${remainMonths} Month${remainMonths>1?'s':''}, and ${remainDays} Day${remainDays>1?'s':''}.`;
+            }
+
+        }
+    }
+
+
+
+</script>
+
+</html>

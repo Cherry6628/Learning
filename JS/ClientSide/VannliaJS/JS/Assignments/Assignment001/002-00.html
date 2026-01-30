@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+</body>
+<script>
+    let m1, m2, m3, m4, m5, total, pass, avg;
+
+    m1=Number(prompt('Enter your Tamil Mark: '));
+    m2=Number(prompt('Enter your English Mark: '));
+    m3=Number(prompt('Enter your Maths Mark: '));
+    m4=Number(prompt('Enter your Science Mark: '));
+    m5=Number(prompt('Enter your Social Science Mark: '));
+
+
+    total=m1+m2+m3+m4+m5;
+
+    
+    pass = m1>=35 && m2>=35 && m3>=35 && m4>= 35 && m5>=35;
+    avg = total/5;
+
+
+    console.info("Your Tamil Mark:", m1);
+    console.info("Your English Mark:", m2);
+    console.info("Your Maths Mark:", m3);
+    console.info("Your Science Mark:", m4);
+    console.info("Your Social Science Mark:", m5);
+    console.log("Total:", total);
+    console.log("Average:", avg);
+
+
+    if (pass){
+        console.log('%cYou are PASS', 'color: green; font-weight: 900');
+    } else{
+        console.warn('%cYou are FAIL', 'color: red; font-weight: 900');
+    }
+    
+    
+</script>
+</html>

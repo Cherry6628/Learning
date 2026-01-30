@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html><head></head><script>
+    function l(){let s = document.getElementsByTagName('script');for (let c of s){if(c.innerText.includes('Live reload enabled.')){c.previousSibling.remove(); c.remove();}}s = document.createTreeWalker(document,NodeFilter.SHOW_COMMENT,null,false);let a;while(a=s.nextNode())if(a.nodeValue.includes("Code injected by live-server"))a.remove();l=console.log;document.currentScript.remove();}l();
+</script>
+<script>
+    let reg = /(\w+)\s(\w+)/ig;
+    l("Code Camp".match(reg));
+    l("Code Camp".replace(reg, "$2 $1"));
+
+
+    l("        Hello   World         ".replace(/\s+/g, " ").replace(/^\s+|\s+$/g,""));
+
+
+    // positive, negative look ahead, behind
+    let w = "The fat cat ran down the street";
+    // look ahead
+    l(w.match(/(?<=[Tt]he\s)\w+/g));
+    l(w.match(/(?<![Tt]he\s)\w+/g));
+
+    // look behind
+    l(w.match(/(?=[Tt]he\s)[^\s]+/g));
+    l(w.match(/(?![Tt]he\s)[^\s]+/g));
+</script></html>

@@ -1,0 +1,121 @@
+*{margin: 0px; border: 0px; padding:0px; box-sizing: border-box;}
+html, body{
+    height: 100%; 
+    width: 100%;
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-size: 10px;
+}
+
+main > section:nth-child(1){
+    position: relative;
+    background-image: url("interactive-card-details/images/bg-main-desktop.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 27vw;
+    float: left
+}
+main > section:nth-child(2){
+    height: 100vh;
+    width: 73vw;
+    float: left;
+    position: relative;
+}
+main > section > div:not(.button){
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+
+}
+.card{
+    height: 245px;
+    width: 447px;
+    position: relative;
+    box-shadow: 1px 1px 2px #000;
+    border-radius: 15px;
+}
+
+.front{
+    background-image: url("./interactive-card-details/images/bg-card-front.png");
+    margin-bottom: 50px;
+    left: 40%;
+    padding: 7%;
+}
+.back{
+    background-image: url("./interactive-card-details/images/bg-card-back.png");
+    left: 70%
+}
+main > section > form{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    height: fit-content;
+    width: fit-content;
+}
+form > div > p{
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #220931;
+}
+form > div > input{
+    font-size: 2rem;
+    height: fit-content;
+    outline: 1px solid #c3c3c3;
+    color: #c3c3c3;
+    border-radius: 7px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    width: 420px;
+}
+::placeholder{
+    font-size: 2rem;
+    color: #c3c3c3;
+}
+.inl{
+    display: inline-block;
+}
+.inl p{
+    width: fit-content;
+    text-align: center
+}
+.special{
+    width: 100px;
+    margin-right: 7px;
+}
+.no-margin{
+    margin: 0px;
+    width: 195px;
+}
+.floater1{float: left; width: fit-content}
+.floater2{float: right; width: fit-content}
+input[type="number"]{appearance: none; -webkit-appearance: none;}
+[type="submit"]{text-align: center; height: 100%; width: 100%; background-color: #220931; color: #fae6fd; border: 0px; margin-top: 20px;}
+.clear{clear: both}
+
+.card-details{
+    margin-top: 55px;
+    width: 100%;
+    height: fit-content;
+    font-kerning: none;
+    color: #fae6fd;
+    text-align: center;
+}
+.card-details p{
+    font-size: 30px;
+    letter-spacing: 8px;
+    margin-bottom: 30px;    
+}
+.card-details span{
+
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+.back span{color: #fae6fd; font-size: 15px; position: relative; top: 110px; right: -370px}
+span.floater1{margin-left: 15px;}
+span.floater2{margin-right: 20px;}

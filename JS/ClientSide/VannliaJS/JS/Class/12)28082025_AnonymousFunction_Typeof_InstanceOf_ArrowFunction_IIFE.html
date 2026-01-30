@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{background-color: black; color: white}
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+    let x = "Hello World";
+    for (let i = 0; i<x.length; console.log(x[i], typeof x[i++])){}
+    console.log(x, typeof(x))
+    x = x.split("")
+    console.log(x,typeof x)
+
+    console.log
+    (
+        
+    x instanceof 
+    
+    
+    Object
+
+
+
+)
+    console.log(x instanceof String)
+    // in
+
+
+    // Anonymous Function
+    let greet = function () {
+        console.log("Helloasdfasdf");
+        return "Helloasdfasdf";
+    }
+
+    // Arrow Function
+    let greet1 = () => "Returned Hello";  // implicit return
+    let greet2 = () => {
+        console.log("I am A1"); 
+        console.log("I am A2"); 
+        return "Returned Value";  // need to be returned if block opens
+    }
+    console.log(greet1())
+    console.log(greet2());
+
+    const sqr = x => x**2;
+
+    const sub = (x, y) => y-x;
+
+    function f(a){
+        a();
+        return a;
+    }
+
+    f(greet)();
+
+    let arr = ["asdf", "asdfasdf", "asdfasdfasdfasdf", "asdfasdfas", "asdfasdfasssssssss"]
+    console.log(arr);
+    arr = arr.filter((fruit)=>(fruit.length>10));
+    console.log(arr)
+
+    // IIFE - Immediately Invoked Function Expression
+    let func = function(){
+        return "Helloloooooo"
+    }()
+    console.log(func)
+
+    var counter = function(count){
+        var c = count;  // In Private Scope
+        return {
+            incrementCount: function(){
+                c++;
+            },
+            getCount: function(){
+                return c;
+            }
+        }
+    }(34);
+
+    console.log(counter);
+    console.log(counter.getCount());
+    counter.incrementCount();
+    console.log(counter.getCount());
+    console.log(counter.c);
+    
+    
+</script>
+</html>

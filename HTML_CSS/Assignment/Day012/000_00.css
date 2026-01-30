@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@600&family=Fraunces:opsz,wght@9..144,100..900&display=swap');
+*{margin: 0px; border: 0px; padding: 0px; box-sizing: border-box;}
+body{height:fit-content}
+main{width: 100vw; height: fit-content; font-size: 1.0737vw;}
+:root{
+    --arrow-down: url("sunnyside-agency/images/icon-arrow-down.svg");
+    --facebook: url("sunnyside-agency/images/icon-facebook.svg");
+    --hamburger: url("sunnyside-agency/images/icon-hamburger.svg");
+    --instagram: url("sunnyside-agency/images/icon-instagram.svg");
+    --pintrest: url("sunnyside-agency/images/icon-pintrest.svg");
+    --twitter: url("sunnyside-agency/images/icon-twitter.svg");
+    --emily: url("sunnyside-agency/images/image-emily.jpg");
+    --jennie: url("sunnyside-agency/images/image-jennie.jpg");
+    --thomas: url("sunnyside-agency/images/image-thomas.jpg");
+    --logo: url("sunnyside-agency/images/logo.svg");
+
+    --cone: url("sunnyside-agency/images/desktop/image-gallery-cone.jpg");
+    --milk: url("sunnyside-agency/images/desktop/image-gallery-milkbottles.jpg");
+    --orange-in-plate: url("sunnyside-agency/images/desktop/image-gallery-orange.jpg");
+    --sugarcubes: url("sunnyside-agency/images/desktop/image-gallery-sugarcubes.jpg");
+    --cherry: url("sunnyside-agency/images/desktop/image-graphic-design.jpg");
+    --orange-in-header: url("sunnyside-agency/images/desktop/image-header.jpg");
+    --full-orange: url("sunnyside-agency/images/desktop/image-photography.jpg");
+    --red-cup: url("sunnyside-agency/images/desktop/image-stand-out.jpg");
+    --egg: url("sunnyside-agency/images/desktop/image-transform.jpg");
+    
+    --grey1: #8B898A;
+    --grey2: #ADADB2;
+    --grey3: #BBBBBB;
+    --green: #256C5C;
+}
+.undl{text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 5px;} 
+.undl1{text-decoration-color: #feeeba;} 
+.undl2{text-decoration-color: #ffdacf;}
+
+.barlow-font{font-family: "Barlow", sans-serif; font-weight: 600; font-style: normal;}
+/* .fraunces-font{font-family: "Fraunces", serif; font-optical-sizing: auto; font-style: normal; font-variation-settings: "SOFT" 0, "WONK" 0;} */
+
+.flex-r{display: flex; flex-direction: row; align-items: center; justify-content: space-between;}
+.flex-c{display: flex; flex-direction: column; align-items: center; justify-content: space-between;}
+.uppercase{text-transform: uppercase;}
+.center{text-align: center;}
+.logo{letter-spacing: -.1vw}
+main > section{width: 100%; height: fit-content;}
+.size{min-height: 55.5vw; max-height: fit-content;}
+h1, h2, h3, h4, h5, h6{font-family: "Fraunces", serif; font-optical-sizing: auto; font-style: normal; font-variation-settings: "SOFT" 0, "WONK" 0;}
+main > section:first-child{background-image: var(--orange-in-header); background-repeat: no-repeat; background-size: cover}
+main > section:nth-child(2){display: flex; flex-wrap:wrap; flex-direction: row; gap:0px;}
+.box{width: 50vw; height: 41.666vw; flex-grow: 1;}
+.box2, .box3, .box5, .box6{background-repeat: no-repeat; background-size: cover;}
+.box2{background-image: var(--egg);}
+.box3{background-image: var(--red-cup);}
+.box5{background-image: var(--cherry);}
+.box6{background-image: var(--full-orange);}
+.box1{padding: 11.1vw 9.8vw 11.1vw 11.1vw;}
+.box4{padding: 11.1vw 11.1vw 11.1vw 9.8vw;}
+ul{list-style-type: none; }
+.container3{ padding: 11.1vw; gap: 7vw}
+.container4 ul{gap: 5vh;}
+.container4 > ul{gap: 3vh}
+.testimonials{width: 80vw; justify-content: space-evenly;}
+.testimonial{width: 460px; max-width: 26vw; height: fit-content; gap: 3vw;} 
+.dp{height: 5vw; width: 5vw; background-repeat: no-repeat; background-size: cover; border-radius: 50%;}
+.dp1{background-image: var(--emily);}
+.dp2{background-image: var(--thomas);}
+.dp3{background-image: var(--jennie);}
+.desig h4{margin-bottom: 10px}
+p{line-height: 1.5}
+.container4{background-color: #90d4c5; padding-bottom: 30px; height: 50vw; color: var(--green)}
+.img-footer {width: 25vw; background-repeat: no-repeat; background-size: cover}
+div.height-{gap: 3vw; margin-bottom: 1vw}
+.image{height: 1vw;}
+.left{align-self: stretch;}
+.box5, .box6{justify-content: flex-end; padding: 30vw 11.1vw 5vw; gap: 2vh}
+header{height: 8vw; background-color: transparent; width: 100%;}
+nav ul{gap: 5vw}
+.container1{padding: 0px 11.1vw; justify-content: flex-start; color: white; gap: 7vw}
+.container1 img{height: 15vw}
+.container1 > h1{font-size: 3vw}
+.button{padding: 1vw 1.5vw; color: black; background-color: white; border-radius: 1.6vw}
+h5{color: var(--grey3)} 
+p:not(.box6>p, .box5>p){color: var(--grey1)}
+.client-testimonial{letter-spacing: .3vw; color: var(--grey2)}
+.special-height{font-size: 2.5vw; letter-spacing: .1vw}

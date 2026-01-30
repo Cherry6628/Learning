@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link type="text/x-icon" rel="icon" href="https://picsum.photos/36/36">
+    <style>
+        body{
+            background-color: black;
+        }
+        main>div{
+            background-color: rgb(41, 41, 41);
+            padding: 10px;
+            border-radius: 1vw;
+            margin: 2px;
+        }
+        span{
+            background-color: green;
+            
+        }
+        div div{
+            background-color: white;
+            padding: 0 10px;
+
+        }
+        p{
+            margin: 0;
+            
+        }
+    </style>
+</head>
+<body>
+    <main></main>
+</body>
+<script src="tempscr.js"></script>
+<script>
+    let depth;
+    let main = document.querySelector('main');
+    function show(...msg){
+        msg = msg.join(" ");
+        let div = document.createElement('div');
+        let p = document.createElement('p');
+        let span = document.createElement('span');
+        p.append(span);
+        span.innerText = JSON.stringify(new Date());
+        let div2 = document.createElement('div');
+        div2.innerText = msg;
+        console.log(msg);
+        div.append(p, div2);
+        main.append(div);
+        
+    }
+
+    function runTimer(name, func, ...args){
+        console.time(name);show(func(...args)); console.timeEnd(name);
+    }
+
+    depth = 0;
+    function summOfFirstNNumbersRecursive(n){
+        if(n==0)return 0;
+        depth++;
+        try{return summOfFirstNNumbersRecursive(n>0?n-1:n+1)+n;}
+        catch (err){console.warn("Exitting Recursion at depth "+depth+" and n "+n); return n;}
+    }
+    function summOfFirstNNumbersLoop(n){
+        let res = 0;
+        if (n>0)for (let i=0;i<=n;res+=i++);
+        else for (let i=0; i>=n;res+=i--);
+        return res;
+    }
+    runTimer('Recursive Case of Sum of Numbers', summOfFirstNNumbersRecursive, 25554);
+    runTimer('Loop Case of Sum of Numbers', summOfFirstNNumbersLoop,25554);
+
+    console.log("\n\n");
+    depth=0;
+    function factorialRecursive(n){
+        if(n<0)return NaN;
+        if(n==0)return 1;
+        depth++;
+        try {return factorialRecursive(n-1)*n;}
+        catch(err){console.warn("Exitting Recursion at depth "+depth+" and n "+n); return n;}
+    }
+    function factorialLoop(n){
+        if (n<0)return NaN;
+        let res = 1;
+        while (n>1){
+            res*=n;
+            n--;
+        }
+        return res;
+    }
+    runTimer('Recursive Case of Factorial', factorialRecursive, 1000);
+    runTimer('Loop Case of Factorial', factorialLoop,1000);
+
+    console.log("\n\n");
+    depth = 0;
+    function fibonacciRecursive(n){
+        if (n==0)return 0;
+        if (n==1)return 1;
+        depth++
+        try{return fibonacciRecursive(n-1)+fibonacciRecursive(n-2);}
+        catch{console.warn("Exitting Recursion at depth "+depth+" and n "+n);return n;}
+    }
+    function fibonacciLoop(n){
+        if (n==0)return 0;
+        if(n==1)return 1;
+        let prev1=0;
+        let prev2=1;
+        let res = 0;
+        let t;
+        for (let i=2; i<=n;i++){
+            t = prev2;
+            prev2+=prev1;
+            prev1=t;
+        }
+        return prev2;
+    }
+    runTimer("Recursive Case of Fibonacci", fibonacciRecursive, 50);
+
+    runTimer("Loop Case of Fibonacci", fibonacciLoop,50);
+</script>
+</html>
