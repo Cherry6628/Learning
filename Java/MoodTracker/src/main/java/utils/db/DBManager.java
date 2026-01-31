@@ -1,8 +1,9 @@
-package utils;
+package utils.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DBManager {
 	private static Connection con;
@@ -22,7 +23,18 @@ public class DBManager {
 		String URL = "jdbc:mysql://" + DOMAIN + "/" + DATABASE;
 
 		try {
-			con = DriverManager.getConnection(URL, USER, PASS);
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			con = DriverManager.getConnection(URL,USER,PASS);
+			Statement s = con.createStatement();
+			s.executeQuery(
+				"create table if not exists users("
+				+ "id int auto_increment primary key, "
+				+ "username varchar(50) unique not null, "
+				+ "password varchar(255) not null"
+				+ ");"
+			);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

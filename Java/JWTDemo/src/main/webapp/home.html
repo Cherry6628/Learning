@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Welcome Home</h1>
+<h3 id="msg">Loading...</h3>
+
+<button onclick="logout()">Logout</button>
+
+<script>
+    fetch('api/home')
+        .then(res => {
+            if (res.ok) return res.json();
+            else window.location.href = "index.html";
+        })
+        .then(data => {
+            if(data) {
+                document.getElementById('msg').innerText = data.msg + " (" + data.currentUser + ")";
+            }
+        })
+        .catch(() => {
+            window.location.href = "index.html";
+        });
+
+    async function logout() {
+        await fetch('logout', { method: 'POST' });
+        window.location.href = "index.html";
+    }
+</script>
+</body>
+</html>

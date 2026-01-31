@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>JWT Auth App</h2>
+
+<div id="forms">
+    <input type="text" id="user" placeholder="Username" name=username><br>
+    <input type="password" id="pass" placeholder="Password" name=password><br>
+    <button onclick="doAuth('login')">Login</button>
+    <button onclick="doAuth('signup')">Register</button>
+</div>
+
+<script>
+    async function doAuth(endpoint) {
+        const u = document.getElementById('user').value;
+        const p = document.getElementById('pass').value;
+
+        const res = await fetch(endpoint, {
+            method: 'POST',
+            body: JSON.stringify({ username: u, password: p })
+        });
+        const data = await res.json();
+        if (res.ok) {
+            if (endpoint === 'login') window.location.href = "home.html";
+            else alert("Registered! Now Click Login.");
+        } else {
+            alert("Error: " + data.error);
+            }
+    }
+</script>
+</body>
+</html>
