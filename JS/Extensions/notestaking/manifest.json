@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "version": "0.0.0",
+    "name": "Notes",
+    "description": "Save your Notes here",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": ["storage"],
+    "icons": {
+        "32": "images/favicon-16x16.png",
+        "64": "images/favicon-32x32.png"
+    }
+}

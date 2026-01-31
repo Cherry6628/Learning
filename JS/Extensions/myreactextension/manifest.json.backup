@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "version": "0.0.0",
+    "name": "My First React Extension",
+    "description": "Nothing to say",
+    "action": {
+        "default_popup": "index.html"
+    },
+    "permissions": ["storage"],
+    "icons": {
+        "32": "images/favicon-16x16.png",
+        "64": "images/favicon-32x32.png"
+    }
+}
