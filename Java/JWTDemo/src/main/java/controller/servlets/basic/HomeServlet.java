@@ -13,7 +13,6 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 
         String user = (String) req.getAttribute("user");
-        System.out.println(user);
 
         HashMap<String, String> data = new HashMap<String, String>();
         data.put("msg", "This is secret data from jwt_auth_app!");

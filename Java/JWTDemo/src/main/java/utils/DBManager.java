@@ -14,8 +14,7 @@ public class DBManager {
 	private static String IP = "127.0.0.1";
 	private static int PORT = 3306;
 
-	private DBManager() {
-	}
+	private DBManager(){}
 
 	private static void initializeConnection() {
 

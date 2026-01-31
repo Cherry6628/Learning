@@ -50,10 +50,7 @@ public class BasicAuthFilter extends HttpFilter implements Filter {
 		} else {
 			try {
 				String user = JWTManager.validate(token);
-				System.out.println(token);
 				req.setAttribute("user", user);
-				System.out.println(req.getAttribute("user"));
-				System.out.println("Setting user "+user);
 				chain.doFilter(request, response);
 
 			} catch (ExpiredJwtException e) {
