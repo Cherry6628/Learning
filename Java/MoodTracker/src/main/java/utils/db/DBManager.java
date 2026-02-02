@@ -1,21 +1,22 @@
 package utils.db;
 
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
+
+import secrets.Secrets;
 
 public class DBManager {
 	private static Connection con;
 
-	private static String USER = "tom";
-	private static String PASS = "tommy";
-	private static String DATABASE = "tomcat_main";
-	private static String IP = "127.0.0.1";
-	private static int PORT = 3306;
+	private static String USER = Secrets.user();
+	private static String PASS = Secrets.pwd();
+	private static String DATABASE = Secrets.db();
+	private static String IP = Secrets.ip();
+	private static int PORT = Secrets.port();
 
-	private DBManager() {
-	}
+	private DBManager(){}
 
 	private static void initializeConnection() {
 
@@ -26,13 +27,7 @@ public class DBManager {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(URL,USER,PASS);
 			Statement s = con.createStatement();
-			s.executeQuery(
-				"create table if not exists users("
-				+ "id int auto_increment primary key, "
-				+ "username varchar(50) unique not null, "
-				+ "password varchar(255) not null"
-				+ ");"
-			);
+			s.executeUpdate("delete from moods");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

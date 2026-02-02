@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Password Manager",
+    "version": "1.0.0",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "permissions": ["storage"],
+    "icons": {
+        "32": "favicon/favicon-16x16.png",
+        "64": "favicon/favicon-32x32.png"
+    }
+}

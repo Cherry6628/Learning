@@ -1,15 +1,15 @@
 package model;
 
 public class Mood{
-	private Emotion emotion;
+	private int mood;
 	private String name, description;
 	
 	
-	public int getEmotion() {
-		return Emotion.toInt(emotion);
+	public int getMood() {
+		return mood;
 	}
-	public void setEmotion(int level) {
-		this.emotion = Emotion.fromInt(level);
+	public void setMood(int level) {
+		this.mood = level;
 	}
 	public String getName() {
 		return name;
@@ -29,9 +29,13 @@ public class Mood{
 	public Mood(String name, String description, int level){
 		this.name=name;
 		this.description=description;
-		this.emotion=Emotion.fromInt(level);
+		this.mood=level;
 	}
-	
-	
+	public Mood() {
+		
+	}
+	public String toString() {
+		return this.mood+"";
+	}
 	
 }

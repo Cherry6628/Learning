@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+    <script src="popup.js" defer></script>
+    <script src="background.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Password Manager</h1>
+        <div>
+            <label for="appName">Enter the App Name</label>
+            <input id="appName" type="text" placeholder="App Name">
+        </div>
+        <div>
+            <label for="password">Enter the Password</label>
+            <input id="password" type="text" placeholder="Password">
+        </div>
+        <button type="submit" id="save">Save</button>
+        <ul id="list"></ul>
+    </div>
+</body>
+</html>
