@@ -1,4 +1,4 @@
-const extensionId = "mynotestakingapp_xR3GA6XUMH2DGCeWdmho1chJv3isXuf5";
+const extensionId = "mynotestakingapp";
 const save = document.getElementById("save");
 const text = document.getElementById("text");
 
