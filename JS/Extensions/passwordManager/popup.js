@@ -22,8 +22,17 @@ function loadPwds() {
     browser.runtime.sendMessage({
         action: "GET_PASSWORD",
     }).then(r=>{
+        const results = document.getElementById("list");
         for(let app in r){
             const appDiv = document.createElement("div");
+            appDiv.innerHTML = "<h1>"+app+"</h1><ul>";
+
+            for (let u in r[app]){
+                appDiv.innerHTML += "<li>"+u+"<br>"+r[app][u]+"</li><br>";
+            }
+            appDiv.innerHTML+="</ul><hr>";
+            results.appendChild(appDiv);
         }
     })
 }
+loadPwds();
