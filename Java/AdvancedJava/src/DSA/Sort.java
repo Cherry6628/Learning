@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Sort {
 	public static void main(String[]args) {
 		int[]a= {1, 3, 6, 4, 3, 0, 20, -3, 5};
-//		insertionSort(a);
+		insertionSort(a);
 //		System.out.println(Arrays.toString(a));
 		
 		

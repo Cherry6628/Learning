@@ -1,6 +1,6 @@
 package ticket;
 
-import java.sql.Date;
+//import java.sql.Date;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -60,7 +60,7 @@ public class TicketService {
 			found = true;
 			int ticketId = rs.getInt("id");
 			double totalPrice = rs.getDouble("total_price");
-			String status = rs.getString("status");
+//			String status = rs.getString("status");
 			LocalDateTime ldt = rs.getObject("travel_time", LocalDateTime.class);
 
 

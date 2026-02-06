@@ -86,7 +86,7 @@ public class Main {
 		IllegalArgumentException, 
 		IllegalAccessException 
 	{
-		ArrayList<Boolean> list = new ArrayList<>();
+//		ArrayList<Boolean> list = new ArrayList<>();
 		
 		
 		Class<?> c = ArrayList.class;
