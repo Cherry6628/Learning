@@ -1,4 +1,4 @@
-<%@ page import="java.util.*, model.Mood"%>
+<%@ page import="java.util.*,model.pojo.Mood"%>
 <!doctype html>
 <html>
 <body>
